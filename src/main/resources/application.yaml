@@ -41,7 +41,25 @@ spring:
         enabled: true
         login-username: admin
         login-password: 666666
+  ### Redis
+  redis:
+    host: 47.115.85.86
+    port: 6379
+    # 连接超时时间
+    timeout: PT10s
+    lettuce:
+      pool:
+        # 连接池最大的连接数，默认是8，值为负数则表示没有限制
+        max-active: 100
+        # 最大阻塞等待的时间，默认是-1，即没有时间限制
+        max-wait: PT10s
+        # 最大空闲连接数 默认是8
+        max-idle: 30
+        # 最小空闲连接数，默认是0
+        min-idle: 1
 
+
+#### 日志配置############
 logging:
   path: log
   # 保存路径以及文件名

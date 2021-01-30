@@ -1039,3 +1039,51 @@ Caused by: java.lang.IllegalArgumentException: Result Maps collection already co
 2021-01-30 12:02:34.405  INFO 5460 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
 2021-01-30 12:02:34.405  INFO 5460 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
 2021-01-30 12:02:34.411  INFO 5460 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 5 ms
+2021-01-30 12:22:13.294  INFO 7444 --- [main] com.daniel.AmowApplication               : Starting AmowApplication on 习武之人装用Del with PID 7444 (E:\JavaProject\AMOW\target\classes started by daniel in E:\JavaProject\AMOW)
+2021-01-30 12:22:13.296 DEBUG 7444 --- [main] com.daniel.AmowApplication               : Running with Spring Boot v2.1.6.RELEASE, Spring v5.1.8.RELEASE
+2021-01-30 12:22:13.297  INFO 7444 --- [main] com.daniel.AmowApplication               : No active profile set, falling back to default profiles: default
+2021-01-30 12:22:14.034  INFO 7444 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-01-30 12:22:14.035  INFO 7444 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2021-01-30 12:22:14.053  INFO 7444 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 8ms. Found 0 repository interfaces.
+2021-01-30 12:22:14.320  INFO 7444 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$b63028d6] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-01-30 12:22:14.604  INFO 7444 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2021-01-30 12:22:14.624  INFO 7444 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-01-30 12:22:14.625  INFO 7444 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.21]
+2021-01-30 12:22:14.632  INFO 7444 --- [main] o.a.catalina.core.AprLifecycleListener   : Loaded APR based Apache Tomcat Native library [1.2.25] using APR version [1.7.0].
+2021-01-30 12:22:14.632  INFO 7444 --- [main] o.a.catalina.core.AprLifecycleListener   : APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+2021-01-30 12:22:14.633  INFO 7444 --- [main] o.a.catalina.core.AprLifecycleListener   : APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+2021-01-30 12:22:14.637  INFO 7444 --- [main] o.a.catalina.core.AprLifecycleListener   : OpenSSL successfully initialized [OpenSSL 1.1.1g  21 Apr 2020]
+2021-01-30 12:22:14.744  INFO 7444 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-01-30 12:22:14.744  INFO 7444 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1410 ms
+2021-01-30 12:22:15.089  INFO 7444 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+2021-01-30 12:22:15.109  INFO 7444 --- [main] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2021-01-30 12:22:15.784  INFO 7444 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2021-01-30 12:22:15.925  INFO 7444 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-01-30 12:22:16.254  INFO 7444 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2021-01-30 12:22:16.268  INFO 7444 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2021-01-30 12:22:16.292  INFO 7444 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2021-01-30 12:22:16.386  INFO 7444 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2021-01-30 12:22:16.389  INFO 7444 --- [main] com.daniel.AmowApplication               : Started AmowApplication in 3.439 seconds (JVM running for 4.291)
+2021-01-30 12:22:20.605  INFO 7444 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-01-30 12:22:20.606  INFO 7444 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-01-30 12:22:20.612  INFO 7444 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 6 ms
+2021-01-30 13:23:39.650  INFO 888 --- [main] com.daniel.AmowApplicationTests          : Starting AmowApplicationTests on 习武之人装用Del with PID 888 (started by daniel in E:\JavaProject\AMOW)
+2021-01-30 13:23:39.650 DEBUG 888 --- [main] com.daniel.AmowApplicationTests          : Running with Spring Boot v2.1.6.RELEASE, Spring v5.1.8.RELEASE
+2021-01-30 13:23:39.651  INFO 888 --- [main] com.daniel.AmowApplicationTests          : No active profile set, falling back to default profiles: default
+2021-01-30 13:23:41.161  INFO 888 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-01-30 13:23:41.165  INFO 888 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2021-01-30 13:23:41.203  INFO 888 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 17ms. Found 0 repository interfaces.
+2021-01-30 13:23:41.585  INFO 888 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$9ddde8f] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-01-30 13:23:42.443  INFO 888 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+2021-01-30 13:23:42.477  INFO 888 --- [main] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2021-01-30 13:23:43.640  INFO 888 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2021-01-30 13:23:44.142  INFO 888 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-01-30 13:23:44.606  INFO 888 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2021-01-30 13:23:44.629  INFO 888 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2021-01-30 13:23:44.655  INFO 888 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2021-01-30 13:23:44.742  INFO 888 --- [main] com.daniel.AmowApplicationTests          : Started AmowApplicationTests in 5.543 seconds (JVM running for 6.406)
+2021-01-30 13:23:45.055  INFO 888 --- [main] io.lettuce.core.EpollProvider            : Starting without optional epoll library
+2021-01-30 13:23:45.056  INFO 888 --- [main] io.lettuce.core.KqueueProvider           : Starting without optional kqueue library
+2021-01-30 13:23:45.994  INFO 888 --- [Thread-2] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2021-01-30 13:23:45.996  INFO 888 --- [Thread-2] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closing ...
+2021-01-30 13:23:46.005  INFO 888 --- [Thread-2] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} closed
