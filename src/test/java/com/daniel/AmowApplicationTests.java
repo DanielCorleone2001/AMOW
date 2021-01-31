@@ -2,6 +2,7 @@ package com.daniel;
 
 
 import com.daniel.config.SwaggerConfig;
+import com.daniel.mapper.SysUserMapper;
 import com.daniel.service.RedisService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -24,5 +25,14 @@ public class AmowApplicationTests {
     public void RedisTest() {
         redisService.set("redisTest_1","redisTestSuccess");
         System.out.println(redisService.get("redisTest_1"));
+    }
+
+    @Autowired
+    private SysUserMapper sysUserMapper;
+
+    @Test
+    public void SysUserMapperTest() {
+        System.out.println(sysUserMapper.selectByUsername("dev"));
+        //System.out.println(sysUserMapper.selectByPrimaryKey("1"));
     }
 }

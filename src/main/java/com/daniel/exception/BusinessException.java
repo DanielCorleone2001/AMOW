@@ -1,5 +1,7 @@
 package com.daniel.exception;
 
+import com.daniel.exception.code.ResponseCodeInterface;
+
 /**
  * @Package: com.daniel.exception
  * @ClassName: BusinessException
@@ -29,9 +31,9 @@ public class BusinessException extends RuntimeException{
         this.msg = msg;
     }
 
-//    public BusinessException(ResponseCodeInterface responseCodeInterface) {
-//        this(responseCodeInterface.getCode(),responseCodeInterface.getMsg());
-//    }
+    public BusinessException(ResponseCodeInterface responseCodeInterface) {
+        this(responseCodeInterface.getCode(),responseCodeInterface.getMsg());
+    }
 
     public int getCode() {
         return code;
