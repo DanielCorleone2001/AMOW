@@ -2,6 +2,8 @@ package com.daniel.mapper;
 
 import com.daniel.entity.SysUser;
 
+import java.util.List;
+
 public interface SysUserMapper {
     int deleteByPrimaryKey(String id);
 
@@ -16,4 +18,7 @@ public interface SysUserMapper {
     int updateByPrimaryKey(SysUser record);
 
     SysUser selectByUsername(String username);
+
+    List<SysUser> selectAll();
+
 }

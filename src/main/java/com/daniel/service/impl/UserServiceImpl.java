@@ -7,9 +7,15 @@ import com.daniel.exception.code.BaseResponseCode;
 import com.daniel.mapper.SysUserMapper;
 import com.daniel.service.UserService;
 import com.daniel.utils.JWToken;
+import com.daniel.utils.PageUtil;
 import com.daniel.utils.PasswordUtils;
 import com.daniel.vo.request.LoginReqVO;
+import com.daniel.vo.request.UserPageReqVO;
 import com.daniel.vo.response.LoginRespVO;
+import com.daniel.vo.response.PageVO;
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -72,6 +78,14 @@ public class UserServiceImpl implements UserService {
         loginRespVO.setRefreshToken(refreshToken);
         loginRespVO.setAccessToken(accessToken);
         return loginRespVO;
+    }
+
+    @Override
+    public PageVO<SysUser> pageInfo(UserPageReqVO userPageReqVO) {
+        PageHelper.startPage(userPageReqVO.getPageNum(),userPageReqVO.getPageSize());//开始分页
+        List<SysUser> sysUserList = sysUserMapper.selectAll();//获取所有用户的信息，存入List
+        //PageInfo<SysUser> pageInfo = new PageInfo<>(sysUserList);//构造对应的分页信息
+        return PageUtil.getPageVO(sysUserList);//返回分页信息
     }
 
     /**

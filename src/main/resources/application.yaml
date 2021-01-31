@@ -7,7 +7,7 @@ spring:
     type: com.alibaba.druid.pool.DruidDataSource
     url: jdbc:mysql://localhost:3306/amow?useSSL=TRUE&useUnicode=TRUE&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
     username: root
-    password: joannedaniel0520
+    password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
     druid:
       ##################   连接池配置   ################
