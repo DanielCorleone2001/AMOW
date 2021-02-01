@@ -1,186 +1,101 @@
-2021-02-01 12:34:47.494  INFO 14884 --- [main] com.daniel.AmowApplication               : Starting AmowApplication on 习武之人装用Del with PID 14884 (E:\JavaProject\AMOW\target\classes started by daniel in E:\JavaProject\AMOW)
-2021-02-01 12:34:47.499 DEBUG 14884 --- [main] com.daniel.AmowApplication               : Running with Spring Boot v2.1.6.RELEASE, Spring v5.1.8.RELEASE
-2021-02-01 12:34:47.500  INFO 14884 --- [main] com.daniel.AmowApplication               : No active profile set, falling back to default profiles: default
-2021-02-01 12:34:48.636  INFO 14884 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
-2021-02-01 12:34:48.640  INFO 14884 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
-2021-02-01 12:34:48.674  INFO 14884 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 17ms. Found 0 repository interfaces.
-2021-02-01 12:34:48.942  INFO 14884 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$7beb6de2] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2021-02-01 12:34:48.957  INFO 14884 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'shiroConfig' of type [com.daniel.config.ShiroConfig$$EnhancerBySpringCGLIB$$4fc3cfb0] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2021-02-01 12:34:49.491  INFO 14884 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'redisConfig' of type [com.daniel.config.RedisConfig$$EnhancerBySpringCGLIB$$9a9256fa] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2021-02-01 12:34:49.510  INFO 14884 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'spring.redis-org.springframework.boot.autoconfigure.data.redis.RedisProperties' of type [org.springframework.boot.autoconfigure.data.redis.RedisProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2021-02-01 12:34:49.513  INFO 14884 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.boot.autoconfigure.data.redis.LettuceConnectionConfiguration' of type [org.springframework.boot.autoconfigure.data.redis.LettuceConnectionConfiguration$$EnhancerBySpringCGLIB$$91052c2c] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2021-02-01 12:34:49.591  INFO 14884 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'lettuceClientResources' of type [io.lettuce.core.resource.DefaultClientResources] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2021-02-01 12:34:49.670  INFO 14884 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'redisConnectionFactory' of type [org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2021-02-01 12:34:49.680  INFO 14884 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'redisTemplate' of type [org.springframework.data.redis.core.RedisTemplate] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2021-02-01 12:34:49.682  INFO 14884 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'redisService' of type [com.daniel.service.RedisService] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2021-02-01 12:34:49.683  INFO 14884 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'myHashedCredentialsMatcher' of type [com.daniel.shiro.MyHashedCredentialsMatcher] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2021-02-01 12:34:49.685  INFO 14884 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'myRealm' of type [com.daniel.shiro.MyRealm] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2021-02-01 12:34:49.688  INFO 14884 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'securityManager' of type [org.apache.shiro.web.mgt.DefaultWebSecurityManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2021-02-01 12:34:49.695  INFO 14884 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'authorizationAttributeSourceAdvisor' of type [org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2021-02-01 12:34:50.049  INFO 14884 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
-2021-02-01 12:34:50.067  INFO 14884 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2021-02-01 12:34:50.067  INFO 14884 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.21]
-2021-02-01 12:34:50.071  INFO 14884 --- [main] o.a.catalina.core.AprLifecycleListener   : Loaded APR based Apache Tomcat Native library [1.2.25] using APR version [1.7.0].
-2021-02-01 12:34:50.071  INFO 14884 --- [main] o.a.catalina.core.AprLifecycleListener   : APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
-2021-02-01 12:34:50.071  INFO 14884 --- [main] o.a.catalina.core.AprLifecycleListener   : APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
-2021-02-01 12:34:50.098  INFO 14884 --- [main] o.a.catalina.core.AprLifecycleListener   : OpenSSL successfully initialized [OpenSSL 1.1.1g  21 Apr 2020]
-2021-02-01 12:34:50.174  INFO 14884 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2021-02-01 12:34:50.174  INFO 14884 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2619 ms
-2021-02-01 12:34:50.275  INFO 14884 --- [main] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
-2021-02-01 12:34:51.109  INFO 14884 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
-2021-02-01 12:34:51.647  INFO 14884 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
-2021-02-01 12:34:51.801  INFO 14884 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
-2021-02-01 12:34:52.108  INFO 14884 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
-2021-02-01 12:34:52.123  INFO 14884 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
-2021-02-01 12:34:52.145  INFO 14884 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
-2021-02-01 12:34:52.336  INFO 14884 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
-2021-02-01 12:34:52.340  INFO 14884 --- [main] com.daniel.AmowApplication               : Started AmowApplication in 5.361 seconds (JVM running for 6.708)
-2021-02-01 12:34:56.138  INFO 14884 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2021-02-01 12:34:56.139  INFO 14884 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2021-02-01 12:34:56.148  INFO 14884 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 9 ms
-2021-02-01 12:34:56.674  INFO 14884 --- [http-nio-8080-exec-2] com.daniel.shiro.MyAccessControlFilter   : GET
-2021-02-01 12:34:56.674  INFO 14884 --- [http-nio-8080-exec-2] com.daniel.shiro.MyAccessControlFilter   : /
-2021-02-01 12:34:56.762  INFO 14884 --- [http-nio-8080-exec-6] com.daniel.shiro.MyAccessControlFilter   : GET
-2021-02-01 12:34:56.762  INFO 14884 --- [http-nio-8080-exec-6] com.daniel.shiro.MyAccessControlFilter   : /csrf
-2021-02-01 12:35:41.709 DEBUG 14884 --- [http-nio-8080-exec-10] c.d.m.SysUserMapper.selectByUsername     : ==>  Preparing: select id, username, salt, `password`, phone, dept_id, real_name, nick_name, email, `status`, sex, deleted, create_id, update_id, create_where, create_time, update_time from sys_user where username=? and deleted = 1 
-2021-02-01 12:35:41.731 DEBUG 14884 --- [http-nio-8080-exec-10] c.d.m.SysUserMapper.selectByUsername     : ==> Parameters: admin(String)
-2021-02-01 12:35:41.750 DEBUG 14884 --- [http-nio-8080-exec-10] c.d.m.SysUserMapper.selectByUsername     : <==      Total: 1
-2021-02-01 12:35:41.918  INFO 14884 --- [http-nio-8080-exec-10] com.daniel.service.impl.UserServiceImpl  : accessToken=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI5YTI2ZjVmMS1jYmQyLTQ3M2QtODJkYi0xZDZkY2Y0NTk4ZjgiLCJyb2xlcy1pbmZvcy1rZXkiOlsiYWRtaW4iXSwicGVybWlzc2lvbnMtaW5mb3Mta2V5IjpbInN5czp1c2VyOmFkZCIsInN5czp1c2VyOnVwZGF0ZSIsInN5czp1c2VyOmRlbGV0ZSIsInN5czp1c2VyOmxpc3QiXSwiaXNzIjoiZGFuaWVsIiwiand0LXVzZXItbmFtZS1rZXkiOiJhZG1pbiIsImV4cCI6MTYxMjE2MTM0MSwiaWF0IjoxNjEyMTU0MTQxfQ.3dgspH_ppI6huMBAAGEpi_xQI-7Iyo-3pc6XSvkX4p4
-2021-02-01 12:35:41.918  INFO 14884 --- [http-nio-8080-exec-10] com.daniel.service.impl.UserServiceImpl  : refreshToken=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI5YTI2ZjVmMS1jYmQyLTQ3M2QtODJkYi0xZDZkY2Y0NTk4ZjgiLCJpc3MiOiJkYW5pZWwiLCJqd3QtdXNlci1uYW1lLWtleSI6ImFkbWluIiwiZXhwIjoxNjEyMTgyOTQxLCJpYXQiOjE2MTIxNTQxNDF9.25aOiem53RmXHXRFFARbcZ0N2pZe_-hSDc_8AT79TJ0
-2021-02-01 12:36:10.018  INFO 14884 --- [http-nio-8080-exec-8] com.daniel.shiro.MyAccessControlFilter   : POST
-2021-02-01 12:36:10.019  INFO 14884 --- [http-nio-8080-exec-8] com.daniel.shiro.MyAccessControlFilter   : /api/users
-2021-02-01 12:36:10.029 ERROR 14884 --- [http-nio-8080-exec-8] com.daniel.utils.JWToken                 : error={}
-
-java.lang.NullPointerException: null
-	at com.daniel.utils.JWToken.getUserId(JWToken.java:158) ~[classes/:na]
-	at com.daniel.shiro.MyHashedCredentialsMatcher.doCredentialsMatch(MyHashedCredentialsMatcher.java:31) [classes/:na]
-	at org.apache.shiro.realm.AuthenticatingRealm.assertCredentialsMatch(AuthenticatingRealm.java:600) [shiro-core-1.4.1.jar:1.4.1]
-	at org.apache.shiro.realm.AuthenticatingRealm.getAuthenticationInfo(AuthenticatingRealm.java:581) [shiro-core-1.4.1.jar:1.4.1]
-	at org.apache.shiro.authc.pam.ModularRealmAuthenticator.doSingleRealmAuthentication(ModularRealmAuthenticator.java:180) [shiro-core-1.4.1.jar:1.4.1]
-	at org.apache.shiro.authc.pam.ModularRealmAuthenticator.doAuthenticate(ModularRealmAuthenticator.java:267) [shiro-core-1.4.1.jar:1.4.1]
-	at org.apache.shiro.authc.AbstractAuthenticator.authenticate(AbstractAuthenticator.java:198) [shiro-core-1.4.1.jar:1.4.1]
-	at org.apache.shiro.mgt.AuthenticatingSecurityManager.authenticate(AuthenticatingSecurityManager.java:106) [shiro-core-1.4.1.jar:1.4.1]
-	at org.apache.shiro.mgt.DefaultSecurityManager.login(DefaultSecurityManager.java:275) [shiro-core-1.4.1.jar:1.4.1]
-	at org.apache.shiro.subject.support.DelegatingSubject.login(DelegatingSubject.java:260) [shiro-core-1.4.1.jar:1.4.1]
-	at com.daniel.shiro.MyAccessControlFilter.onAccessDenied(MyAccessControlFilter.java:67) [classes/:na]
-	at org.apache.shiro.web.filter.AccessControlFilter.onAccessDenied(AccessControlFilter.java:133) [shiro-web-1.4.1.jar:1.4.1]
-	at org.apache.shiro.web.filter.AccessControlFilter.onPreHandle(AccessControlFilter.java:162) [shiro-web-1.4.1.jar:1.4.1]
-	at org.apache.shiro.web.filter.PathMatchingFilter.isFilterChainContinued(PathMatchingFilter.java:203) [shiro-web-1.4.1.jar:1.4.1]
-	at org.apache.shiro.web.filter.PathMatchingFilter.preHandle(PathMatchingFilter.java:178) [shiro-web-1.4.1.jar:1.4.1]
-	at org.apache.shiro.web.servlet.AdviceFilter.doFilterInternal(AdviceFilter.java:131) [shiro-web-1.4.1.jar:1.4.1]
-	at org.apache.shiro.web.servlet.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:125) [shiro-web-1.4.1.jar:1.4.1]
-	at org.apache.shiro.web.servlet.ProxiedFilterChain.doFilter(ProxiedFilterChain.java:66) [shiro-web-1.4.1.jar:1.4.1]
-	at org.apache.shiro.web.servlet.AbstractShiroFilter.executeChain(AbstractShiroFilter.java:449) [shiro-web-1.4.1.jar:1.4.1]
-	at org.apache.shiro.web.servlet.AbstractShiroFilter$1.call(AbstractShiroFilter.java:365) [shiro-web-1.4.1.jar:1.4.1]
-	at org.apache.shiro.subject.support.SubjectCallable.doCall(SubjectCallable.java:90) [shiro-core-1.4.1.jar:1.4.1]
-	at org.apache.shiro.subject.support.SubjectCallable.call(SubjectCallable.java:83) [shiro-core-1.4.1.jar:1.4.1]
-	at org.apache.shiro.subject.support.DelegatingSubject.execute(DelegatingSubject.java:387) [shiro-core-1.4.1.jar:1.4.1]
-	at org.apache.shiro.web.servlet.AbstractShiroFilter.doFilterInternal(AbstractShiroFilter.java:362) [shiro-web-1.4.1.jar:1.4.1]
-	at org.apache.shiro.web.servlet.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:125) [shiro-web-1.4.1.jar:1.4.1]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-9.0.21.jar:9.0.21]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.21.jar:9.0.21]
-	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:99) [spring-web-5.1.8.RELEASE.jar:5.1.8.RELEASE]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:109) [spring-web-5.1.8.RELEASE.jar:5.1.8.RELEASE]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-9.0.21.jar:9.0.21]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.21.jar:9.0.21]
-	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:92) [spring-web-5.1.8.RELEASE.jar:5.1.8.RELEASE]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:109) [spring-web-5.1.8.RELEASE.jar:5.1.8.RELEASE]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-9.0.21.jar:9.0.21]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.21.jar:9.0.21]
-	at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:93) [spring-web-5.1.8.RELEASE.jar:5.1.8.RELEASE]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:109) [spring-web-5.1.8.RELEASE.jar:5.1.8.RELEASE]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-9.0.21.jar:9.0.21]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.21.jar:9.0.21]
-	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:200) [spring-web-5.1.8.RELEASE.jar:5.1.8.RELEASE]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:109) [spring-web-5.1.8.RELEASE.jar:5.1.8.RELEASE]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-9.0.21.jar:9.0.21]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.21.jar:9.0.21]
-	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202) [tomcat-embed-core-9.0.21.jar:9.0.21]
-	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96) [tomcat-embed-core-9.0.21.jar:9.0.21]
-	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:490) [tomcat-embed-core-9.0.21.jar:9.0.21]
-	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139) [tomcat-embed-core-9.0.21.jar:9.0.21]
-	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) [tomcat-embed-core-9.0.21.jar:9.0.21]
-	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) [tomcat-embed-core-9.0.21.jar:9.0.21]
-	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343) [tomcat-embed-core-9.0.21.jar:9.0.21]
-	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:408) [tomcat-embed-core-9.0.21.jar:9.0.21]
-	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66) [tomcat-embed-core-9.0.21.jar:9.0.21]
-	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:853) [tomcat-embed-core-9.0.21.jar:9.0.21]
-	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1587) [tomcat-embed-core-9.0.21.jar:9.0.21]
-	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) [tomcat-embed-core-9.0.21.jar:9.0.21]
-	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [na:1.8.0_281]
-	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [na:1.8.0_281]
-	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-9.0.21.jar:9.0.21]
-	at java.lang.Thread.run(Thread.java:748) [na:1.8.0_281]
-
-2021-02-01 12:36:10.139  INFO 14884 --- [http-nio-8080-exec-8] io.lettuce.core.EpollProvider            : Starting without optional epoll library
-2021-02-01 12:36:10.140  INFO 14884 --- [http-nio-8080-exec-8] io.lettuce.core.KqueueProvider           : Starting without optional kqueue library
-2021-02-01 12:36:10.879  WARN 14884 --- [http-nio-8080-exec-8] o.a.shiro.authc.AbstractAuthenticator    : Authentication failed for token submission [com.daniel.shiro.MyPasswordToken - null, rememberMe=false].  Possible unexpected error? (Typical or expected login exceptions should extend from AuthenticationException).
-
-com.daniel.exception.BusinessException: token失效,请刷新token
-	at com.daniel.shiro.MyHashedCredentialsMatcher.doCredentialsMatch(MyHashedCredentialsMatcher.java:49) ~[classes/:na]
-	at org.apache.shiro.realm.AuthenticatingRealm.assertCredentialsMatch(AuthenticatingRealm.java:600) ~[shiro-core-1.4.1.jar:1.4.1]
-	at org.apache.shiro.realm.AuthenticatingRealm.getAuthenticationInfo(AuthenticatingRealm.java:581) ~[shiro-core-1.4.1.jar:1.4.1]
-	at org.apache.shiro.authc.pam.ModularRealmAuthenticator.doSingleRealmAuthentication(ModularRealmAuthenticator.java:180) ~[shiro-core-1.4.1.jar:1.4.1]
-	at org.apache.shiro.authc.pam.ModularRealmAuthenticator.doAuthenticate(ModularRealmAuthenticator.java:267) ~[shiro-core-1.4.1.jar:1.4.1]
-	at org.apache.shiro.authc.AbstractAuthenticator.authenticate(AbstractAuthenticator.java:198) ~[shiro-core-1.4.1.jar:1.4.1]
-	at org.apache.shiro.mgt.AuthenticatingSecurityManager.authenticate(AuthenticatingSecurityManager.java:106) [shiro-core-1.4.1.jar:1.4.1]
-	at org.apache.shiro.mgt.DefaultSecurityManager.login(DefaultSecurityManager.java:275) [shiro-core-1.4.1.jar:1.4.1]
-	at org.apache.shiro.subject.support.DelegatingSubject.login(DelegatingSubject.java:260) [shiro-core-1.4.1.jar:1.4.1]
-	at com.daniel.shiro.MyAccessControlFilter.onAccessDenied(MyAccessControlFilter.java:67) [classes/:na]
-	at org.apache.shiro.web.filter.AccessControlFilter.onAccessDenied(AccessControlFilter.java:133) [shiro-web-1.4.1.jar:1.4.1]
-	at org.apache.shiro.web.filter.AccessControlFilter.onPreHandle(AccessControlFilter.java:162) [shiro-web-1.4.1.jar:1.4.1]
-	at org.apache.shiro.web.filter.PathMatchingFilter.isFilterChainContinued(PathMatchingFilter.java:203) [shiro-web-1.4.1.jar:1.4.1]
-	at org.apache.shiro.web.filter.PathMatchingFilter.preHandle(PathMatchingFilter.java:178) [shiro-web-1.4.1.jar:1.4.1]
-	at org.apache.shiro.web.servlet.AdviceFilter.doFilterInternal(AdviceFilter.java:131) [shiro-web-1.4.1.jar:1.4.1]
-	at org.apache.shiro.web.servlet.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:125) [shiro-web-1.4.1.jar:1.4.1]
-	at org.apache.shiro.web.servlet.ProxiedFilterChain.doFilter(ProxiedFilterChain.java:66) [shiro-web-1.4.1.jar:1.4.1]
-	at org.apache.shiro.web.servlet.AbstractShiroFilter.executeChain(AbstractShiroFilter.java:449) [shiro-web-1.4.1.jar:1.4.1]
-	at org.apache.shiro.web.servlet.AbstractShiroFilter$1.call(AbstractShiroFilter.java:365) [shiro-web-1.4.1.jar:1.4.1]
-	at org.apache.shiro.subject.support.SubjectCallable.doCall(SubjectCallable.java:90) [shiro-core-1.4.1.jar:1.4.1]
-	at org.apache.shiro.subject.support.SubjectCallable.call(SubjectCallable.java:83) [shiro-core-1.4.1.jar:1.4.1]
-	at org.apache.shiro.subject.support.DelegatingSubject.execute(DelegatingSubject.java:387) [shiro-core-1.4.1.jar:1.4.1]
-	at org.apache.shiro.web.servlet.AbstractShiroFilter.doFilterInternal(AbstractShiroFilter.java:362) [shiro-web-1.4.1.jar:1.4.1]
-	at org.apache.shiro.web.servlet.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:125) [shiro-web-1.4.1.jar:1.4.1]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-9.0.21.jar:9.0.21]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.21.jar:9.0.21]
-	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:99) [spring-web-5.1.8.RELEASE.jar:5.1.8.RELEASE]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:109) [spring-web-5.1.8.RELEASE.jar:5.1.8.RELEASE]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-9.0.21.jar:9.0.21]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.21.jar:9.0.21]
-	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:92) [spring-web-5.1.8.RELEASE.jar:5.1.8.RELEASE]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:109) [spring-web-5.1.8.RELEASE.jar:5.1.8.RELEASE]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-9.0.21.jar:9.0.21]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.21.jar:9.0.21]
-	at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:93) [spring-web-5.1.8.RELEASE.jar:5.1.8.RELEASE]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:109) [spring-web-5.1.8.RELEASE.jar:5.1.8.RELEASE]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-9.0.21.jar:9.0.21]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.21.jar:9.0.21]
-	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:200) [spring-web-5.1.8.RELEASE.jar:5.1.8.RELEASE]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:109) [spring-web-5.1.8.RELEASE.jar:5.1.8.RELEASE]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-9.0.21.jar:9.0.21]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.21.jar:9.0.21]
-	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202) [tomcat-embed-core-9.0.21.jar:9.0.21]
-	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96) [tomcat-embed-core-9.0.21.jar:9.0.21]
-	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:490) [tomcat-embed-core-9.0.21.jar:9.0.21]
-	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139) [tomcat-embed-core-9.0.21.jar:9.0.21]
-	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) [tomcat-embed-core-9.0.21.jar:9.0.21]
-	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) [tomcat-embed-core-9.0.21.jar:9.0.21]
-	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343) [tomcat-embed-core-9.0.21.jar:9.0.21]
-	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:408) [tomcat-embed-core-9.0.21.jar:9.0.21]
-	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66) [tomcat-embed-core-9.0.21.jar:9.0.21]
-	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:853) [tomcat-embed-core-9.0.21.jar:9.0.21]
-	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1587) [tomcat-embed-core-9.0.21.jar:9.0.21]
-	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) [tomcat-embed-core-9.0.21.jar:9.0.21]
-	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [na:1.8.0_281]
-	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [na:1.8.0_281]
-	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-9.0.21.jar:9.0.21]
-	at java.lang.Thread.run(Thread.java:748) [na:1.8.0_281]
-
-2021-02-01 12:36:16.376  INFO 14884 --- [http-nio-8080-exec-5] com.daniel.shiro.MyAccessControlFilter   : POST
-2021-02-01 12:36:16.376  INFO 14884 --- [http-nio-8080-exec-5] com.daniel.shiro.MyAccessControlFilter   : /api/users
-2021-02-01 12:36:16.484 DEBUG 14884 --- [http-nio-8080-exec-5] c.d.m.SysUserMapper.selectAll_COUNT      : ==>  Preparing: SELECT count(0) FROM sys_user WHERE deleted = 1 
-2021-02-01 12:36:16.484 DEBUG 14884 --- [http-nio-8080-exec-5] c.d.m.SysUserMapper.selectAll_COUNT      : ==> Parameters: 
-2021-02-01 12:36:16.486 DEBUG 14884 --- [http-nio-8080-exec-5] c.d.m.SysUserMapper.selectAll_COUNT      : <==      Total: 1
-2021-02-01 12:36:16.487 DEBUG 14884 --- [http-nio-8080-exec-5] c.daniel.mapper.SysUserMapper.selectAll  : ==>  Preparing: select id, username, salt, `password`, phone, dept_id, real_name, nick_name, email, `status`, sex, deleted, create_id, update_id, create_where, create_time, update_time from sys_user where deleted = 1 
-2021-02-01 12:36:16.487 DEBUG 14884 --- [http-nio-8080-exec-5] c.daniel.mapper.SysUserMapper.selectAll  : ==> Parameters: 
-2021-02-01 12:36:16.490 DEBUG 14884 --- [http-nio-8080-exec-5] c.daniel.mapper.SysUserMapper.selectAll  : <==      Total: 5
+2021-02-02 00:00:05.975  INFO 14064 --- [main] com.daniel.AmowApplication               : Starting AmowApplication on 习武之人装用Del with PID 14064 (E:\JavaProject\AMOW\target\classes started by daniel in E:\JavaProject\AMOW)
+2021-02-02 00:00:05.980 DEBUG 14064 --- [main] com.daniel.AmowApplication               : Running with Spring Boot v2.1.6.RELEASE, Spring v5.1.8.RELEASE
+2021-02-02 00:00:05.980  INFO 14064 --- [main] com.daniel.AmowApplication               : No active profile set, falling back to default profiles: default
+2021-02-02 00:00:06.760  INFO 14064 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-02-02 00:00:06.761  INFO 14064 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2021-02-02 00:00:06.787  INFO 14064 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 17ms. Found 0 repository interfaces.
+2021-02-02 00:00:07.019  INFO 14064 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$71117269] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-02-02 00:00:07.031  INFO 14064 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'shiroConfig' of type [com.daniel.config.ShiroConfig$$EnhancerBySpringCGLIB$$44e9d437] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-02-02 00:00:07.409  INFO 14064 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'redisConfig' of type [com.daniel.config.RedisConfig$$EnhancerBySpringCGLIB$$8fb85b81] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-02-02 00:00:07.426  INFO 14064 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'spring.redis-org.springframework.boot.autoconfigure.data.redis.RedisProperties' of type [org.springframework.boot.autoconfigure.data.redis.RedisProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-02-02 00:00:07.429  INFO 14064 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.boot.autoconfigure.data.redis.LettuceConnectionConfiguration' of type [org.springframework.boot.autoconfigure.data.redis.LettuceConnectionConfiguration$$EnhancerBySpringCGLIB$$862b30b3] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-02-02 00:00:07.479  INFO 14064 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'lettuceClientResources' of type [io.lettuce.core.resource.DefaultClientResources] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-02-02 00:00:07.528  INFO 14064 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'redisConnectionFactory' of type [org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-02-02 00:00:07.537  INFO 14064 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'redisTemplate' of type [org.springframework.data.redis.core.RedisTemplate] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-02-02 00:00:07.539  INFO 14064 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'redisService' of type [com.daniel.service.RedisService] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-02-02 00:00:07.540  INFO 14064 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'myHashedCredentialsMatcher' of type [com.daniel.shiro.MyHashedCredentialsMatcher] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-02-02 00:00:07.542  INFO 14064 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'cacheManager' of type [com.daniel.shiro.RedisCacheManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-02-02 00:00:07.544  INFO 14064 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'myRealm' of type [com.daniel.shiro.MyRealm] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-02-02 00:00:07.547  INFO 14064 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'securityManager' of type [org.apache.shiro.web.mgt.DefaultWebSecurityManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-02-02 00:00:07.552  INFO 14064 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'authorizationAttributeSourceAdvisor' of type [org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-02-02 00:00:07.785  INFO 14064 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2021-02-02 00:00:07.801  INFO 14064 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-02-02 00:00:07.801  INFO 14064 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.21]
+2021-02-02 00:00:07.805  INFO 14064 --- [main] o.a.catalina.core.AprLifecycleListener   : Loaded APR based Apache Tomcat Native library [1.2.25] using APR version [1.7.0].
+2021-02-02 00:00:07.806  INFO 14064 --- [main] o.a.catalina.core.AprLifecycleListener   : APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+2021-02-02 00:00:07.806  INFO 14064 --- [main] o.a.catalina.core.AprLifecycleListener   : APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+2021-02-02 00:00:07.808  INFO 14064 --- [main] o.a.catalina.core.AprLifecycleListener   : OpenSSL successfully initialized [OpenSSL 1.1.1g  21 Apr 2020]
+2021-02-02 00:00:07.884  INFO 14064 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-02-02 00:00:07.884  INFO 14064 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1865 ms
+2021-02-02 00:00:07.975  INFO 14064 --- [main] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2021-02-02 00:00:08.266  INFO 14064 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2021-02-02 00:00:08.790  INFO 14064 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+2021-02-02 00:00:08.924  INFO 14064 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-02-02 00:00:09.233  INFO 14064 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2021-02-02 00:00:09.245  INFO 14064 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2021-02-02 00:00:09.265  INFO 14064 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2021-02-02 00:00:09.434  INFO 14064 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2021-02-02 00:00:09.438  INFO 14064 --- [main] com.daniel.AmowApplication               : Started AmowApplication in 3.811 seconds (JVM running for 4.616)
+2021-02-02 00:00:30.732  INFO 14064 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-02-02 00:00:30.733  INFO 14064 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-02-02 00:00:30.740  INFO 14064 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 7 ms
+2021-02-02 00:00:36.952 DEBUG 14064 --- [http-nio-8080-exec-4] c.d.m.SysUserMapper.selectByUsername     : ==>  Preparing: select id, username, salt, `password`, phone, dept_id, real_name, nick_name, email, `status`, sex, deleted, create_id, update_id, create_where, create_time, update_time from sys_user where username=? and deleted = 1 
+2021-02-02 00:00:36.970 DEBUG 14064 --- [http-nio-8080-exec-4] c.d.m.SysUserMapper.selectByUsername     : ==> Parameters: admin(String)
+2021-02-02 00:00:36.989 DEBUG 14064 --- [http-nio-8080-exec-4] c.d.m.SysUserMapper.selectByUsername     : <==      Total: 1
+2021-02-02 00:00:37.161  INFO 14064 --- [http-nio-8080-exec-4] com.daniel.service.impl.UserServiceImpl  : accessToken=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI5YTI2ZjVmMS1jYmQyLTQ3M2QtODJkYi0xZDZkY2Y0NTk4ZjgiLCJyb2xlcy1pbmZvcy1rZXkiOlsiYWRtaW4iXSwicGVybWlzc2lvbnMtaW5mb3Mta2V5IjpbInN5czp1c2VyOmFkZCIsInN5czp1c2VyOnVwZGF0ZSIsInN5czp1c2VyOmRlbGV0ZSIsInN5czp1c2VyOmxpc3QiXSwiaXNzIjoiZGFuaWVsIiwiand0LXVzZXItbmFtZS1rZXkiOiJhZG1pbiIsImV4cCI6MTYxMjIwMjQzNiwiaWF0IjoxNjEyMTk1MjM2fQ.LhlOGg406BrdTwjstyGiAk2m7JaU9vI8gYLycvuWW4Y
+2021-02-02 00:00:37.161  INFO 14064 --- [http-nio-8080-exec-4] com.daniel.service.impl.UserServiceImpl  : refreshToken=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI5YTI2ZjVmMS1jYmQyLTQ3M2QtODJkYi0xZDZkY2Y0NTk4ZjgiLCJpc3MiOiJkYW5pZWwiLCJqd3QtdXNlci1uYW1lLWtleSI6ImFkbWluIiwiZXhwIjoxNjEyMjI0MDM3LCJpYXQiOjE2MTIxOTUyMzd9.6vj1_cZ_n5cQ-qeND4T0103XMhdWiGuvXGt3KilKPBY
+2021-02-02 00:00:37.400  INFO 14064 --- [http-nio-8080-exec-10] com.daniel.shiro.MyAccessControlFilter   : GET
+2021-02-02 00:00:37.400  INFO 14064 --- [http-nio-8080-exec-10] com.daniel.shiro.MyAccessControlFilter   : /api/home
+2021-02-02 00:00:37.512  INFO 14064 --- [http-nio-8080-exec-10] io.lettuce.core.EpollProvider            : Starting without optional epoll library
+2021-02-02 00:00:37.514  INFO 14064 --- [http-nio-8080-exec-10] io.lettuce.core.KqueueProvider           : Starting without optional kqueue library
+2021-02-02 00:00:38.296 DEBUG 14064 --- [http-nio-8080-exec-10] c.d.m.SysUserMapper.selectByPrimaryKey   : ==>  Preparing: select id, username, salt, `password`, phone, dept_id, real_name, nick_name, email, `status`, sex, deleted, create_id, update_id, create_where, create_time, update_time from sys_user where id = ? 
+2021-02-02 00:00:38.296 DEBUG 14064 --- [http-nio-8080-exec-10] c.d.m.SysUserMapper.selectByPrimaryKey   : ==> Parameters: 9a26f5f1-cbd2-473d-82db-1d6dcf4598f8(String)
+2021-02-02 00:00:38.298 DEBUG 14064 --- [http-nio-8080-exec-10] c.d.m.SysUserMapper.selectByPrimaryKey   : <==      Total: 1
+2021-02-02 00:10:21.273  INFO 19084 --- [main] com.daniel.AmowApplication               : Starting AmowApplication on 习武之人装用Del with PID 19084 (E:\JavaProject\AMOW\target\classes started by daniel in E:\JavaProject\AMOW)
+2021-02-02 00:10:21.275 DEBUG 19084 --- [main] com.daniel.AmowApplication               : Running with Spring Boot v2.1.6.RELEASE, Spring v5.1.8.RELEASE
+2021-02-02 00:10:21.275  INFO 19084 --- [main] com.daniel.AmowApplication               : No active profile set, falling back to default profiles: default
+2021-02-02 00:10:22.131  INFO 19084 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-02-02 00:10:22.132  INFO 19084 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2021-02-02 00:10:22.159  INFO 19084 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 18ms. Found 0 repository interfaces.
+2021-02-02 00:10:22.401  INFO 19084 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$26cc744a] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-02-02 00:10:22.415  INFO 19084 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'shiroConfig' of type [com.daniel.config.ShiroConfig$$EnhancerBySpringCGLIB$$faa4d618] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-02-02 00:10:22.810  INFO 19084 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'redisConfig' of type [com.daniel.config.RedisConfig$$EnhancerBySpringCGLIB$$45735d62] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-02-02 00:10:22.828  INFO 19084 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'spring.redis-org.springframework.boot.autoconfigure.data.redis.RedisProperties' of type [org.springframework.boot.autoconfigure.data.redis.RedisProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-02-02 00:10:22.830  INFO 19084 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.boot.autoconfigure.data.redis.LettuceConnectionConfiguration' of type [org.springframework.boot.autoconfigure.data.redis.LettuceConnectionConfiguration$$EnhancerBySpringCGLIB$$3be63294] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-02-02 00:10:22.882  INFO 19084 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'lettuceClientResources' of type [io.lettuce.core.resource.DefaultClientResources] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-02-02 00:10:22.929  INFO 19084 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'redisConnectionFactory' of type [org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-02-02 00:10:22.937  INFO 19084 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'redisTemplate' of type [org.springframework.data.redis.core.RedisTemplate] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-02-02 00:10:22.939  INFO 19084 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'redisService' of type [com.daniel.service.RedisService] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-02-02 00:10:22.940  INFO 19084 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'myHashedCredentialsMatcher' of type [com.daniel.shiro.MyHashedCredentialsMatcher] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-02-02 00:10:22.942  INFO 19084 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'cacheManager' of type [com.daniel.shiro.RedisCacheManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-02-02 00:10:22.944  INFO 19084 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'myRealm' of type [com.daniel.shiro.MyRealm] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-02-02 00:10:22.948  INFO 19084 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'securityManager' of type [org.apache.shiro.web.mgt.DefaultWebSecurityManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-02-02 00:10:22.954  INFO 19084 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'authorizationAttributeSourceAdvisor' of type [org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-02-02 00:10:23.183  INFO 19084 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2021-02-02 00:10:23.198  INFO 19084 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-02-02 00:10:23.198  INFO 19084 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.21]
+2021-02-02 00:10:23.202  INFO 19084 --- [main] o.a.catalina.core.AprLifecycleListener   : Loaded APR based Apache Tomcat Native library [1.2.25] using APR version [1.7.0].
+2021-02-02 00:10:23.203  INFO 19084 --- [main] o.a.catalina.core.AprLifecycleListener   : APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+2021-02-02 00:10:23.203  INFO 19084 --- [main] o.a.catalina.core.AprLifecycleListener   : APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+2021-02-02 00:10:23.205  INFO 19084 --- [main] o.a.catalina.core.AprLifecycleListener   : OpenSSL successfully initialized [OpenSSL 1.1.1g  21 Apr 2020]
+2021-02-02 00:10:23.273  INFO 19084 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-02-02 00:10:23.274  INFO 19084 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1969 ms
+2021-02-02 00:10:23.359  INFO 19084 --- [main] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2021-02-02 00:10:23.641  INFO 19084 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2021-02-02 00:10:24.234  INFO 19084 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+2021-02-02 00:10:24.384  INFO 19084 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-02-02 00:10:24.719  INFO 19084 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2021-02-02 00:10:24.730  INFO 19084 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2021-02-02 00:10:24.753  INFO 19084 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2021-02-02 00:10:24.903  INFO 19084 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2021-02-02 00:10:24.905  INFO 19084 --- [main] com.daniel.AmowApplication               : Started AmowApplication in 3.956 seconds (JVM running for 4.768)
+2021-02-02 00:10:31.992  INFO 19084 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-02-02 00:10:31.992  INFO 19084 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-02-02 00:10:31.999  INFO 19084 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 7 ms
+2021-02-02 00:10:32.320  INFO 19084 --- [http-nio-8080-exec-3] com.daniel.shiro.MyAccessControlFilter   : GET
+2021-02-02 00:10:32.320  INFO 19084 --- [http-nio-8080-exec-3] com.daniel.shiro.MyAccessControlFilter   : /api/home
+2021-02-02 00:10:32.602  INFO 19084 --- [http-nio-8080-exec-3] io.lettuce.core.EpollProvider            : Starting without optional epoll library
+2021-02-02 00:10:32.603  INFO 19084 --- [http-nio-8080-exec-3] io.lettuce.core.KqueueProvider           : Starting without optional kqueue library
+2021-02-02 00:10:33.348 DEBUG 19084 --- [http-nio-8080-exec-3] c.d.m.SysUserMapper.selectByPrimaryKey   : ==>  Preparing: select id, username, salt, `password`, phone, dept_id, real_name, nick_name, email, `status`, sex, deleted, create_id, update_id, create_where, create_time, update_time from sys_user where id = ? 
+2021-02-02 00:10:33.364 DEBUG 19084 --- [http-nio-8080-exec-3] c.d.m.SysUserMapper.selectByPrimaryKey   : ==> Parameters: 9a26f5f1-cbd2-473d-82db-1d6dcf4598f8(String)
+2021-02-02 00:10:33.379 DEBUG 19084 --- [http-nio-8080-exec-3] c.d.m.SysUserMapper.selectByPrimaryKey   : <==      Total: 1
