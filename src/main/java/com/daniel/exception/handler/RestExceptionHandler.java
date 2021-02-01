@@ -4,6 +4,7 @@ import com.daniel.exception.BusinessException;
 import com.daniel.exception.code.BaseResponseCode;
 import com.daniel.utils.DataResult;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.shiro.authz.UnauthorizedException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
@@ -30,5 +31,11 @@ public class RestExceptionHandler {
     public DataResult businessException(BusinessException e){
         log.error("businessException,{},{}",e.getLocalizedMessage(),e);
         return DataResult.getResult(e.getCode(),e.getMsg());
+    }
+
+    @ExceptionHandler(UnauthorizedException.class)
+    public DataResult unauthorizedException(UnauthorizedException e) {
+        log.error("UnauthorizedException,{},{}",e.getLocalizedMessage(),e);
+        return DataResult.getResult(BaseResponseCode.NOT_PERMISSION);
     }
 }
