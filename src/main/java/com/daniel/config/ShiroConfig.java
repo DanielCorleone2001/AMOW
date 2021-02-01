@@ -3,6 +3,7 @@ package com.daniel.config;
 import com.daniel.shiro.MyAccessControlFilter;
 import com.daniel.shiro.MyHashedCredentialsMatcher;
 import com.daniel.shiro.MyRealm;
+import com.daniel.shiro.RedisCacheManager;
 import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
@@ -26,6 +27,11 @@ import java.util.Map;
 public class ShiroConfig {
 
     @Bean
+    public RedisCacheManager cacheManager() {
+        return new RedisCacheManager();
+    }
+
+    @Bean
     public MyHashedCredentialsMatcher myHashedCredentialsMatcher () {
         return new MyHashedCredentialsMatcher();
     }
@@ -34,6 +40,7 @@ public class ShiroConfig {
     public MyRealm myRealm() {//自定义bean，配置我们自定义的HashedCredentialsMatcher，再返回自定义的RealM
         MyRealm myRealm = new MyRealm();
         myRealm.setCredentialsMatcher(myHashedCredentialsMatcher());
+        myRealm.setCacheManager(cacheManager());
         return myRealm;
     }
 
@@ -79,6 +86,11 @@ public class ShiroConfig {
         AuthorizationAttributeSourceAdvisor authorizationAttributeSourceAdvisor = new AuthorizationAttributeSourceAdvisor();
         authorizationAttributeSourceAdvisor.setSecurityManager(securityManager);
         return authorizationAttributeSourceAdvisor;
+    }
+
+    @Bean
+    public RedisCacheManager redisCacheManager() {
+        return new RedisCacheManager();
     }
 
 }

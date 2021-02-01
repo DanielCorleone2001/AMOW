@@ -14,7 +14,7 @@ import org.springframework.boot.autoconfigure.cache.CacheProperties;
  * @CreateTime: 2021/2/1 12:42
  * @Description:
  */
-public class ShiroCacheManager implements CacheManager {
+public class RedisCacheManager implements CacheManager {
 
     @Autowired
     private RedisService redisService;
