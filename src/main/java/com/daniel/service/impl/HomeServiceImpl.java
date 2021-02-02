@@ -35,8 +35,28 @@ public class HomeServiceImpl implements HomeService {
     public HomeRespVO getHomeInfo(String userId) {
         HomeRespVO homeRespVO = new HomeRespVO();
         //构造假数据，后期是从数据库中获取用户的信息
-        String home="[{\"children\":[{\"children\":[{\"children\":[{\"children\":[{\"children\": [],\"id\":\"6\",\"title\":\"五级类目5-6\",\"url\":\"string\"}],\"id\":\"5\",\"title\":\"四级类目4- 5\",\"url\":\"string\"}],\"id\":\"4\",\"title\":\"三级类目3- 4\",\"url\":\"string\"}],\"id\":\"3\",\"title\":\"二级类目2- 3\",\"url\":\"string\"}],\"id\":\"1\",\"title\":\"类目1\",\"url\":\"string\"},{\"children\": [],\"id\":\"2\",\"title\":\"类目2\",\"url\":\"string\"}]";
-
+        //String home="[{\"children\":[{\"children\":[{\"children\":[{\"children\":[{\"children\": [],\"id\":\"6\",\"title\":\"五级类目5-6\",\"url\":\"string\"}],\"id\":\"5\",\"title\":\"四级类目4- 5\",\"url\":\"string\"}],\"id\":\"4\",\"title\":\"三级类目3- 4\",\"url\":\"string\"}],\"id\":\"3\",\"title\":\"二级类目2- 3\",\"url\":\"string\"}],\"id\":\"1\",\"title\":\"类目1\",\"url\":\"string\"},{\"children\": [],\"id\":\"2\",\"title\":\"类目2\",\"url\":\"string\"}]";
+        String home="[\n" +
+                "    {\n" +
+                "        \"children\": [\n" +
+                "            {\n" +
+                "                \"children\": [],\n" +
+                "                \"id\": \"3\",\n" +
+                "                \"title\": \"菜单权限管理\",\n" +
+                "                \"url\": \"/index/menus\"\n" +
+                "            }\n" +
+                "        ],\n" +
+                "        \"id\": \"1\",\n" +
+                "        \"title\": \"组织管理\",\n" +
+                "        \"url\": \"string\"\n" +
+                "    },\n" +
+                "    {\n" +
+                "        \"children\": [],\n" +
+                "        \"id\": \"2\",\n" +
+                "        \"title\": \"类目2\",\n" +
+                "        \"url\": \"string\"\n" +
+                "    }\n" +
+                "]";
         List<PermissionRespNodeVO> list = JSON.parseArray(home,PermissionRespNodeVO.class);//切分数据成我们的权限信息数组
         homeRespVO.setMenus(list);
 

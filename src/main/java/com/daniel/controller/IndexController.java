@@ -42,4 +42,12 @@ public class IndexController {
         return "main";
     }
 
+    @GetMapping("/menus")
+    @ApiOperation("跳转到菜单")
+    public String menus() {
+        return "menus/menus";
+    }
+
+
+
 }
