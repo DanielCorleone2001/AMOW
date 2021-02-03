@@ -1,6 +1,7 @@
 package com.daniel.service;
 
 import com.daniel.entity.SysPermission;
+import com.daniel.vo.response.PermissionRespNodeVO;
 
 import java.util.List;
 
@@ -13,4 +14,7 @@ import java.util.List;
  */
 public interface PermissionService {
     List<SysPermission> selectAll();
+
+    //菜单权限树接口
+    List<PermissionRespNodeVO> selectAllMenuByTree();
 }
