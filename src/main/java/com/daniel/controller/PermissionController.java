@@ -3,15 +3,15 @@ package com.daniel.controller;
 import com.daniel.entity.SysPermission;
 import com.daniel.service.PermissionService;
 import com.daniel.utils.DataResult;
+import com.daniel.vo.request.PermissionAddReqVO;
 import com.daniel.vo.response.PermissionRespNodeVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.ListableBeanFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 /**
@@ -37,7 +37,15 @@ public class PermissionController {
         return result;
     }
 
-    @GetMapping("/permissions/tree")
+    @PostMapping("/permission")
+    @ApiOperation(value = "添加菜单权限的接口")
+    public DataResult<SysPermission> addPermission(@RequestBody @Valid PermissionAddReqVO vo){
+        DataResult<SysPermission> result = DataResult.success();
+        result.setData(permissionService.addPermission(vo));
+        return result;
+    }
+
+    @GetMapping("/permission/tree")
     @ApiOperation( value = "菜单权限树")
     public DataResult<List<PermissionRespNodeVO>> getAllPermissionTree() {
         DataResult result = DataResult.success();

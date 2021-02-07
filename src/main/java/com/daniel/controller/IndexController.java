@@ -49,5 +49,12 @@ public class IndexController {
     }
 
 
+    @GetMapping("/roles")
+    @ApiOperation("跳转到菜单")
+    public String roles() {
+        return "roles/role";
+    }
+
+
 
 }

@@ -114,4 +114,13 @@
       deleted = #{deleted,jdbcType=TINYINT}
     where id = #{id,jdbcType=VARCHAR}
   </update>
+
+  <!--获取所有角色权限信息-->
+  <select id="selectAll" resultMap="BaseResultMap" parameterType="com.daniel.vo.request.RolePageReqVO">
+    select <include refid="Base_Column_List"></include>
+    from sys_role
+    <where>
+      deleted = 1
+    </where>
+  </select>
 </mapper>
