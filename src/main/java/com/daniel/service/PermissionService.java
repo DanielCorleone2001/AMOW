@@ -24,4 +24,6 @@ public interface PermissionService {
 
     // 创建根据用户id获取菜单权限接口(
     List<PermissionRespNodeVO> permissionTreeList(String userId);
+
+    List<PermissionRespNodeVO> selectAllByTree();
 }

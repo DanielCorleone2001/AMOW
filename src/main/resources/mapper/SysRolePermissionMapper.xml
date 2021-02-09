@@ -44,4 +44,22 @@
       </if>
     </trim>
   </insert>
+
+  <insert id="batchInsertRolePermission" parameterType="com.daniel.entity.SysPermission">
+    insert into sys_role_permission(id,role_id,permission_id,create_time)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (
+       #{item.id},
+       #{item.roleId},
+       #{item.permissionId},
+       #{item.createTime}
+      )
+    </foreach>
+  </insert>
+
+  <delete id="removeByRoleId" parameterType="String">
+    delete from sys_role_permission
+    where role_id = #{roleId}
+  </delete>
 </mapper>

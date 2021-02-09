@@ -1,6 +1,7 @@
 package com.daniel.service;
 
 import com.daniel.entity.SysRole;
+import com.daniel.vo.request.RoleAddReqVO;
 import com.daniel.vo.request.RolePageReqVO;
 import com.daniel.vo.response.PageVO;
 
@@ -13,4 +14,6 @@ import com.daniel.vo.response.PageVO;
  */
 public interface RoleService {
     PageVO<SysRole> pageInfo(RolePageReqVO vo);
+
+    SysRole addRole(RoleAddReqVO vo);
 }

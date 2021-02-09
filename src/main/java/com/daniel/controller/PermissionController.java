@@ -47,9 +47,18 @@ public class PermissionController {
 
     @GetMapping("/permission/tree")
     @ApiOperation( value = "菜单权限树")
-    public DataResult<List<PermissionRespNodeVO>> getAllPermissionTree() {
+    public DataResult<List<PermissionRespNodeVO>> getAllPermissionTreeEXBtn() {
         DataResult result = DataResult.success();
         result.setData(permissionService.selectAllMenuByTree());
         return  result;
     }
+
+    @GetMapping("/permission/tree/all")
+    @ApiOperation(value = "获取所有目录菜单树接口-查询到按钮")
+    public DataResult<List<PermissionRespNodeVO>> getAllPermissionTree(){
+        DataResult<List<PermissionRespNodeVO>> result=DataResult.success();
+        result.setData(permissionService.selectAllByTree());
+        return result;
+    }
+
 }

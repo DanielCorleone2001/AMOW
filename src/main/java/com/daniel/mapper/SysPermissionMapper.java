@@ -1,6 +1,7 @@
 package com.daniel.mapper;
 
 import com.daniel.entity.SysPermission;
+import com.daniel.entity.SysRolePermission;
 
 import java.util.List;
 
