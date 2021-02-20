@@ -1,9 +1,11 @@
 package com.daniel.service.impl;
 
 import com.daniel.contains.Constant;
+import com.daniel.entity.SysDept;
 import com.daniel.entity.SysUser;
 import com.daniel.exception.BusinessException;
 import com.daniel.exception.code.BaseResponseCode;
+import com.daniel.mapper.SysDeptMapper;
 import com.daniel.mapper.SysUserMapper;
 import com.daniel.service.UserService;
 import com.daniel.utils.JWToken;
@@ -37,6 +39,9 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private SysUserMapper sysUserMapper;
+
+    @Autowired
+    private SysDeptMapper sysDeptMapper;
     @Override
     public LoginRespVO login(LoginReqVO loginReqVO) {
         SysUser sysUser = sysUserMapper.selectByUsername(loginReqVO.getUsername());
@@ -82,8 +87,14 @@ public class UserServiceImpl implements UserService {
     @Override
     public PageVO<SysUser> pageInfo(UserPageReqVO userPageReqVO) {
         PageHelper.startPage(userPageReqVO.getPageNum(),userPageReqVO.getPageSize());//开始分页
-        List<SysUser> sysUserList = sysUserMapper.selectAll();//获取所有用户的信息，存入List
+        List<SysUser> sysUserList = sysUserMapper.selectAll(userPageReqVO);//获取所有用户的信息，存入List
         //PageInfo<SysUser> pageInfo = new PageInfo<>(sysUserList);//构造对应的分页信息
+        for (SysUser user : sysUserList) {
+            SysDept sysDept = sysDeptMapper.selectByPrimaryKey(user.getDeptId());
+            if(sysDept!=null){
+                user.setDeptName(sysDept.getName());
+            }
+        }
         return PageUtil.getPageVO(sysUserList);//返回分页信息
     }
 

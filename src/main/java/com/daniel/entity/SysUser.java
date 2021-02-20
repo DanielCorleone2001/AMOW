@@ -1,8 +1,11 @@
 package com.daniel.entity;
 
+import lombok.Data;
+
 import java.io.Serializable;
 import java.util.Date;
 
+@Data
 public class SysUser implements Serializable {
     private String id;
 
@@ -37,6 +40,8 @@ public class SysUser implements Serializable {
     private Date createTime;
 
     private Date updateTime;
+
+    private String deptName;
 
     private static final long serialVersionUID = 1L;
 
