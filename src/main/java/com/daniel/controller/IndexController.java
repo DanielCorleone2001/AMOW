@@ -55,6 +55,10 @@ public class IndexController {
         return "roles/role";
     }
 
-
+    @GetMapping("/depts")
+    @ApiOperation("跳转到部门")
+    public String deptList() {
+        return "depts/dept";
+    }
 
 }

@@ -28,6 +28,16 @@ public class SysDept implements Serializable {
 
     private Integer deleted;
 
+    private String pidName;
+
+    public String getPidName() {
+        return pidName;
+    }
+
+    public void setPidName(String pidName) {
+        this.pidName = pidName;
+    }
+
     private static final long serialVersionUID = 1L;
 
     public String getId() {

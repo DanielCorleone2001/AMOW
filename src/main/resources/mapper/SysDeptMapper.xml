@@ -174,4 +174,11 @@
       deleted = #{deleted,jdbcType=TINYINT}
     where id = #{id,jdbcType=VARCHAR}
   </update>
+
+  <!--获取所有部门信息-->
+  <select id="selectAll" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List"></include>
+    from sys_dept
+    where deleted = 1
+  </select>
 </mapper>
