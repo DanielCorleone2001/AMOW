@@ -2,6 +2,8 @@ package com.daniel.service;
 
 import com.daniel.entity.SysDept;
 import com.daniel.mapper.SysDeptMapper;
+import com.daniel.vo.request.DeptAddVO;
+import com.daniel.vo.response.DeptRespVO;
 
 import java.util.List;
 
@@ -15,4 +17,8 @@ import java.util.List;
 public interface DeptService {
 
     List<SysDept> selectAll();
+
+    List<DeptRespVO> deptTreeList();
+
+    SysDept addDept(DeptAddVO deptAddVO);
 }
