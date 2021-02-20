@@ -61,4 +61,10 @@ public class IndexController {
         return "depts/dept";
     }
 
+    @GetMapping("/users")
+    @ApiOperation(value = "跳转到用户管理页面")
+    public String userList() {
+        return "/users/user";
+    }
+
 }

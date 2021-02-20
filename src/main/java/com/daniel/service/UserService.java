@@ -2,6 +2,7 @@ package com.daniel.service;
 
 import com.daniel.entity.SysUser;
 import com.daniel.vo.request.LoginReqVO;
+import com.daniel.vo.request.UserAddReqVO;
 import com.daniel.vo.request.UserPageReqVO;
 import com.daniel.vo.response.LoginRespVO;
 import com.daniel.vo.response.PageVO;
@@ -20,4 +21,6 @@ public interface UserService {
 
     //页面传入
    PageVO<SysUser> pageInfo(UserPageReqVO userPageReqVO);
+
+   void addUser(UserAddReqVO userAddReqVO);
 }

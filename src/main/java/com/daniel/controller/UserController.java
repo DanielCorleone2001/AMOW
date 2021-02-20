@@ -4,6 +4,7 @@ import com.daniel.entity.SysUser;
 import com.daniel.service.UserService;
 import com.daniel.utils.DataResult;
 import com.daniel.vo.request.LoginReqVO;
+import com.daniel.vo.request.UserAddReqVO;
 import com.daniel.vo.request.UserPageReqVO;
 import com.daniel.vo.response.LoginRespVO;
 import com.daniel.vo.response.PageVO;
@@ -45,10 +46,17 @@ public class UserController {
 
     @PostMapping("/users")
     @ApiOperation(value = "分页查询用户接口")
-    @RequiresPermissions("sys:user:list")
+    //@RequiresPermissions("sys:user:list")
     public DataResult<PageVO<SysUser>> pageInfo(@RequestBody UserPageReqVO userPageReqVO) {
         DataResult dataResult = DataResult.success();
         dataResult.setData(userService.pageInfo(userPageReqVO));
         return dataResult;
+    }
+
+    @PostMapping("/user")
+    @ApiOperation(value = "新增用户接口")
+    public DataResult addUser(@RequestBody @Valid UserAddReqVO userAddReqVO) {
+        userService.addUser(userAddReqVO);
+        return DataResult.success();
     }
 }
