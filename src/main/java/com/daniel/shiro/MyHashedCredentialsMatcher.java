@@ -12,6 +12,8 @@ import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.cache.CacheProperties;
 
+import java.util.concurrent.TimeUnit;
+
 /**
  * @Package: com.daniel.shiro
  * @ClassName: My
@@ -47,6 +49,18 @@ public class MyHashedCredentialsMatcher extends HashedCredentialsMatcher {
          */
         if(!JWToken.validateToken(accessToken)){
             throw new BusinessException(BaseResponseCode.TOKEN_PAST_DUE);
+        }
+
+        /**
+         * 判断用户是否被标记了
+         */
+        if(redisService.hasKey(Constant.JWT_REFRESH_KEY+userId)){
+            /**
+             * 判断用户是否已经刷新过
+             */
+            if(redisService.getExpire(Constant.JWT_REFRESH_KEY+userId, TimeUnit.MILLISECONDS)>JWToken.getRemainingTime(accessToken)){
+                throw new BusinessException(BaseResponseCode.TOKEN_PAST_DUE);
+            }
         }
 
         return true;

@@ -16,10 +16,7 @@ import com.daniel.utils.JWToken;
 import com.daniel.utils.PageUtil;
 import com.daniel.utils.PasswordUtils;
 import com.daniel.utils.TokenSettings;
-import com.daniel.vo.request.LoginReqVO;
-import com.daniel.vo.request.UserAddReqVO;
-import com.daniel.vo.request.UserOwnRoleReqVO;
-import com.daniel.vo.request.UserPageReqVO;
+import com.daniel.vo.request.*;
 import com.daniel.vo.response.LoginRespVO;
 import com.daniel.vo.response.PageVO;
 import com.daniel.vo.response.UserOwnRoleRespVO;
@@ -28,6 +25,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.thymeleaf.util.StringUtils;
 
 import java.util.*;
 import java.util.concurrent.TimeUnit;
@@ -69,7 +67,7 @@ public class UserServiceImpl implements UserService {
         }
 
         if ( sysUser.getStatus() == 2 ) {//用户已经被锁定
-            throw new BusinessException( BaseResponseCode.ACCOUNT_LOCK);
+            throw new BusinessException( BaseResponseCode.ACCOUNT_LOCK_TIP);
         }
 
         //检查密码是否正确
@@ -153,6 +151,66 @@ public class UserServiceImpl implements UserService {
         userRoleService.addUserRoleInfo(vo);
         redisService.set(Constant.JWT_REFRESH_KEY+vo.getUserId(),vo.getUserId(),
                 tokenSettings.getAccessTokenExpireTime().toMillis(), TimeUnit.MILLISECONDS);
+    }
+
+    @Override
+    public String refreshToken(String refreshToken) {
+        //判断是否已经过期
+        if ( !JWToken.validateToken(refreshToken) ) {
+            throw new BusinessException(BaseResponseCode.TOKEN_ERROR);
+        }
+
+        String userId = JWToken.getUserId(refreshToken);
+        String userName = JWToken.getUserName(refreshToken);
+
+        log.info("userID = {}",userId);
+
+        //通过刷新的token来进行相关的属性配置
+        Map<String,Object> claims = new HashMap<>();
+        claims.put(Constant.ROLES_INFOS_KEY,getRoleByUserId(userId));
+        claims.put(Constant.PERMISSIONS_INFOS_KEY,getPermissionByUserId(userId));
+        claims.put(Constant.JWT_USER_NAME,userName);
+
+        String newAccessToken = JWToken.getAccessToken(userId,claims);
+        return newAccessToken;
+    }
+
+    /**
+     * 更新用户信息
+     * @param userUpdateReqVO 前端更新的数据
+     * @param operationId 操作人的ID
+     */
+    @Override
+    public void updateUserInfo(UserUpdateReqVO userUpdateReqVO, String operationId) {
+        SysUser user = sysUserMapper.selectByPrimaryKey(userUpdateReqVO.getId());
+
+        //非空判断
+        if ( user == null) {
+            log.info("传入的ID: {}不合法",userUpdateReqVO.getId());
+            throw new BusinessException(BaseResponseCode.DATA_ERROR);
+        }
+
+        //基本属性的更新
+        BeanUtils.copyProperties(userUpdateReqVO,user);
+        user.setUpdateTime(new Date());//时间
+        //密码
+        if ( !StringUtils.isEmpty(userUpdateReqVO.getPassword()) ) {
+            String newPassword = PasswordUtils.encode(userUpdateReqVO.getPassword(),user.getSalt());
+            user.setPassword(newPassword);
+        } else {
+            user.setPassword(null);
+        }
+        //操作人员
+        user.setUpdateId(operationId);
+        if ( sysUserMapper.updateByPrimaryKeySelective(user) != 1 ) {
+            throw new BusinessException(BaseResponseCode.OPERATION_ERROR);
+        }
+
+        if ( userUpdateReqVO.getStatus() == 2 ) {
+            redisService.set(Constant.ACCOUNT_LOCK_KEY+user.getId(),user.getId());
+        } else {
+            redisService.delete(Constant.ACCOUNT_LOCK_KEY+user.getId());
+        }
     }
 
     /**

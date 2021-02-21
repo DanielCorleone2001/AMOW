@@ -1,10 +1,7 @@
 package com.daniel.service;
 
 import com.daniel.entity.SysUser;
-import com.daniel.vo.request.LoginReqVO;
-import com.daniel.vo.request.UserAddReqVO;
-import com.daniel.vo.request.UserOwnRoleReqVO;
-import com.daniel.vo.request.UserPageReqVO;
+import com.daniel.vo.request.*;
 import com.daniel.vo.response.LoginRespVO;
 import com.daniel.vo.response.PageVO;
 import com.daniel.vo.response.UserOwnRoleRespVO;
@@ -30,4 +27,10 @@ public interface UserService {
 
    //设置用户所拥有的角色
    void setUserOwnRole(UserOwnRoleReqVO vo);
+
+   //刷新token
+   String refreshToken(String refreshToken);
+
+   //更新用户信息，operationId是操作人
+   void updateUserInfo(UserUpdateReqVO userUpdateReqVO, String operationId);
 }

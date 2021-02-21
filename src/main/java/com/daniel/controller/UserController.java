@@ -1,12 +1,11 @@
 package com.daniel.controller;
 
+import com.daniel.contains.Constant;
 import com.daniel.entity.SysUser;
 import com.daniel.service.UserService;
 import com.daniel.utils.DataResult;
-import com.daniel.vo.request.LoginReqVO;
-import com.daniel.vo.request.UserAddReqVO;
-import com.daniel.vo.request.UserOwnRoleReqVO;
-import com.daniel.vo.request.UserPageReqVO;
+import com.daniel.utils.JWToken;
+import com.daniel.vo.request.*;
 import com.daniel.vo.response.LoginRespVO;
 import com.daniel.vo.response.PageVO;
 import com.daniel.vo.response.UserOwnRoleRespVO;
@@ -15,6 +14,7 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import javax.xml.crypto.Data;
 
@@ -70,6 +70,25 @@ public class UserController {
     public DataResult saveUserOwnRole(@RequestBody @Valid UserOwnRoleReqVO userOwnRoleReqVO) {
         DataResult result = DataResult.success();
         userService.setUserOwnRole(userOwnRoleReqVO);
+        return result;
+    }
+
+    @GetMapping("/user/token")
+    @ApiOperation(value = "用户刷新token的接口")
+    public DataResult<String> refreshToken(HttpServletRequest request) {
+        String refreshToken = request.getHeader(Constant.REFRESH_TOKEN);
+        DataResult<String> result = DataResult.success();
+        result.setData(userService.refreshToken(refreshToken));
+        return result;
+    }
+
+    @PutMapping("/user")
+    @ApiOperation(value = "用户更新信息的接口")
+    public DataResult updateUserInfo(@RequestBody @Valid UserUpdateReqVO vo, HttpServletRequest request ) {
+        String accessToken = request.getHeader(Constant.ACCESS_TOKEN);
+        String userId= JWToken.getUserId(accessToken);
+        DataResult result = DataResult.success();
+        userService.updateUserInfo(vo,userId);
         return result;
     }
 }
