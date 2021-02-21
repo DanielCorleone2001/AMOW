@@ -28,7 +28,9 @@ public interface PermissionService {
 
     List<PermissionRespNodeVO> selectAllByTree();
 
-
     //更新权限
     void updatePermission(PermissionUpdateReqVO permissionUpdateReqVO);
+
+    //删除菜单
+    void deletePermission(String permissionId);
 }

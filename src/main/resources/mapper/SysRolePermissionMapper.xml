@@ -69,4 +69,10 @@
     from sys_role_permission
     where permission_id = #{permissionId}
   </select>
+
+  <!--通过菜单权限ID来删除相关的角色和菜单权限-->
+  <delete id="removeByPermissionId">
+    delete from sys_role_permission
+    where permission_id = #{permissionId}
+  </delete>
 </mapper>

@@ -17,6 +17,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
 import java.awt.*;
@@ -25,6 +26,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
+import java.util.prefs.BackingStoreException;
 
 /**
  * @Package: com.daniel.service.impl
@@ -243,6 +245,41 @@ public class PermissionServiceImpl implements PermissionService {
             }
         }
     }
+
+    @Transactional(rollbackFor = Exception.class)
+    @Override
+    public void deletePermission(String permissionId) {
+        SysPermission sysPermission = sysPermissionMapper.selectByPrimaryKey(permissionId);
+        if ( sysPermission == null ) {
+            log.error("传入的ID:{} 不合法",permissionId);
+            throw new BusinessException(BaseResponseCode.DATA_ERROR);
+        }
+
+        List<SysPermission> childList = sysPermissionMapper.selectAllChild(permissionId);//获取子集权限
+        if ( !childList.isEmpty() ) {
+            throw new BusinessException(BaseResponseCode.ROLE_PERMISSION_RELATION);
+        }
+
+        sysPermission.setDeleted(0);
+        sysPermission.setUpdateTime(new Date());
+        if ( sysPermissionMapper.updateByPrimaryKeySelective(sysPermission) != 1 ) {
+            throw new BusinessException(BaseResponseCode.OPERATION_ERROR);
+        }
+
+        List<String> roleIDs = rolePermissionService.getRolesByPermissionId(permissionId);//获取角色ID
+        rolePermissionService.removeByPermissionId(permissionId);//通过权限ID删除和角色关联
+
+        if ( !roleIDs.isEmpty() ) {
+            List<String> userIDs = userRoleService.getUserIdsByRoleId(roleIDs);
+            if ( !userIDs.isEmpty() ) {
+                for ( String userID : userIDs ) {
+                    redisService.set(Constant.JWT_REFRESH_KEY+userID,userID,
+                                    tokenSettings.getAccessTokenExpireTime().toMillis(),TimeUnit.MILLISECONDS);
+                }
+            }
+        }
+    }
+
 
     //修改菜单权限树递归方法，新增一个参数type：true(只查询目录和菜单) false(查询目录、菜单、按钮权限)
     /**

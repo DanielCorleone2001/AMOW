@@ -69,4 +69,12 @@ public class PermissionController {
         permissionService.updatePermission(vo);
         return  result;
     }
+
+    @DeleteMapping("/permission/{id}")
+    @ApiOperation(value = "删除菜单权限的接口")
+    public DataResult deletePermission(@PathVariable("id") String permissionId) {
+        DataResult dataResult = DataResult.success();
+        permissionService.deletePermission(permissionId);
+        return dataResult;
+    }
 }
