@@ -62,4 +62,9 @@ public class UserRoleServiceImpl implements UserRoleService {
         if ( sysUserRoleMapper.batchInsertUserRole(list) == 0 )
             throw new BusinessException(BaseResponseCode.OPERATION_ERROR);
     }
+
+    @Override
+    public List<String> getUserIdsByRoleId(List<String> roleIds) {
+        return sysUserRoleMapper.getUserIdsByRoleIds(roleIds);
+    }
 }

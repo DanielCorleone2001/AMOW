@@ -18,5 +18,7 @@ public interface UserRoleService {
     //添加用户和角色的关联信息
     void addUserRoleInfo(UserOwnRoleReqVO vo);
 
+    //通过角色ID来获取对应的用户ID
+    List<String> getUserIdsByRoleId(List<String> roleIds);
 
 }

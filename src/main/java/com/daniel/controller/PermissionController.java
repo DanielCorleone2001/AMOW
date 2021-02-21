@@ -4,6 +4,7 @@ import com.daniel.entity.SysPermission;
 import com.daniel.service.PermissionService;
 import com.daniel.utils.DataResult;
 import com.daniel.vo.request.PermissionAddReqVO;
+import com.daniel.vo.request.PermissionUpdateReqVO;
 import com.daniel.vo.response.PermissionRespNodeVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -61,4 +62,11 @@ public class PermissionController {
         return result;
     }
 
+    @PutMapping("/permission")
+    @ApiOperation(value = "更新菜单权限的接口")
+    public DataResult updatePermission (@RequestBody @Valid PermissionUpdateReqVO vo) {
+        DataResult result = DataResult.success();
+        permissionService.updatePermission(vo);
+        return  result;
+    }
 }

@@ -191,4 +191,12 @@
     where deleted = 1
     order by order_num desc
   </select>
+
+  <!--获取该菜单权限的所有子集-->
+  <select id="selectAllChild" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List"></include>
+    from sys_permission
+    where deleted = 1
+    and pid = #{pid}
+  </select>
 </mapper>

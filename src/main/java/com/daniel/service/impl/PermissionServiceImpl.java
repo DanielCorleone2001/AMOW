@@ -1,21 +1,30 @@
 package com.daniel.service.impl;
 
+import com.daniel.contains.Constant;
 import com.daniel.entity.SysPermission;
 import com.daniel.exception.BusinessException;
 import com.daniel.exception.code.BaseResponseCode;
 import com.daniel.mapper.SysPermissionMapper;
 import com.daniel.service.PermissionService;
+import com.daniel.service.RedisService;
+import com.daniel.service.RolePermissionService;
+import com.daniel.service.UserRoleService;
+import com.daniel.utils.TokenSettings;
 import com.daniel.vo.request.PermissionAddReqVO;
+import com.daniel.vo.request.PermissionUpdateReqVO;
 import com.daniel.vo.response.PermissionRespNodeVO;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @Package: com.daniel.service.impl
@@ -25,10 +34,23 @@ import java.util.UUID;
  * @Description:
  */
 @Service
+@Slf4j
 public class PermissionServiceImpl implements PermissionService {
 
     @Autowired
     private SysPermissionMapper sysPermissionMapper;
+
+    @Autowired
+    private RolePermissionService rolePermissionService;
+
+    @Autowired
+    private UserRoleService userRoleService;
+
+    @Autowired
+    private RedisService redisService;
+
+    @Autowired
+    private TokenSettings tokenSettings;
 
     @Override
     public List<SysPermission> selectAll() {
@@ -174,15 +196,63 @@ public class PermissionServiceImpl implements PermissionService {
 
     }
 
+
+    @Override
+    public void updatePermission(PermissionUpdateReqVO permissionUpdateReqVO) {
+
+        //校验数据
+        SysPermission permission = new SysPermission();
+        BeanUtils.copyProperties(permissionUpdateReqVO,permission);
+        verifyForm(permission);
+
+        //非空校验
+        SysPermission sysPermission = sysPermissionMapper.selectByPrimaryKey(permissionUpdateReqVO.getId());
+        if ( sysPermission == null ) {
+            log.info("传入的数据无法在数据库中找到");
+            throw new BusinessException(BaseResponseCode.DATA_ERROR);
+        }
+
+        if ( !sysPermission.getPid().equals(permissionUpdateReqVO.getPid()) ||
+                sysPermission.getStatus() != permissionUpdateReqVO.getStatus() ) {
+            //所属菜单发生了变化，或是权限状态发生了变化，就需要校验该权限是否有子集
+            List<SysPermission> sysPermissionList = sysPermissionMapper.selectAllChild(permissionUpdateReqVO.getId());
+            if ( sysPermissionList.isEmpty() ) {
+                throw new BusinessException(BaseResponseCode.OPERATION_MENU_PERMISSION_UPDATE);
+            }
+        }
+
+        permission.setUpdateTime(new Date());
+
+        if ( sysPermissionMapper.updateByPrimaryKeySelective(permission) != 1 ) {
+            throw new BusinessException(BaseResponseCode.OPERATION_ERROR);
+        }
+
+        //判断权限标识符是否发生了变化
+        if ( ! sysPermission.getPerms().equals(permissionUpdateReqVO.getPerms()) ||
+                sysPermission.getStatus() != permissionUpdateReqVO.getStatus() ) {
+            List<String> roleIdsByPermissionId = rolePermissionService.getRolesByPermissionId(permissionUpdateReqVO.getId());
+            if ( !roleIdsByPermissionId.isEmpty() ) {
+                List<String> userIdsByRoleIds = userRoleService.getUserIdsByRoleId(roleIdsByPermissionId);
+                if ( !userIdsByRoleIds.isEmpty() ) {
+                    for ( String userId: userIdsByRoleIds ) {
+                        redisService.set(Constant.JWT_REFRESH_KEY+userId,userId,
+                                tokenSettings.getAccessTokenExpireTime().toMillis(), TimeUnit.MILLISECONDS);
+                        redisService.delete(Constant.IDENTIFY_CACHE_KEY+userId);
+                    }
+                }
+            }
+        }
+    }
+
     //修改菜单权限树递归方法，新增一个参数type：true(只查询目录和菜单) false(查询目录、菜单、按钮权限)
     /**
      * 递归获取菜单树
-     * @Author:     小霍
+     * @Author:     daniel
      * @UpdateUser:
      * @Version:     0.0.1
      * @param all
     • * @param type true:查询到菜单；false:查询到按钮
-     * @return       java.util.List<com.yingxue.lesson.vo.resp.PermissionRespNode>
+     * @return
      * @throws
      */
     private List<PermissionRespNodeVO> getTree(List<SysPermission> all,boolean type){
@@ -207,12 +277,12 @@ public class PermissionServiceImpl implements PermissionService {
     }
     /**
      * 递归遍历所有
-     * @Author:     小霍
+     * @Author:     daniel
      * @UpdateUser:
      * @Version:     0.0.1
      * @param id
     • * @param all
-     * @return       java.util.List<com.yingxue.lesson.vo.resp.PermissionRespNode>
+     * @return
      * @throws
      */
     private List<PermissionRespNodeVO>getChildAll(String id,List<SysPermission> all){
@@ -231,12 +301,12 @@ public class PermissionServiceImpl implements PermissionService {
 
     /**
      * 只递归到菜单
-     * @Author:      小霍
+     * @Author:      daniel
      * @UpdateUser:
      * @Version:     0.0.1
      * @param id
      * @param all
-     * @return       java.util.List<com.yingxue.lesson.vo.resp.PermissionRespNodeVO>
+     * @return       java.util.List<.vo.resp.PermissionRespNodeVO>
      * @throws
      */
     private List<PermissionRespNodeVO> getChildExBtn(String id,List<SysPermission> all){

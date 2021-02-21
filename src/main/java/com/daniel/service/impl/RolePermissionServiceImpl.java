@@ -53,4 +53,14 @@ public class RolePermissionServiceImpl implements RolePermissionService {
             throw new BusinessException(BaseResponseCode.OPERATION_ERROR);
         }
     }
+
+    /**
+     * 通过权限ID来获取对应的角色ID
+     * @param permissionId
+     * @return
+     */
+    @Override
+    public List<String> getRolesByPermissionId(String permissionId) {
+        return sysRolePermissionMapper.getRoleIdsByPermissionId(permissionId);
+    }
 }

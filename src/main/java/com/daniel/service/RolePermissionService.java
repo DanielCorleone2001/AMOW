@@ -2,6 +2,8 @@ package com.daniel.service;
 
 import com.daniel.vo.request.RolePermissionOperationReqVO;
 
+import java.util.List;
+
 /**
  * @Package: com.daniel.service
  * @ClassName: RolePermissionService
@@ -12,4 +14,7 @@ import com.daniel.vo.request.RolePermissionOperationReqVO;
 public interface RolePermissionService {
     //增加角色权限
     void addRolePermission(RolePermissionOperationReqVO vo);
+
+    //根据权限ID来获取对应的所有角色的ID
+    List<String> getRolesByPermissionId(String permissionId);
 }

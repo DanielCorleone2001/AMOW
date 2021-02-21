@@ -2,6 +2,7 @@ package com.daniel.service;
 
 import com.daniel.entity.SysPermission;
 import com.daniel.vo.request.PermissionAddReqVO;
+import com.daniel.vo.request.PermissionUpdateReqVO;
 import com.daniel.vo.response.PermissionRespNodeVO;
 
 import java.util.List;
@@ -26,4 +27,8 @@ public interface PermissionService {
     List<PermissionRespNodeVO> permissionTreeList(String userId);
 
     List<PermissionRespNodeVO> selectAllByTree();
+
+
+    //更新权限
+    void updatePermission(PermissionUpdateReqVO permissionUpdateReqVO);
 }

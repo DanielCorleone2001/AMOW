@@ -20,4 +20,8 @@ public interface SysPermissionMapper {
 
     //获取权限的信息
     List<SysPermission> selectAll();
+
+
+    //查询关联菜单的子类，即获取该菜单权限的所有子集
+    List<SysPermission> selectAllChild(String pid);
 }
