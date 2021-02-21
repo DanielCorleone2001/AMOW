@@ -2,6 +2,8 @@ package com.daniel.mapper;
 
 import com.daniel.entity.SysUserRole;
 
+import java.util.List;
+
 public interface SysUserRoleMapper {
     int deleteByPrimaryKey(String id);
 
@@ -14,4 +16,13 @@ public interface SysUserRoleMapper {
     int updateByPrimaryKeySelective(SysUserRole record);
 
     int updateByPrimaryKey(SysUserRole record);
+
+    //通过用户ID来查询拥有的角色ID集合
+    List<String> getRoleIdsByUserId(String userId);
+
+    //根据用户ID删除和该用户关联的角色关联表数据
+    int removeByUserId(String userId);
+
+    //批量插入用户和角色关联的数据
+    int batchInsertUserRole(List<SysUserRole> list);
 }

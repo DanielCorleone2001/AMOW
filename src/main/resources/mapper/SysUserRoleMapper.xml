@@ -79,4 +79,36 @@
       create_time = #{createTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=VARCHAR}
   </update>
+
+  <!--通过用户ID查出角色ID集合-->
+  <select id="getRoleIdsByUserId" resultType="java.lang.String">
+    select role_id
+    from sys_user_role
+    where user_id = #{userId}
+  </select>
+
+  <!--通过用户ID删除和该用户关联的角色关联表数据-->
+  <delete id="removeByUserId">
+    delete
+    from sys_user_role
+    where user_id = #{userId}
+  </delete>
+
+  <!--批量插入用户角色关联数据-->
+  <insert id="batchInsertUserRole" parameterType="com.daniel.entity.SysUserRole">
+    insert into sys_user_role
+    (id,
+     role_id,
+     user_id,
+     create_time)
+     values
+    <foreach item="item" collection="list" index="index" separator=",">
+      (
+       #{item.id},
+       #{item.roleId},
+       #{item.userId},
+       #{item.createTime}
+      )
+    </foreach>
+  </insert>
 </mapper>

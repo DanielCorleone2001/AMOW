@@ -4,6 +4,7 @@ import com.daniel.entity.SysRole;
 import com.daniel.exception.BusinessException;
 import com.daniel.exception.code.BaseResponseCode;
 import com.daniel.mapper.SysRoleMapper;
+import com.daniel.mapper.SysUserRoleMapper;
 import com.daniel.service.RolePermissionService;
 import com.daniel.service.RoleService;
 import com.daniel.utils.PageUtil;
@@ -37,6 +38,10 @@ public class RoleServiceImpl implements RoleService {
 
     @Autowired
     private RolePermissionService rolePermissionService;
+
+    @Autowired
+    private SysUserRoleMapper sysUserRoleMapper;
+
     @Override
     public PageVO<SysRole> pageInfo(RolePageReqVO vo) {
         PageHelper.startPage(vo.getPageNum(),vo.getPageSize());//获取页面的配置，默认为 1/10
@@ -64,5 +69,15 @@ public class RoleServiceImpl implements RoleService {
         }
 
         return sysRole;
+    }
+
+    /**
+     * 获取所有的角色
+     * 实现方法： 调用mapper底层的sql查询来实现
+     * @return 所有角色的集合
+     */
+    @Override
+    public List<SysRole> selectAllRoles() {
+        return sysRoleMapper.selectAll(new RolePageReqVO());
     }
 }

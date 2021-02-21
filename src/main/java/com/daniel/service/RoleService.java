@@ -5,6 +5,8 @@ import com.daniel.vo.request.RoleAddReqVO;
 import com.daniel.vo.request.RolePageReqVO;
 import com.daniel.vo.response.PageVO;
 
+import java.util.List;
+
 /**
  * @Package: com.daniel.service
  * @ClassName: RoleService
@@ -16,4 +18,7 @@ public interface RoleService {
     PageVO<SysRole> pageInfo(RolePageReqVO vo);
 
     SysRole addRole(RoleAddReqVO vo);
+
+    //获取所有角色的集合
+    List<SysRole> selectAllRoles();
 }

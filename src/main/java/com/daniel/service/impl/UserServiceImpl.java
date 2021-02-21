@@ -2,29 +2,35 @@ package com.daniel.service.impl;
 
 import com.daniel.contains.Constant;
 import com.daniel.entity.SysDept;
+import com.daniel.entity.SysRole;
 import com.daniel.entity.SysUser;
 import com.daniel.exception.BusinessException;
 import com.daniel.exception.code.BaseResponseCode;
 import com.daniel.mapper.SysDeptMapper;
 import com.daniel.mapper.SysUserMapper;
+import com.daniel.service.RedisService;
+import com.daniel.service.RoleService;
+import com.daniel.service.UserRoleService;
 import com.daniel.service.UserService;
 import com.daniel.utils.JWToken;
 import com.daniel.utils.PageUtil;
 import com.daniel.utils.PasswordUtils;
+import com.daniel.utils.TokenSettings;
 import com.daniel.vo.request.LoginReqVO;
 import com.daniel.vo.request.UserAddReqVO;
+import com.daniel.vo.request.UserOwnRoleReqVO;
 import com.daniel.vo.request.UserPageReqVO;
 import com.daniel.vo.response.LoginRespVO;
 import com.daniel.vo.response.PageVO;
-import com.github.pagehelper.Page;
+import com.daniel.vo.response.UserOwnRoleRespVO;
 import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @Package: com.daniel.service.impl
@@ -42,6 +48,19 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private SysDeptMapper sysDeptMapper;
+
+    @Autowired
+    private RoleService roleService;
+
+    @Autowired
+    private UserRoleService userRoleService;
+
+    @Autowired
+    private RedisService redisService;
+
+    @Autowired
+    private TokenSettings tokenSettings;
+
     @Override
     public LoginRespVO login(LoginReqVO loginReqVO) {
         SysUser sysUser = sysUserMapper.selectByUsername(loginReqVO.getUsername());
@@ -111,6 +130,29 @@ public class UserServiceImpl implements UserService {
         if ( sysUserMapper.insertSelective(sysUser) != 1) {//判断是否插入成功
             throw new BusinessException(BaseResponseCode.OPERATION_ERROR);
         }
+    }
+
+    @Override
+    public UserOwnRoleRespVO getUserOwnRole(String userId) {
+        List<String> roleIdsByUserId =userRoleService.getRoleIdsByUserId(userId);//先获取用户的角色
+        List<SysRole> roleList = roleService.selectAllRoles();//获取所有角色
+
+        //配置属性
+        UserOwnRoleRespVO userOwnRoleRespVO = new UserOwnRoleRespVO();
+        userOwnRoleRespVO.setAllRole(roleList);
+        userOwnRoleRespVO.setOwnRoles(roleIdsByUserId);
+        return userOwnRoleRespVO;
+    }
+
+    /**
+     * @note 配置用户所拥有的角色
+     * @param vo
+     */
+    @Override
+    public void setUserOwnRole(UserOwnRoleReqVO vo) {
+        userRoleService.addUserRoleInfo(vo);
+        redisService.set(Constant.JWT_REFRESH_KEY+vo.getUserId(),vo.getUserId(),
+                tokenSettings.getAccessTokenExpireTime().toMillis(), TimeUnit.MILLISECONDS);
     }
 
     /**

@@ -5,21 +5,18 @@ import com.daniel.service.UserService;
 import com.daniel.utils.DataResult;
 import com.daniel.vo.request.LoginReqVO;
 import com.daniel.vo.request.UserAddReqVO;
+import com.daniel.vo.request.UserOwnRoleReqVO;
 import com.daniel.vo.request.UserPageReqVO;
 import com.daniel.vo.response.LoginRespVO;
 import com.daniel.vo.response.PageVO;
-import com.github.pagehelper.PageInfo;
+import com.daniel.vo.response.UserOwnRoleRespVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.awt.print.Pageable;
+import javax.xml.crypto.Data;
 
 /**
  * @Package: com.daniel.controller
@@ -58,5 +55,21 @@ public class UserController {
     public DataResult addUser(@RequestBody @Valid UserAddReqVO userAddReqVO) {
         userService.addUser(userAddReqVO);
         return DataResult.success();
+    }
+
+    @GetMapping("/user/roles/{userId}")
+    @ApiOperation(value = "赋予角色-获取用户拥有角色的接口")
+    public DataResult<UserOwnRoleRespVO> getUserOwnRole(@PathVariable("userId") String userId) {
+        DataResult<UserOwnRoleRespVO> result = DataResult.success();
+        result.setData(userService.getUserOwnRole(userId));
+        return result;
+    }
+
+    @PutMapping("/user/roles")
+    @ApiOperation(value = "保持用户拥有的角色信息接口")
+    public DataResult saveUserOwnRole(@RequestBody @Valid UserOwnRoleReqVO userOwnRoleReqVO) {
+        DataResult result = DataResult.success();
+        userService.setUserOwnRole(userOwnRoleReqVO);
+        return result;
     }
 }
