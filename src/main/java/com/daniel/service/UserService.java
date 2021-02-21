@@ -6,6 +6,8 @@ import com.daniel.vo.response.LoginRespVO;
 import com.daniel.vo.response.PageVO;
 import com.daniel.vo.response.UserOwnRoleRespVO;
 
+import java.util.List;
+
 /**
  * @Package: com.daniel.service
  * @ClassName: UserService
@@ -33,4 +35,6 @@ public interface UserService {
 
    //更新用户信息，operationId是操作人
    void updateUserInfo(UserUpdateReqVO userUpdateReqVO, String operationId);
+
+   void deleteUsers(List<String> userIds,String operationId);
 }

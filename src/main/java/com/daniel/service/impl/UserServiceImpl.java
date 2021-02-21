@@ -25,6 +25,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.thymeleaf.util.StringUtils;
 
 import java.util.*;
@@ -210,6 +211,25 @@ public class UserServiceImpl implements UserService {
             redisService.set(Constant.ACCOUNT_LOCK_KEY+user.getId(),user.getId());
         } else {
             redisService.delete(Constant.ACCOUNT_LOCK_KEY+user.getId());
+        }
+    }
+
+    @Transactional(rollbackFor = Exception.class)
+    @Override
+    public void deleteUsers(List<String> userIds, String operationId) {
+        SysUser user = new SysUser();
+        user.setUpdateId(operationId);
+        user.setUpdateTime(new Date());
+        user.setDeleted(0);
+
+        if ( sysUserMapper.deleteUsers(user,userIds) == 0) {
+            throw new BusinessException(BaseResponseCode.OPERATION_ERROR);
+        }
+
+        //将用户ID标记为已经删除
+        for ( String userId : userIds ) {
+            redisService.set(Constant.DELETED_USER_KEY+userId,userId,
+                    tokenSettings.getRefreshTokenExpireAppTime().toMillis(),TimeUnit.MILLISECONDS);
         }
     }
 

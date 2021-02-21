@@ -11,12 +11,14 @@ import com.daniel.vo.response.PageVO;
 import com.daniel.vo.response.UserOwnRoleRespVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import javax.xml.crypto.Data;
+import java.util.List;
 
 /**
  * @Package: com.daniel.controller
@@ -90,5 +92,13 @@ public class UserController {
         DataResult result = DataResult.success();
         userService.updateUserInfo(vo,userId);
         return result;
+    }
+
+    @DeleteMapping("/user")
+    @ApiOperation(value = "删除用户的接口")
+    public DataResult deleteUser (@RequestBody @ApiParam(value = "用户ID的集合") List<String> userIdList, HttpServletRequest request) {
+        String operationId = JWToken.getUserId(request.getHeader(Constant.ACCESS_TOKEN));
+        userService.deleteUsers(userIdList,operationId);
+        return DataResult.success();
     }
 }
