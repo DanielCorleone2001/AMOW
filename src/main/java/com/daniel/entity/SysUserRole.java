@@ -7,7 +7,6 @@ import java.io.Serializable;
 import java.util.Date;
 
 @Data
-@ToString
 public class SysUserRole implements Serializable {
     private String id;
 
