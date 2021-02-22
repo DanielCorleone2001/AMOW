@@ -231,6 +231,7 @@
       update_time = #{updateTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=VARCHAR}
   </update>
+
   <!--通过用户名来查找用户-->
   <select id="selectByUsername" parameterType="java.lang.String" resultMap="BaseResultMap">
     select <include refid="Base_Column_List"></include>
@@ -238,6 +239,7 @@
     where username=#{username}
     and deleted = 1
   </select>
+
   <!--查询所有用户信息-->
   <select id="selectAll" resultMap="BaseResultMap" parameterType="com.daniel.vo.request.user.UserPageReqVO">
     select <include refid="Base_Column_List"></include>
@@ -270,6 +272,7 @@
 
     </where>
   </select>
+
   <!--删除用户-->
   <update id="deleteUsers" parameterType="com.daniel.entity.SysUser">
     update sys_user
@@ -287,4 +290,16 @@
       #{item}
     </foreach>
   </update>
+
+  <!--根据部门ID集合来查找对应的用户集合-->
+  <select id="selectUserListByDeptIdList" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List"></include>
+    from sys_user
+    where dept_id in
+    <foreach collection="list" open="(" close=")" separator="," item="item">
+      #{item}
+    </foreach>
+    and deleted=1
+  </select>
+
 </mapper>

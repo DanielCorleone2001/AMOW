@@ -2,16 +2,20 @@ package com.daniel.service.impl;
 
 import com.daniel.contains.Constant;
 import com.daniel.entity.SysDept;
+import com.daniel.entity.SysUser;
 import com.daniel.exception.BusinessException;
 import com.daniel.exception.code.BaseResponseCode;
 import com.daniel.mapper.SysDeptMapper;
+import com.daniel.mapper.SysUserMapper;
 import com.daniel.service.DeptService;
 import com.daniel.service.RedisService;
+import com.daniel.service.UserService;
 import com.daniel.utils.CodeUtil;
 import com.daniel.vo.request.dept.DeptAddReqVO;
 import com.daniel.vo.request.dept.DeptUpdateReqVO;
 import com.daniel.vo.response.dept.DeptRespVO;
 import lombok.extern.slf4j.Slf4j;
+import net.bytebuddy.asm.Advice;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -39,6 +43,12 @@ public class DeptServiceImpl implements DeptService {
 
     @Autowired
     private RedisService redisService;
+
+    @Autowired
+    private SysUserMapper sysUserMapper;
+
+    @Autowired
+    private UserService userService;
 
     @Override
     public List<SysDept> selectAll() {
@@ -158,6 +168,31 @@ public class DeptServiceImpl implements DeptService {
             }
 
             sysDeptMapper.updateRelationCode(oldRelationCode,newRelationCode,targetDept.getRelationCode());
+        }
+    }
+
+    @Override
+    public void deleteDept(String deptID) {
+        //获取目标部门
+        SysDept targetDept = sysDeptMapper.selectByPrimaryKey(deptID);
+
+        if ( targetDept == null ) {
+            log.error("传入的部门ID {} 不合法",deptID);
+            throw new BusinessException(BaseResponseCode.DATA_ERROR);
+        }
+
+        List<String> deptIdList = sysDeptMapper.selectAllChildrenIdList(targetDept.getRelationCode());
+        List<SysUser> userList = sysUserMapper.selectUserListByDeptIdList(deptIdList);
+
+        if ( !userList.isEmpty() ) {
+            throw new BusinessException(BaseResponseCode.NOT_PERMISSION_DELETED_DEPT);
+        }
+
+        targetDept.setDeleted(0);
+        targetDept.setUpdateTime(new Date());
+
+        if ( sysDeptMapper.updateByPrimaryKeySelective(targetDept) != 1 ) {
+            throw new BusinessException(BaseResponseCode.OPERATION_ERROR);
         }
     }
 

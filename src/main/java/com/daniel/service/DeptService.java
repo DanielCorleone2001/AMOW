@@ -24,5 +24,9 @@ public interface DeptService {
     //新增部门
     SysDept addDept(DeptAddReqVO deptAddVO);
 
+    //编辑部门信息
     void updateDeptInfo(DeptUpdateReqVO deptUpdateReqVO);
+
+    //删除部门
+    void deleteDept(String deptID);
 }

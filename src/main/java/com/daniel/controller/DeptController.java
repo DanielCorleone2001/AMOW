@@ -61,4 +61,11 @@ public class DeptController {
         deptService.updateDeptInfo(deptUpdateReqVO);
         return DataResult.success();
     }
+
+    @DeleteMapping("/dept/{id}")
+    @ApiOperation(value = "删除部门的接口")
+    public DataResult deleteDept(@PathVariable("id") String deptId) {
+        deptService.deleteDept(deptId);
+        return DataResult.success();
+    }
 }
