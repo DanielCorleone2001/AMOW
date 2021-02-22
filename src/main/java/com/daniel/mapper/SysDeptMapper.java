@@ -1,6 +1,7 @@
 package com.daniel.mapper;
 
 import com.daniel.entity.SysDept;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -18,4 +19,8 @@ public interface SysDeptMapper {
     int updateByPrimaryKey(SysDept record);
 
     List<SysDept> selectAll();
+
+    //更新部门信息,维护层级关系
+    int updateRelationCode(@Param("oldStr") String oldStr, @Param("newStr") String newStr, @Param("relationCode") String relationCode);
+
 }

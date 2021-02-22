@@ -1,7 +1,8 @@
 package com.daniel.service;
 
 import com.daniel.entity.SysDept;
-import com.daniel.vo.request.dept.DeptAddVO;
+import com.daniel.vo.request.dept.DeptAddReqVO;
+import com.daniel.vo.request.dept.DeptUpdateReqVO;
 import com.daniel.vo.response.dept.DeptRespVO;
 
 import java.util.List;
@@ -17,7 +18,11 @@ public interface DeptService {
 
     List<SysDept> selectAll();
 
-    List<DeptRespVO> deptTreeList();
+    //获取部门的树形结构列表
+    List<DeptRespVO> deptTreeList(String deptID);
 
-    SysDept addDept(DeptAddVO deptAddVO);
+    //新增部门
+    SysDept addDept(DeptAddReqVO deptAddVO);
+
+    void updateDeptInfo(DeptUpdateReqVO deptUpdateReqVO);
 }

@@ -8,12 +8,15 @@ import com.daniel.mapper.SysDeptMapper;
 import com.daniel.service.DeptService;
 import com.daniel.service.RedisService;
 import com.daniel.utils.CodeUtil;
-import com.daniel.vo.request.dept.DeptAddVO;
+import com.daniel.vo.request.dept.DeptAddReqVO;
+import com.daniel.vo.request.dept.DeptUpdateReqVO;
 import com.daniel.vo.response.dept.DeptRespVO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.StringUtils;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -50,8 +53,17 @@ public class DeptServiceImpl implements DeptService {
     }
 
     @Override
-    public List<DeptRespVO> deptTreeList() {
+    public List<DeptRespVO> deptTreeList(String deptID) {
         List<SysDept> list = sysDeptMapper.selectAll();
+
+        if ( !StringUtils.isEmpty(deptID) && !list.isEmpty() ) {//删除某个部门的叶子节点
+            for ( SysDept dept : list ) {
+                if ( dept.getId().equals(deptID) ) {
+                    list.remove(dept);
+                    break;
+                }
+            }
+        }
 
         DeptRespVO dept = new DeptRespVO();
         dept.setId("0");
@@ -69,7 +81,7 @@ public class DeptServiceImpl implements DeptService {
      * @return
      */
     @Override
-    public SysDept addDept(DeptAddVO deptAddVO) {
+    public SysDept addDept(DeptAddReqVO deptAddVO) {
         String relationCode;
         long result = redisService.incrby(Constant.DEPT_CODE_KEY,1);
         String deptCode = CodeUtil.deptCode(String.valueOf(result),6,"0");
@@ -93,6 +105,60 @@ public class DeptServiceImpl implements DeptService {
             throw new BusinessException(BaseResponseCode.OPERATION_ERROR);
         }
         return sysDept;
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public void updateDeptInfo(DeptUpdateReqVO deptUpdateReqVO) {
+        //获取想要更新的部门
+        SysDept targetDept = sysDeptMapper.selectByPrimaryKey(deptUpdateReqVO.getId());
+
+        //非空检验
+        if ( targetDept == null ) {
+            log.error("传入的部门ID {} 不合法",deptUpdateReqVO.getId());
+            throw new BusinessException(BaseResponseCode.DATA_ERROR);
+        }
+
+        SysDept updateDept = new SysDept();
+        BeanUtils.copyProperties(deptUpdateReqVO,updateDept);
+        updateDept.setUpdateTime(new Date());
+        //检查是否成功更新
+        if ( sysDeptMapper.updateByPrimaryKeySelective(updateDept) != 1 ) {
+            throw new BusinessException(BaseResponseCode.OPERATION_ERROR);
+        }
+
+        //层级关系发生了变化的情况
+        if ( !deptUpdateReqVO.getPid().equals(targetDept.getPid()) ) {
+            //获取父级部门
+            SysDept parent = sysDeptMapper.selectByPrimaryKey(deptUpdateReqVO.getPid());
+
+            /**
+             * 自相矛盾的情况。前者意思是该部门父级不是顶层部门，而后者意思是该部门的父级是顶层部门
+             */
+            if ( !deptUpdateReqVO.getPid().equals("0") && parent==null ) {
+                log.error("传入的部门ID {} 不合法");
+                throw new BusinessException(BaseResponseCode.DATA_ERROR);
+            }
+
+            //获取之前的父级部门
+            SysDept oldParent = sysDeptMapper.selectByPrimaryKey(targetDept.getPid());
+            String oldRelationCode;
+            String newRelationCode;
+
+            //根据情乱改变根目录
+            if ( targetDept.getPid().equals("0") ) {
+                oldRelationCode = targetDept.getDeptNo();
+                newRelationCode = parent.getRelationCode() + targetDept.getDeptNo();
+            } else if ( deptUpdateReqVO.getPid().equals("0") ) {
+                oldRelationCode = targetDept.getRelationCode();
+                newRelationCode = targetDept.getDeptNo();
+            } else {
+                oldRelationCode = oldParent.getRelationCode();
+                newRelationCode = parent.getRelationCode();
+            }
+
+            sysDeptMapper.updateRelationCode(oldRelationCode,newRelationCode,targetDept.getRelationCode());
+        }
     }
 
 

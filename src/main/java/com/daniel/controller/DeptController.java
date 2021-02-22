@@ -3,7 +3,8 @@ package com.daniel.controller;
 import com.daniel.entity.SysDept;
 import com.daniel.service.DeptService;
 import com.daniel.utils.DataResult;
-import com.daniel.vo.request.dept.DeptAddVO;
+import com.daniel.vo.request.dept.DeptAddReqVO;
+import com.daniel.vo.request.dept.DeptUpdateReqVO;
 import com.daniel.vo.response.dept.DeptRespVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -40,17 +41,24 @@ public class DeptController {
 
     @GetMapping("/dept/tree")
     @ApiOperation(value = "获取部门树")
-    public DataResult<List<DeptRespVO>> getDeptTreeList() {
+    public DataResult<List<DeptRespVO>> getDeptTreeList(@RequestParam(required = false) String deptID) {
         DataResult<List<DeptRespVO>> result = DataResult.success();
-        result.setData(deptService.deptTreeList());
+        result.setData(deptService.deptTreeList(deptID));
         return result;
     }
 
     @PostMapping("/dept")
     @ApiOperation(value = "新增部门接口")
-    public DataResult<SysDept> addDept(@RequestBody @Valid DeptAddVO deptAddVO) {
+    public DataResult<SysDept> addDept(@RequestBody @Valid DeptAddReqVO deptAddVO) {
         DataResult<SysDept> result = DataResult.success();
         result.setData(deptService.addDept(deptAddVO));
         return result;
+    }
+
+    @PutMapping("/dept")
+    @ApiOperation(value = "编辑部门接口")
+    public DataResult updateDept (@RequestBody @Valid DeptUpdateReqVO deptUpdateReqVO ) {
+        deptService.updateDeptInfo(deptUpdateReqVO);
+        return DataResult.success();
     }
 }

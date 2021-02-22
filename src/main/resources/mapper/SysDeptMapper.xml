@@ -181,4 +181,11 @@
     from sys_dept
     where deleted = 1
   </select>
+
+  <!--更新部门信息，维护层级关系-->
+  <update id="updateRelationCode">
+    update sys_dept
+    set relation_code = replace(relation_code,#{oldStr},#{newStr})
+    where relation_code LIKE concat(#{relationCode},'#')
+  </update>
 </mapper>

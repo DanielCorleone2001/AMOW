@@ -13,7 +13,7 @@ import lombok.Data;
  */
 
 @Data
-public class DeptAddVO {
+public class DeptAddReqVO {
 
     @ApiModelProperty(value = "新增部门名称")
     private String name;
