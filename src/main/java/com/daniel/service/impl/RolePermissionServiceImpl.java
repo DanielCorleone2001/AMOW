@@ -1,13 +1,11 @@
 package com.daniel.service.impl;
 
-import com.daniel.entity.SysPermission;
 import com.daniel.entity.SysRolePermission;
 import com.daniel.exception.BusinessException;
 import com.daniel.exception.code.BaseResponseCode;
-import com.daniel.mapper.SysPermissionMapper;
 import com.daniel.mapper.SysRolePermissionMapper;
 import com.daniel.service.RolePermissionService;
-import com.daniel.vo.request.RolePermissionOperationReqVO;
+import com.daniel.vo.request.related.RolePermissionOperationReqVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -67,5 +65,10 @@ public class RolePermissionServiceImpl implements RolePermissionService {
     @Override
     public int removeByPermissionId(String permissionId) {
         return sysRolePermissionMapper.removeByPermissionId(permissionId);
+    }
+
+    @Override
+    public List<String> getPermissionListByRoleId(String roleId) {
+        return sysRolePermissionMapper.getPermissionIdsByRoleId(roleId);
     }
 }

@@ -1,7 +1,7 @@
 package com.daniel.mapper;
 
 import com.daniel.entity.SysUser;
-import com.daniel.vo.request.UserPageReqVO;
+import com.daniel.vo.request.user.UserPageReqVO;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

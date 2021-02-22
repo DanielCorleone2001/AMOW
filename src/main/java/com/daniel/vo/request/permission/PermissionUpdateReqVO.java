@@ -1,4 +1,4 @@
-package com.daniel.vo.request;
+package com.daniel.vo.request.permission;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiModelProperty;

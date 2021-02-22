@@ -1,4 +1,4 @@
-package com.daniel.vo.response;
+package com.daniel.vo.response.dept;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;

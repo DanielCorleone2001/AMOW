@@ -3,12 +3,11 @@ package com.daniel.controller;
 import com.daniel.entity.SysPermission;
 import com.daniel.service.PermissionService;
 import com.daniel.utils.DataResult;
-import com.daniel.vo.request.PermissionAddReqVO;
-import com.daniel.vo.request.PermissionUpdateReqVO;
-import com.daniel.vo.response.PermissionRespNodeVO;
+import com.daniel.vo.request.permission.PermissionAddReqVO;
+import com.daniel.vo.request.permission.PermissionUpdateReqVO;
+import com.daniel.vo.response.permission.PermissionRespNodeVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.beans.factory.ListableBeanFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

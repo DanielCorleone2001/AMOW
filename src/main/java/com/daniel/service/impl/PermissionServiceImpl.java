@@ -10,9 +10,9 @@ import com.daniel.service.RedisService;
 import com.daniel.service.RolePermissionService;
 import com.daniel.service.UserRoleService;
 import com.daniel.utils.TokenSettings;
-import com.daniel.vo.request.PermissionAddReqVO;
-import com.daniel.vo.request.PermissionUpdateReqVO;
-import com.daniel.vo.response.PermissionRespNodeVO;
+import com.daniel.vo.request.permission.PermissionAddReqVO;
+import com.daniel.vo.request.permission.PermissionUpdateReqVO;
+import com.daniel.vo.response.permission.PermissionRespNodeVO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,13 +20,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
-import java.util.prefs.BackingStoreException;
 
 /**
  * @Package: com.daniel.service.impl
@@ -234,7 +232,7 @@ public class PermissionServiceImpl implements PermissionService {
                 sysPermission.getStatus() != permissionUpdateReqVO.getStatus() ) {
             List<String> roleIdsByPermissionId = rolePermissionService.getRolesByPermissionId(permissionUpdateReqVO.getId());
             if ( !roleIdsByPermissionId.isEmpty() ) {
-                List<String> userIdsByRoleIds = userRoleService.getUserIdsByRoleId(roleIdsByPermissionId);
+                List<String> userIdsByRoleIds = userRoleService.getUserIdsByRoleIdList(roleIdsByPermissionId);
                 if ( !userIdsByRoleIds.isEmpty() ) {
                     for ( String userId: userIdsByRoleIds ) {
                         redisService.set(Constant.JWT_REFRESH_KEY+userId,userId,
@@ -270,7 +268,7 @@ public class PermissionServiceImpl implements PermissionService {
         rolePermissionService.removeByPermissionId(permissionId);//通过权限ID删除和角色关联
 
         if ( !roleIDs.isEmpty() ) {
-            List<String> userIDs = userRoleService.getUserIdsByRoleId(roleIDs);
+            List<String> userIDs = userRoleService.getUserIdsByRoleIdList(roleIDs);
             if ( !userIDs.isEmpty() ) {
                 for ( String userID : userIDs ) {
                     redisService.set(Constant.JWT_REFRESH_KEY+userID,userID,

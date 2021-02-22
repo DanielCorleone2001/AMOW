@@ -1,6 +1,6 @@
 package com.daniel.service;
 
-import com.daniel.vo.request.RolePermissionOperationReqVO;
+import com.daniel.vo.request.related.RolePermissionOperationReqVO;
 
 import java.util.List;
 
@@ -20,4 +20,7 @@ public interface RolePermissionService {
 
     //通过权限ID来删除对应的角色和菜单权限
     int removeByPermissionId(String permissionId);
+
+    //通过角色ID来获取到相应的权限ID集合
+    List<String> getPermissionListByRoleId(String roleId);
 }

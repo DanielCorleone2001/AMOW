@@ -1,26 +1,29 @@
 package com.daniel.service.impl;
 
+import com.daniel.contains.Constant;
 import com.daniel.entity.SysRole;
 import com.daniel.exception.BusinessException;
 import com.daniel.exception.code.BaseResponseCode;
 import com.daniel.mapper.SysRoleMapper;
 import com.daniel.mapper.SysUserRoleMapper;
-import com.daniel.service.RolePermissionService;
-import com.daniel.service.RoleService;
+import com.daniel.service.*;
 import com.daniel.utils.PageUtil;
-import com.daniel.vo.request.RoleAddReqVO;
-import com.daniel.vo.request.RolePageReqVO;
-import com.daniel.vo.request.RolePermissionOperationReqVO;
-import com.daniel.vo.response.PageVO;
+import com.daniel.utils.TokenSettings;
+import com.daniel.vo.request.role.RoleAddReqVO;
+import com.daniel.vo.request.role.RolePageReqVO;
+import com.daniel.vo.request.related.RolePermissionOperationReqVO;
+import com.daniel.vo.request.role.RoleUpdateReqVO;
+import com.daniel.vo.response.page.PageVO;
+import com.daniel.vo.response.permission.PermissionRespNodeVO;
 import com.github.pagehelper.PageHelper;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Date;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @Package: com.daniel.service.impl
@@ -31,6 +34,7 @@ import java.util.UUID;
  */
 
 @Service
+@Slf4j
 public class RoleServiceImpl implements RoleService {
 
     @Autowired
@@ -41,6 +45,18 @@ public class RoleServiceImpl implements RoleService {
 
     @Autowired
     private SysUserRoleMapper sysUserRoleMapper;
+
+    @Autowired
+    private PermissionService permissionService;
+
+    @Autowired
+    private UserRoleService userRoleService;
+
+    @Autowired
+    private RedisService redisService;
+
+    @Autowired
+    private TokenSettings tokenSettings;
 
     @Override
     public PageVO<SysRole> pageInfo(RolePageReqVO vo) {
@@ -79,5 +95,84 @@ public class RoleServiceImpl implements RoleService {
     @Override
     public List<SysRole> selectAllRoles() {
         return sysRoleMapper.selectAll(new RolePageReqVO());
+    }
+
+    /**
+     * 获取角色相关的信息，比如菜单权限
+     * @param roleID
+     * @return
+     */
+    @Override
+    public SysRole detailInfo(String roleID) {
+        SysRole sysRole = sysRoleMapper.selectByPrimaryKey(roleID);//获取当前的角色
+
+        //角色非空检验
+        if ( sysRole == null ) {
+            log.error("传入的ID {}不合法",roleID);
+            throw new BusinessException(BaseResponseCode.DATA_ERROR);
+        }
+
+        //获取所有权限菜单权限树
+        List<PermissionRespNodeVO> permissionRespNodeVOList = permissionService.selectAllByTree();
+        //获取该角色拥有的菜单权限
+        List<String> permissionList = rolePermissionService.getPermissionListByRoleId(roleID);
+        Set<String> checkList = new HashSet<>(permissionList);
+        //遍历菜单权限树的数据
+        setChecked(permissionRespNodeVOList,checkList);
+        sysRole.setPermissionRespNode(permissionRespNodeVOList);
+        return sysRole;
+    }
+
+    @Transactional(rollbackFor = Exception.class)
+    @Override
+    public void updateRole(RoleUpdateReqVO roleUpdateReqVO) {
+        //获取需要更新的角色
+        SysRole updatedRole = sysRoleMapper.selectByPrimaryKey(roleUpdateReqVO.getId());
+        //角色非空校验
+        if ( updatedRole == null ) {
+            log.error("传入的角色ID: {} 不合法",roleUpdateReqVO.getId());
+            throw new BusinessException(BaseResponseCode.DATA_ERROR);
+        }
+
+        //角色的信息更新
+        BeanUtils.copyProperties(roleUpdateReqVO,updatedRole);
+        updatedRole.setUpdateTime(new Date());
+
+        //是否成功更新
+        if ( sysRoleMapper.updateByPrimaryKeySelective(updatedRole) != 1) {
+            throw new BusinessException(BaseResponseCode.OPERATION_ERROR);
+        }
+
+        //配置角色的菜单权限集合
+        RolePermissionOperationReqVO reqVO = new RolePermissionOperationReqVO();
+        reqVO.setRoleId(updatedRole.getId());
+        reqVO.setPermissionId(roleUpdateReqVO.getPermissionList());
+        rolePermissionService.addRolePermission(reqVO);
+
+        List<String> userIDList = userRoleService.getUserIdsByRoleId(roleUpdateReqVO.getId());
+        if ( !userIDList.isEmpty() ) {
+            for (String userID : userIDList ) {
+                //标记用户,在用户认证的时候判断这个是否主动刷过
+                redisService.set(Constant.JWT_REFRESH_KEY+userID,userID,
+                                    tokenSettings.getAccessTokenExpireTime().toMillis(), TimeUnit.MILLISECONDS);
+                //清除用户授权数据缓存
+                redisService.delete(Constant.IDENTIFY_CACHE_KEY+userID);
+            }
+        }
+    }
+
+    private void setChecked(List<PermissionRespNodeVO> list, Set<String> checkList){
+
+        for(PermissionRespNodeVO node:list){
+            /**
+             * 子集选中从它往上到跟目录都被选中，父级选中从它到它所有的叶子节点都会被选中
+             * 这样我们就直接遍历最底层及就可以了
+             */
+            if(checkList.contains(node.getId())&&(node.getChildren()==null||node.getChildren().isEmpty())){
+                node.setChecked(true);
+            }
+            setChecked((List<PermissionRespNodeVO>) node.getChildren(),checkList);
+
+        }
     }
 }

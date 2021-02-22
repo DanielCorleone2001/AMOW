@@ -75,4 +75,20 @@
     delete from sys_role_permission
     where permission_id = #{permissionId}
   </delete>
+
+  <!--根据角色ID来获取到权限ID-->
+  <select id="getPermissionIdsByRoleId" resultType="java.lang.String">
+    select permission_id
+    from sys_role_permission
+    where role_id = #{roleId}
+  </select>
+
+  <select id="getPermissionIdsByRoleIdList" resultType="java.lang.String">
+    select permission_id
+    from sys_role_permission
+    where role_id in
+    <foreach collection="list" item="item" open="(" separator="," close=")">
+      #{item}
+    </foreach>
+  </select>
 </mapper>

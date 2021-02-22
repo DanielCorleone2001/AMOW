@@ -3,19 +3,17 @@ package com.daniel.controller;
 import com.daniel.entity.SysRole;
 import com.daniel.service.RoleService;
 import com.daniel.utils.DataResult;
-import com.daniel.vo.request.RoleAddReqVO;
-import com.daniel.vo.request.RolePageReqVO;
-import com.daniel.vo.response.PageVO;
+import com.daniel.vo.request.role.RoleAddReqVO;
+import com.daniel.vo.request.role.RolePageReqVO;
+import com.daniel.vo.request.role.RoleUpdateReqVO;
+import com.daniel.vo.response.page.PageVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import javax.xml.crypto.Data;
 
 /**
  * @Package: com.daniel.controller
@@ -48,5 +46,20 @@ public class RoleController {
         DataResult result =DataResult.success();
         result.setData(roleService.addRole(vo));
         return result;
+    }
+
+    @GetMapping("/role/{id}")
+    @ApiOperation(value = "查询角色详情的接口")
+    public DataResult<SysRole> RoleDetailInfo(@PathVariable("id") String roleID) {
+        DataResult<SysRole> dataResult = DataResult.success();
+        dataResult.setData(roleService.detailInfo(roleID));
+        return dataResult;
+    }
+
+    @PutMapping("/role")
+    @ApiOperation(value = "更新角色信息的接口")
+    public DataResult updateRoleInfo (@RequestBody @Valid RoleUpdateReqVO roleUpdateReqVO) {
+        roleService.updateRole(roleUpdateReqVO);
+        return DataResult.success();
     }
 }

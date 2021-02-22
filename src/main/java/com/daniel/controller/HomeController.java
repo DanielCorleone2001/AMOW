@@ -4,7 +4,7 @@ import com.daniel.contains.Constant;
 import com.daniel.service.HomeService;
 import com.daniel.utils.DataResult;
 import com.daniel.utils.JWToken;
-import com.daniel.vo.response.HomeRespVO;
+import com.daniel.vo.response.home.HomeRespVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,6 +1,6 @@
 package com.daniel.service;
 
-import com.daniel.vo.request.UserOwnRoleReqVO;
+import com.daniel.vo.request.related.UserOwnRoleReqVO;
 
 import java.util.List;
 
@@ -19,6 +19,8 @@ public interface UserRoleService {
     void addUserRoleInfo(UserOwnRoleReqVO vo);
 
     //通过角色ID来获取对应的用户ID
-    List<String> getUserIdsByRoleId(List<String> roleIds);
+    List<String> getUserIdsByRoleId(String roleId);
+
+    List<String> getUserIdsByRoleIdList(List<String> roleIdList);
 
 }

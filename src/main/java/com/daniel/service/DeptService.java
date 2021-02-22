@@ -1,9 +1,8 @@
 package com.daniel.service;
 
 import com.daniel.entity.SysDept;
-import com.daniel.mapper.SysDeptMapper;
-import com.daniel.vo.request.DeptAddVO;
-import com.daniel.vo.response.DeptRespVO;
+import com.daniel.vo.request.dept.DeptAddVO;
+import com.daniel.vo.response.dept.DeptRespVO;
 
 import java.util.List;
 

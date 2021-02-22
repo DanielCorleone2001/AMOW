@@ -1,4 +1,4 @@
-package com.daniel.vo.request;
+package com.daniel.vo.request.related;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;

@@ -1,6 +1,6 @@
 package com.daniel.service;
 
-import com.daniel.vo.response.HomeRespVO;
+import com.daniel.vo.response.home.HomeRespVO;
 
 /**
  * @Package: com.daniel.service

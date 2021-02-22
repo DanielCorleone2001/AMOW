@@ -3,11 +3,10 @@ package com.daniel.controller;
 import com.daniel.entity.SysDept;
 import com.daniel.service.DeptService;
 import com.daniel.utils.DataResult;
-import com.daniel.vo.request.DeptAddVO;
-import com.daniel.vo.response.DeptRespVO;
+import com.daniel.vo.request.dept.DeptAddVO;
+import com.daniel.vo.response.dept.DeptRespVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import jdk.internal.dynalink.linker.LinkerServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

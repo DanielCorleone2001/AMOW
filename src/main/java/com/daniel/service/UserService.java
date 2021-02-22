@@ -1,10 +1,14 @@
 package com.daniel.service;
 
 import com.daniel.entity.SysUser;
-import com.daniel.vo.request.*;
-import com.daniel.vo.response.LoginRespVO;
-import com.daniel.vo.response.PageVO;
-import com.daniel.vo.response.UserOwnRoleRespVO;
+import com.daniel.vo.request.login.LoginReqVO;
+import com.daniel.vo.request.related.UserOwnRoleReqVO;
+import com.daniel.vo.request.user.UserAddReqVO;
+import com.daniel.vo.request.user.UserPageReqVO;
+import com.daniel.vo.request.user.UserUpdateReqVO;
+import com.daniel.vo.response.login.LoginRespVO;
+import com.daniel.vo.response.page.PageVO;
+import com.daniel.vo.response.related.UserOwnRoleRespVO;
 
 import java.util.List;
 

@@ -5,7 +5,7 @@ import com.daniel.exception.BusinessException;
 import com.daniel.exception.code.BaseResponseCode;
 import com.daniel.mapper.SysUserRoleMapper;
 import com.daniel.service.UserRoleService;
-import com.daniel.vo.request.UserOwnRoleReqVO;
+import com.daniel.vo.request.related.UserOwnRoleReqVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -64,7 +64,12 @@ public class UserRoleServiceImpl implements UserRoleService {
     }
 
     @Override
-    public List<String> getUserIdsByRoleId(List<String> roleIds) {
-        return sysUserRoleMapper.getUserIdsByRoleIds(roleIds);
+    public List<String> getUserIdsByRoleId(String roleIds) {
+        return sysUserRoleMapper.getUserIdsByRoleId(roleIds);
+    }
+
+    @Override
+    public List<String> getUserIdsByRoleIdList(List<String> roleIdList) {
+        return sysUserRoleMapper.getUserIdsByRoleIdList(roleIdList);
     }
 }

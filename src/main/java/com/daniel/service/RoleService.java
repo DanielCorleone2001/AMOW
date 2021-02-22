@@ -1,9 +1,10 @@
 package com.daniel.service;
 
 import com.daniel.entity.SysRole;
-import com.daniel.vo.request.RoleAddReqVO;
-import com.daniel.vo.request.RolePageReqVO;
-import com.daniel.vo.response.PageVO;
+import com.daniel.vo.request.role.RoleAddReqVO;
+import com.daniel.vo.request.role.RolePageReqVO;
+import com.daniel.vo.request.role.RoleUpdateReqVO;
+import com.daniel.vo.response.page.PageVO;
 
 import java.util.List;
 
@@ -21,4 +22,8 @@ public interface RoleService {
 
     //获取所有角色的集合
     List<SysRole> selectAllRoles();
+
+    SysRole detailInfo(String roleID);
+
+    void updateRole(RoleUpdateReqVO roleUpdateReqVO);
 }

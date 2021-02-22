@@ -1,5 +1,7 @@
-package com.daniel.vo.response;
+package com.daniel.vo.response.home;
 
+import com.daniel.vo.response.permission.PermissionRespNodeVO;
+import com.daniel.vo.response.user.UserInfoRespVO;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 

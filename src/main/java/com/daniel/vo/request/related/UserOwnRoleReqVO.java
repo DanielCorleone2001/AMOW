@@ -1,4 +1,4 @@
-package com.daniel.vo.request;
+package com.daniel.vo.request.related;
 
 import com.daniel.entity.SysRole;
 import io.swagger.annotations.ApiModelProperty;

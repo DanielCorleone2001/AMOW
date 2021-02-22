@@ -1,4 +1,4 @@
-package com.daniel.vo.response;
+package com.daniel.vo.response.user;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiModelProperty;

@@ -27,5 +27,8 @@ public interface SysUserRoleMapper {
     int batchInsertUserRole(List<SysUserRole> list);
 
     //根据角色ID来获取对应的用户Id
-    List<String> getUserIdsByRoleIds(List<String> roleIds);
+    List<String> getUserIdsByRoleIdList(List<String> roleIds);
+
+    List<String> getUserIdsByRoleId(String roleId);
+
 }

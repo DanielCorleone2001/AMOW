@@ -1,6 +1,6 @@
 package com.daniel.utils;
 
-import com.daniel.vo.response.PageVO;
+import com.daniel.vo.response.page.PageVO;
 import com.github.pagehelper.Page;
 
 import java.util.List;

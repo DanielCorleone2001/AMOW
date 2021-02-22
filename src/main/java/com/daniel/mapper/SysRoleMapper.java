@@ -1,7 +1,7 @@
 package com.daniel.mapper;
 
 import com.daniel.entity.SysRole;
-import com.daniel.vo.request.RolePageReqVO;
+import com.daniel.vo.request.role.RolePageReqVO;
 
 import java.util.List;
 

@@ -1,9 +1,9 @@
 package com.daniel.service;
 
 import com.daniel.entity.SysPermission;
-import com.daniel.vo.request.PermissionAddReqVO;
-import com.daniel.vo.request.PermissionUpdateReqVO;
-import com.daniel.vo.response.PermissionRespNodeVO;
+import com.daniel.vo.request.permission.PermissionAddReqVO;
+import com.daniel.vo.request.permission.PermissionUpdateReqVO;
+import com.daniel.vo.response.permission.PermissionRespNodeVO;
 
 import java.util.List;
 

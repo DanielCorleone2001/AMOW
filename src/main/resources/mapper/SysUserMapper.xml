@@ -239,7 +239,7 @@
     and deleted = 1
   </select>
   <!--查询所有用户信息-->
-  <select id="selectAll" resultMap="BaseResultMap" parameterType="com.daniel.vo.request.UserPageReqVO">
+  <select id="selectAll" resultMap="BaseResultMap" parameterType="com.daniel.vo.request.user.UserPageReqVO">
     select <include refid="Base_Column_List"></include>
     from sys_user
     <where>
