@@ -91,4 +91,10 @@
       #{item}
     </foreach>
   </select>
+
+  <!--通过角色ID来删除角色-->
+  <delete id="removeRoleByID">
+    delete from sys_user_role
+    where role_id = #{roleID}
+  </delete>
 </mapper>

@@ -25,4 +25,7 @@ public interface SysRolePermissionMapper {
 
     //根据角色Id来获取到该角色关联的菜单权限ID的集合
     List<String> getPermissionIdsByRoleIdList(List<String> roleIds);
+
+    //删除角色
+    int removeRoleByID(String roleID);
 }

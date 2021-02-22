@@ -20,4 +20,5 @@ public interface SysRoleMapper {
 
     //获取所有角色的权限
     List<SysRole> selectAll(RolePageReqVO vo);
+
 }

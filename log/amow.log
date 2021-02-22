@@ -10140,3 +10140,525 @@ org.springframework.web.HttpRequestMethodNotSupportedException: Request method '
 2021-02-22 12:51:59.341 DEBUG 12756 --- [http-nio-8080-exec-6] c.d.m.S.selectByPrimaryKey               : ==>  Preparing: select id, code, `name`, perms, url, `method`, pid, order_num, `type`, `status`, create_time, update_time, deleted from sys_permission where id = ? 
 2021-02-22 12:51:59.341 DEBUG 12756 --- [http-nio-8080-exec-6] c.d.m.S.selectByPrimaryKey               : ==> Parameters: c095273c-7917-4503-8569-6a67a9979d56(String)
 2021-02-22 12:51:59.342 DEBUG 12756 --- [http-nio-8080-exec-6] c.d.m.S.selectByPrimaryKey               : <==      Total: 1
+2021-02-22 16:48:05.730  INFO 8084 --- [main] com.daniel.AmowApplication               : Starting AmowApplication on 习武之人专用Dell with PID 8084 (E:\JavaProject\AMOW\target\classes started by daniel in E:\JavaProject\AMOW)
+2021-02-22 16:48:05.756 DEBUG 8084 --- [main] com.daniel.AmowApplication               : Running with Spring Boot v2.1.6.RELEASE, Spring v5.1.8.RELEASE
+2021-02-22 16:48:05.757  INFO 8084 --- [main] com.daniel.AmowApplication               : No active profile set, falling back to default profiles: default
+2021-02-22 16:48:07.088  INFO 8084 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-02-22 16:48:07.090  INFO 8084 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2021-02-22 16:48:07.125  INFO 8084 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 19ms. Found 0 repository interfaces.
+2021-02-22 16:48:07.389  INFO 8084 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$6d05250f] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-02-22 16:48:07.404  INFO 8084 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'shiroConfig' of type [com.daniel.config.ShiroConfig$$EnhancerBySpringCGLIB$$40dd86dd] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-02-22 16:48:07.919  INFO 8084 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'redisConfig' of type [com.daniel.config.RedisConfig$$EnhancerBySpringCGLIB$$8bac0e27] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-02-22 16:48:07.937  INFO 8084 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'spring.redis-org.springframework.boot.autoconfigure.data.redis.RedisProperties' of type [org.springframework.boot.autoconfigure.data.redis.RedisProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-02-22 16:48:07.941  INFO 8084 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.boot.autoconfigure.data.redis.LettuceConnectionConfiguration' of type [org.springframework.boot.autoconfigure.data.redis.LettuceConnectionConfiguration$$EnhancerBySpringCGLIB$$821ee359] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-02-22 16:48:08.012  INFO 8084 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'lettuceClientResources' of type [io.lettuce.core.resource.DefaultClientResources] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-02-22 16:48:08.081  INFO 8084 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'redisConnectionFactory' of type [org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-02-22 16:48:08.094  INFO 8084 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'redisTemplate' of type [org.springframework.data.redis.core.RedisTemplate] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-02-22 16:48:08.096  INFO 8084 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'redisService' of type [com.daniel.service.RedisService] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-02-22 16:48:08.097  INFO 8084 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'myHashedCredentialsMatcher' of type [com.daniel.shiro.MyHashedCredentialsMatcher] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-02-22 16:48:08.099  INFO 8084 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'cacheManager' of type [com.daniel.shiro.RedisCacheManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-02-22 16:48:08.102  INFO 8084 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'myRealm' of type [com.daniel.shiro.MyRealm] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-02-22 16:48:08.106  INFO 8084 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'securityManager' of type [org.apache.shiro.web.mgt.DefaultWebSecurityManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-02-22 16:48:08.111  INFO 8084 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'authorizationAttributeSourceAdvisor' of type [org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-02-22 16:48:08.436  INFO 8084 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2021-02-22 16:48:08.451  INFO 8084 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-02-22 16:48:08.452  INFO 8084 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.21]
+2021-02-22 16:48:08.456  INFO 8084 --- [main] o.a.catalina.core.AprLifecycleListener   : Loaded APR based Apache Tomcat Native library [1.2.25] using APR version [1.7.0].
+2021-02-22 16:48:08.456  INFO 8084 --- [main] o.a.catalina.core.AprLifecycleListener   : APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+2021-02-22 16:48:08.456  INFO 8084 --- [main] o.a.catalina.core.AprLifecycleListener   : APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+2021-02-22 16:48:08.518  INFO 8084 --- [main] o.a.catalina.core.AprLifecycleListener   : OpenSSL successfully initialized [OpenSSL 1.1.1g  21 Apr 2020]
+2021-02-22 16:48:08.602  INFO 8084 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-02-22 16:48:08.602  INFO 8084 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2808 ms
+2021-02-22 16:48:08.700  INFO 8084 --- [main] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2021-02-22 16:48:09.368  INFO 8084 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2021-02-22 16:48:10.142  INFO 8084 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+2021-02-22 16:48:10.269  INFO 8084 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-02-22 16:48:10.589  INFO 8084 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2021-02-22 16:48:10.604  INFO 8084 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2021-02-22 16:48:10.633  INFO 8084 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2021-02-22 16:48:10.806  INFO 8084 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: pageInfoUsingPOST_1
+2021-02-22 16:48:10.853  INFO 8084 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2021-02-22 16:48:10.855  INFO 8084 --- [main] com.daniel.AmowApplication               : Started AmowApplication in 5.523 seconds (JVM running for 6.686)
+2021-02-22 16:48:31.935  INFO 8084 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-02-22 16:48:31.935  INFO 8084 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-02-22 16:48:31.943  INFO 8084 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 8 ms
+2021-02-22 16:48:37.941 DEBUG 8084 --- [http-nio-8080-exec-2] c.d.m.SysUserMapper.selectByUsername     : ==>  Preparing: select id, username, salt, `password`, phone, dept_id, real_name, nick_name, email, `status`, sex, deleted, create_id, update_id, create_where, create_time, update_time from sys_user where username=? and deleted = 1 
+2021-02-22 16:48:37.960 DEBUG 8084 --- [http-nio-8080-exec-2] c.d.m.SysUserMapper.selectByUsername     : ==> Parameters: admin(String)
+2021-02-22 16:48:37.978 DEBUG 8084 --- [http-nio-8080-exec-2] c.d.m.SysUserMapper.selectByUsername     : <==      Total: 1
+2021-02-22 16:48:38.127  INFO 8084 --- [http-nio-8080-exec-2] com.daniel.service.impl.UserServiceImpl  : accessToken=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI5YTI2ZjVmMS1jYmQyLTQ3M2QtODJkYi0xZDZkY2Y0NTk4ZjgiLCJyb2xlcy1pbmZvcy1rZXkiOlsiYWRtaW4iXSwicGVybWlzc2lvbnMtaW5mb3Mta2V5IjpbInN5czp1c2VyOmFkZCIsInN5czp1c2VyOnVwZGF0ZSIsInN5czp1c2VyOmRlbGV0ZSIsInN5czp1c2VyOmxpc3QiXSwiaXNzIjoiZGFuaWVsIiwiand0LXVzZXItbmFtZS1rZXkiOiJhZG1pbiIsImV4cCI6MTYxMzk5MDkxNywiaWF0IjoxNjEzOTgzNzE3fQ.s0nJuWobYyeRLz7XWqxmP4umpazLZBAardw336pBnxE
+2021-02-22 16:48:38.128  INFO 8084 --- [http-nio-8080-exec-2] com.daniel.service.impl.UserServiceImpl  : refreshToken=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI5YTI2ZjVmMS1jYmQyLTQ3M2QtODJkYi0xZDZkY2Y0NTk4ZjgiLCJpc3MiOiJkYW5pZWwiLCJqd3QtdXNlci1uYW1lLWtleSI6ImFkbWluIiwiZXhwIjoxNjE0MDEyNTE4LCJpYXQiOjE2MTM5ODM3MTh9.grXtFUioFI058p4XbA3bFnajl_QGhzfqx2yCZrs0xxE
+2021-02-22 16:48:38.357  INFO 8084 --- [http-nio-8080-exec-5] com.daniel.shiro.MyAccessControlFilter   : GET
+2021-02-22 16:48:38.357  INFO 8084 --- [http-nio-8080-exec-5] com.daniel.shiro.MyAccessControlFilter   : /api/home
+2021-02-22 16:48:38.479  INFO 8084 --- [http-nio-8080-exec-5] io.lettuce.core.EpollProvider            : Starting without optional epoll library
+2021-02-22 16:48:38.480  INFO 8084 --- [http-nio-8080-exec-5] io.lettuce.core.KqueueProvider           : Starting without optional kqueue library
+2021-02-22 16:48:39.188 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.SysPermissionMapper.selectAll      : ==>  Preparing: select id, code, `name`, perms, url, `method`, pid, order_num, `type`, `status`, create_time, update_time, deleted from sys_permission where deleted = 1 order by order_num desc 
+2021-02-22 16:48:39.189 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.SysPermissionMapper.selectAll      : ==> Parameters: 
+2021-02-22 16:48:39.198 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.SysPermissionMapper.selectAll      : <==      Total: 38
+2021-02-22 16:48:39.198 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.S.selectByPrimaryKey               : ==>  Preparing: select id, code, `name`, perms, url, `method`, pid, order_num, `type`, `status`, create_time, update_time, deleted from sys_permission where id = ? 
+2021-02-22 16:48:39.199 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.S.selectByPrimaryKey               : ==> Parameters: 8f393e44-b585-4875-866d-71f88fea9659(String)
+2021-02-22 16:48:39.200 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.S.selectByPrimaryKey               : <==      Total: 1
+2021-02-22 16:48:39.200 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.S.selectByPrimaryKey               : ==>  Preparing: select id, code, `name`, perms, url, `method`, pid, order_num, `type`, `status`, create_time, update_time, deleted from sys_permission where id = ? 
+2021-02-22 16:48:39.201 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.S.selectByPrimaryKey               : ==> Parameters: 0545d9d1-c82c-44c2-85e5-0b6ac4042515(String)
+2021-02-22 16:48:39.202 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.S.selectByPrimaryKey               : <==      Total: 1
+2021-02-22 16:48:39.202 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.S.selectByPrimaryKey               : ==>  Preparing: select id, code, `name`, perms, url, `method`, pid, order_num, `type`, `status`, create_time, update_time, deleted from sys_permission where id = ? 
+2021-02-22 16:48:39.202 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.S.selectByPrimaryKey               : ==> Parameters: 4caeb861-354c-45f6-98b4-59f486beb511(String)
+2021-02-22 16:48:39.203 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.S.selectByPrimaryKey               : <==      Total: 1
+2021-02-22 16:48:39.203 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.S.selectByPrimaryKey               : ==>  Preparing: select id, code, `name`, perms, url, `method`, pid, order_num, `type`, `status`, create_time, update_time, deleted from sys_permission where id = ? 
+2021-02-22 16:48:39.204 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.S.selectByPrimaryKey               : ==> Parameters: c095273c-7917-4503-8569-6a67a9979d56(String)
+2021-02-22 16:48:39.205 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.S.selectByPrimaryKey               : <==      Total: 1
+2021-02-22 16:48:39.205 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.S.selectByPrimaryKey               : ==>  Preparing: select id, code, `name`, perms, url, `method`, pid, order_num, `type`, `status`, create_time, update_time, deleted from sys_permission where id = ? 
+2021-02-22 16:48:39.205 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.S.selectByPrimaryKey               : ==> Parameters: 9ce621a0-ee2c-4cf6-b7bd-012a1a01ba63(String)
+2021-02-22 16:48:39.206 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.S.selectByPrimaryKey               : <==      Total: 1
+2021-02-22 16:48:39.206 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.S.selectByPrimaryKey               : ==>  Preparing: select id, code, `name`, perms, url, `method`, pid, order_num, `type`, `status`, create_time, update_time, deleted from sys_permission where id = ? 
+2021-02-22 16:48:39.207 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.S.selectByPrimaryKey               : ==> Parameters: 0545d9d1-c82c-44c2-85e5-0b6ac4042515(String)
+2021-02-22 16:48:39.208 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.S.selectByPrimaryKey               : <==      Total: 1
+2021-02-22 16:48:39.208 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.S.selectByPrimaryKey               : ==>  Preparing: select id, code, `name`, perms, url, `method`, pid, order_num, `type`, `status`, create_time, update_time, deleted from sys_permission where id = ? 
+2021-02-22 16:48:39.208 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.S.selectByPrimaryKey               : ==> Parameters: ccef525e-3392-45f8-969f-d552b142dc0f(String)
+2021-02-22 16:48:39.209 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.S.selectByPrimaryKey               : <==      Total: 1
+2021-02-22 16:48:39.210 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.S.selectByPrimaryKey               : ==>  Preparing: select id, code, `name`, perms, url, `method`, pid, order_num, `type`, `status`, create_time, update_time, deleted from sys_permission where id = ? 
+2021-02-22 16:48:39.210 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.S.selectByPrimaryKey               : ==> Parameters: 9ce621a0-ee2c-4cf6-b7bd-012a1a01ba63(String)
+2021-02-22 16:48:39.211 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.S.selectByPrimaryKey               : <==      Total: 1
+2021-02-22 16:48:39.212 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.S.selectByPrimaryKey               : ==>  Preparing: select id, code, `name`, perms, url, `method`, pid, order_num, `type`, `status`, create_time, update_time, deleted from sys_permission where id = ? 
+2021-02-22 16:48:39.212 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.S.selectByPrimaryKey               : ==> Parameters: c095273c-7917-4503-8569-6a67a9979d56(String)
+2021-02-22 16:48:39.212 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.S.selectByPrimaryKey               : <==      Total: 1
+2021-02-22 16:48:39.213 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.S.selectByPrimaryKey               : ==>  Preparing: select id, code, `name`, perms, url, `method`, pid, order_num, `type`, `status`, create_time, update_time, deleted from sys_permission where id = ? 
+2021-02-22 16:48:39.213 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.S.selectByPrimaryKey               : ==> Parameters: 8f393e44-b585-4875-866d-71f88fea9659(String)
+2021-02-22 16:48:39.214 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.S.selectByPrimaryKey               : <==      Total: 1
+2021-02-22 16:48:39.215 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.S.selectByPrimaryKey               : ==>  Preparing: select id, code, `name`, perms, url, `method`, pid, order_num, `type`, `status`, create_time, update_time, deleted from sys_permission where id = ? 
+2021-02-22 16:48:39.215 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.S.selectByPrimaryKey               : ==> Parameters: 290c0240-0914-487c-b4e9-6635bf5ebfec(String)
+2021-02-22 16:48:39.216 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.S.selectByPrimaryKey               : <==      Total: 1
+2021-02-22 16:48:39.216 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.S.selectByPrimaryKey               : ==>  Preparing: select id, code, `name`, perms, url, `method`, pid, order_num, `type`, `status`, create_time, update_time, deleted from sys_permission where id = ? 
+2021-02-22 16:48:39.216 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.S.selectByPrimaryKey               : ==> Parameters: 9ce621a0-ee2c-4cf6-b7bd-012a1a01ba63(String)
+2021-02-22 16:48:39.217 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.S.selectByPrimaryKey               : <==      Total: 1
+2021-02-22 16:48:39.217 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.S.selectByPrimaryKey               : ==>  Preparing: select id, code, `name`, perms, url, `method`, pid, order_num, `type`, `status`, create_time, update_time, deleted from sys_permission where id = ? 
+2021-02-22 16:48:39.217 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.S.selectByPrimaryKey               : ==> Parameters: c198d1cb-ad4d-4001-9375-9ec8ee04053d(String)
+2021-02-22 16:48:39.218 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.S.selectByPrimaryKey               : <==      Total: 1
+2021-02-22 16:48:39.219 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.S.selectByPrimaryKey               : ==>  Preparing: select id, code, `name`, perms, url, `method`, pid, order_num, `type`, `status`, create_time, update_time, deleted from sys_permission where id = ? 
+2021-02-22 16:48:39.219 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.S.selectByPrimaryKey               : ==> Parameters: 290c0240-0914-487c-b4e9-6635bf5ebfec(String)
+2021-02-22 16:48:39.220 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.S.selectByPrimaryKey               : <==      Total: 1
+2021-02-22 16:48:39.221 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.S.selectByPrimaryKey               : ==>  Preparing: select id, code, `name`, perms, url, `method`, pid, order_num, `type`, `status`, create_time, update_time, deleted from sys_permission where id = ? 
+2021-02-22 16:48:39.222 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.S.selectByPrimaryKey               : ==> Parameters: 0(String)
+2021-02-22 16:48:39.222 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.S.selectByPrimaryKey               : <==      Total: 0
+2021-02-22 16:48:39.223 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.S.selectByPrimaryKey               : ==>  Preparing: select id, code, `name`, perms, url, `method`, pid, order_num, `type`, `status`, create_time, update_time, deleted from sys_permission where id = ? 
+2021-02-22 16:48:39.223 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.S.selectByPrimaryKey               : ==> Parameters: 290c0240-0914-487c-b4e9-6635bf5ebfec(String)
+2021-02-22 16:48:39.224 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.S.selectByPrimaryKey               : <==      Total: 1
+2021-02-22 16:48:39.224 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.S.selectByPrimaryKey               : ==>  Preparing: select id, code, `name`, perms, url, `method`, pid, order_num, `type`, `status`, create_time, update_time, deleted from sys_permission where id = ? 
+2021-02-22 16:48:39.224 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.S.selectByPrimaryKey               : ==> Parameters: 8f393e44-b585-4875-866d-71f88fea9659(String)
+2021-02-22 16:48:39.225 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.S.selectByPrimaryKey               : <==      Total: 1
+2021-02-22 16:48:39.225 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.S.selectByPrimaryKey               : ==>  Preparing: select id, code, `name`, perms, url, `method`, pid, order_num, `type`, `status`, create_time, update_time, deleted from sys_permission where id = ? 
+2021-02-22 16:48:39.225 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.S.selectByPrimaryKey               : ==> Parameters: 9ce621a0-ee2c-4cf6-b7bd-012a1a01ba63(String)
+2021-02-22 16:48:39.226 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.S.selectByPrimaryKey               : <==      Total: 1
+2021-02-22 16:48:39.228 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.S.selectByPrimaryKey               : ==>  Preparing: select id, code, `name`, perms, url, `method`, pid, order_num, `type`, `status`, create_time, update_time, deleted from sys_permission where id = ? 
+2021-02-22 16:48:39.228 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.S.selectByPrimaryKey               : ==> Parameters: c198d1cb-ad4d-4001-9375-9ec8ee04053d(String)
+2021-02-22 16:48:39.229 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.S.selectByPrimaryKey               : <==      Total: 1
+2021-02-22 16:48:39.229 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.S.selectByPrimaryKey               : ==>  Preparing: select id, code, `name`, perms, url, `method`, pid, order_num, `type`, `status`, create_time, update_time, deleted from sys_permission where id = ? 
+2021-02-22 16:48:39.229 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.S.selectByPrimaryKey               : ==> Parameters: c095273c-7917-4503-8569-6a67a9979d56(String)
+2021-02-22 16:48:39.230 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.S.selectByPrimaryKey               : <==      Total: 1
+2021-02-22 16:48:39.230 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.S.selectByPrimaryKey               : ==>  Preparing: select id, code, `name`, perms, url, `method`, pid, order_num, `type`, `status`, create_time, update_time, deleted from sys_permission where id = ? 
+2021-02-22 16:48:39.230 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.S.selectByPrimaryKey               : ==> Parameters: c198d1cb-ad4d-4001-9375-9ec8ee04053d(String)
+2021-02-22 16:48:39.231 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.S.selectByPrimaryKey               : <==      Total: 1
+2021-02-22 16:48:39.231 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.S.selectByPrimaryKey               : ==>  Preparing: select id, code, `name`, perms, url, `method`, pid, order_num, `type`, `status`, create_time, update_time, deleted from sys_permission where id = ? 
+2021-02-22 16:48:39.231 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.S.selectByPrimaryKey               : ==> Parameters: f1ea1abb-3dde-4196-b054-2ae2fcfe7c23(String)
+2021-02-22 16:48:39.232 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.S.selectByPrimaryKey               : <==      Total: 1
+2021-02-22 16:48:39.233 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.S.selectByPrimaryKey               : ==>  Preparing: select id, code, `name`, perms, url, `method`, pid, order_num, `type`, `status`, create_time, update_time, deleted from sys_permission where id = ? 
+2021-02-22 16:48:39.233 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.S.selectByPrimaryKey               : ==> Parameters: c198d1cb-ad4d-4001-9375-9ec8ee04053d(String)
+2021-02-22 16:48:39.233 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.S.selectByPrimaryKey               : <==      Total: 1
+2021-02-22 16:48:39.234 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.S.selectByPrimaryKey               : ==>  Preparing: select id, code, `name`, perms, url, `method`, pid, order_num, `type`, `status`, create_time, update_time, deleted from sys_permission where id = ? 
+2021-02-22 16:48:39.234 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.S.selectByPrimaryKey               : ==> Parameters: c198d1cb-ad4d-4001-9375-9ec8ee04053d(String)
+2021-02-22 16:48:39.234 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.S.selectByPrimaryKey               : <==      Total: 1
+2021-02-22 16:48:39.235 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.S.selectByPrimaryKey               : ==>  Preparing: select id, code, `name`, perms, url, `method`, pid, order_num, `type`, `status`, create_time, update_time, deleted from sys_permission where id = ? 
+2021-02-22 16:48:39.235 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.S.selectByPrimaryKey               : ==> Parameters: 8f393e44-b585-4875-866d-71f88fea9659(String)
+2021-02-22 16:48:39.236 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.S.selectByPrimaryKey               : <==      Total: 1
+2021-02-22 16:48:39.236 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.S.selectByPrimaryKey               : ==>  Preparing: select id, code, `name`, perms, url, `method`, pid, order_num, `type`, `status`, create_time, update_time, deleted from sys_permission where id = ? 
+2021-02-22 16:48:39.236 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.S.selectByPrimaryKey               : ==> Parameters: 290c0240-0914-487c-b4e9-6635bf5ebfec(String)
+2021-02-22 16:48:39.237 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.S.selectByPrimaryKey               : <==      Total: 1
+2021-02-22 16:48:39.237 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.S.selectByPrimaryKey               : ==>  Preparing: select id, code, `name`, perms, url, `method`, pid, order_num, `type`, `status`, create_time, update_time, deleted from sys_permission where id = ? 
+2021-02-22 16:48:39.237 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.S.selectByPrimaryKey               : ==> Parameters: f1ea1abb-3dde-4196-b054-2ae2fcfe7c23(String)
+2021-02-22 16:48:39.238 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.S.selectByPrimaryKey               : <==      Total: 1
+2021-02-22 16:48:39.238 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.S.selectByPrimaryKey               : ==>  Preparing: select id, code, `name`, perms, url, `method`, pid, order_num, `type`, `status`, create_time, update_time, deleted from sys_permission where id = ? 
+2021-02-22 16:48:39.238 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.S.selectByPrimaryKey               : ==> Parameters: 346df872-8964-4455-8afd-ffa6308fb18a(String)
+2021-02-22 16:48:39.239 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.S.selectByPrimaryKey               : <==      Total: 1
+2021-02-22 16:48:39.239 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.S.selectByPrimaryKey               : ==>  Preparing: select id, code, `name`, perms, url, `method`, pid, order_num, `type`, `status`, create_time, update_time, deleted from sys_permission where id = ? 
+2021-02-22 16:48:39.239 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.S.selectByPrimaryKey               : ==> Parameters: 0(String)
+2021-02-22 16:48:39.240 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.S.selectByPrimaryKey               : <==      Total: 0
+2021-02-22 16:48:39.240 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.S.selectByPrimaryKey               : ==>  Preparing: select id, code, `name`, perms, url, `method`, pid, order_num, `type`, `status`, create_time, update_time, deleted from sys_permission where id = ? 
+2021-02-22 16:48:39.240 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.S.selectByPrimaryKey               : ==> Parameters: 9ce621a0-ee2c-4cf6-b7bd-012a1a01ba63(String)
+2021-02-22 16:48:39.242 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.S.selectByPrimaryKey               : <==      Total: 1
+2021-02-22 16:48:39.242 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.S.selectByPrimaryKey               : ==>  Preparing: select id, code, `name`, perms, url, `method`, pid, order_num, `type`, `status`, create_time, update_time, deleted from sys_permission where id = ? 
+2021-02-22 16:48:39.242 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.S.selectByPrimaryKey               : ==> Parameters: 346df872-8964-4455-8afd-ffa6308fb18a(String)
+2021-02-22 16:48:39.243 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.S.selectByPrimaryKey               : <==      Total: 1
+2021-02-22 16:48:39.244 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.S.selectByPrimaryKey               : ==>  Preparing: select id, code, `name`, perms, url, `method`, pid, order_num, `type`, `status`, create_time, update_time, deleted from sys_permission where id = ? 
+2021-02-22 16:48:39.244 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.S.selectByPrimaryKey               : ==> Parameters: 0(String)
+2021-02-22 16:48:39.245 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.S.selectByPrimaryKey               : <==      Total: 0
+2021-02-22 16:48:39.245 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.S.selectByPrimaryKey               : ==>  Preparing: select id, code, `name`, perms, url, `method`, pid, order_num, `type`, `status`, create_time, update_time, deleted from sys_permission where id = ? 
+2021-02-22 16:48:39.245 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.S.selectByPrimaryKey               : ==> Parameters: 346df872-8964-4455-8afd-ffa6308fb18a(String)
+2021-02-22 16:48:39.246 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.S.selectByPrimaryKey               : <==      Total: 1
+2021-02-22 16:48:39.246 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.S.selectByPrimaryKey               : ==>  Preparing: select id, code, `name`, perms, url, `method`, pid, order_num, `type`, `status`, create_time, update_time, deleted from sys_permission where id = ? 
+2021-02-22 16:48:39.247 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.S.selectByPrimaryKey               : ==> Parameters: 4caeb861-354c-45f6-98b4-59f486beb511(String)
+2021-02-22 16:48:39.247 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.S.selectByPrimaryKey               : <==      Total: 1
+2021-02-22 16:48:39.248 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.S.selectByPrimaryKey               : ==>  Preparing: select id, code, `name`, perms, url, `method`, pid, order_num, `type`, `status`, create_time, update_time, deleted from sys_permission where id = ? 
+2021-02-22 16:48:39.248 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.S.selectByPrimaryKey               : ==> Parameters: 346df872-8964-4455-8afd-ffa6308fb18a(String)
+2021-02-22 16:48:39.249 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.S.selectByPrimaryKey               : <==      Total: 1
+2021-02-22 16:48:39.249 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.S.selectByPrimaryKey               : ==>  Preparing: select id, code, `name`, perms, url, `method`, pid, order_num, `type`, `status`, create_time, update_time, deleted from sys_permission where id = ? 
+2021-02-22 16:48:39.249 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.S.selectByPrimaryKey               : ==> Parameters: 4caeb861-354c-45f6-98b4-59f486beb511(String)
+2021-02-22 16:48:39.250 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.S.selectByPrimaryKey               : <==      Total: 1
+2021-02-22 16:48:39.250 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.S.selectByPrimaryKey               : ==>  Preparing: select id, code, `name`, perms, url, `method`, pid, order_num, `type`, `status`, create_time, update_time, deleted from sys_permission where id = ? 
+2021-02-22 16:48:39.250 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.S.selectByPrimaryKey               : ==> Parameters: 0(String)
+2021-02-22 16:48:39.251 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.S.selectByPrimaryKey               : <==      Total: 0
+2021-02-22 16:48:39.251 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.S.selectByPrimaryKey               : ==>  Preparing: select id, code, `name`, perms, url, `method`, pid, order_num, `type`, `status`, create_time, update_time, deleted from sys_permission where id = ? 
+2021-02-22 16:48:39.251 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.S.selectByPrimaryKey               : ==> Parameters: c095273c-7917-4503-8569-6a67a9979d56(String)
+2021-02-22 16:48:39.252 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.S.selectByPrimaryKey               : <==      Total: 1
+2021-02-22 16:48:39.256 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.SysUserMapper.selectByPrimaryKey   : ==>  Preparing: select id, username, salt, `password`, phone, dept_id, real_name, nick_name, email, `status`, sex, deleted, create_id, update_id, create_where, create_time, update_time from sys_user where id = ? 
+2021-02-22 16:48:39.256 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.SysUserMapper.selectByPrimaryKey   : ==> Parameters: 9a26f5f1-cbd2-473d-82db-1d6dcf4598f8(String)
+2021-02-22 16:48:39.257 DEBUG 8084 --- [http-nio-8080-exec-5] c.d.m.SysUserMapper.selectByPrimaryKey   : <==      Total: 1
+2021-02-22 16:48:40.957  INFO 8084 --- [http-nio-8080-exec-7] com.daniel.shiro.MyAccessControlFilter   : POST
+2021-02-22 16:48:40.957  INFO 8084 --- [http-nio-8080-exec-7] com.daniel.shiro.MyAccessControlFilter   : /api/roles
+2021-02-22 16:48:41.034 DEBUG 8084 --- [http-nio-8080-exec-7] c.d.m.SysRoleMapper.selectAll_COUNT      : ==>  Preparing: SELECT count(0) FROM sys_role WHERE deleted = 1 
+2021-02-22 16:48:41.034 DEBUG 8084 --- [http-nio-8080-exec-7] c.d.m.SysRoleMapper.selectAll_COUNT      : ==> Parameters: 
+2021-02-22 16:48:41.037 DEBUG 8084 --- [http-nio-8080-exec-7] c.d.m.SysRoleMapper.selectAll_COUNT      : <==      Total: 1
+2021-02-22 16:48:41.039 DEBUG 8084 --- [http-nio-8080-exec-7] c.daniel.mapper.SysRoleMapper.selectAll  : ==>  Preparing: select id, `name`, description, `status`, create_time, update_time, deleted from sys_role WHERE deleted = 1 LIMIT ? 
+2021-02-22 16:48:41.040 DEBUG 8084 --- [http-nio-8080-exec-7] c.daniel.mapper.SysRoleMapper.selectAll  : ==> Parameters: 10(Integer)
+2021-02-22 16:48:41.040 DEBUG 8084 --- [http-nio-8080-exec-7] c.daniel.mapper.SysRoleMapper.selectAll  : <==      Total: 6
+2021-02-22 16:48:46.313  INFO 8084 --- [http-nio-8080-exec-8] com.daniel.shiro.MyAccessControlFilter   : DELETE
+2021-02-22 16:48:46.314  INFO 8084 --- [http-nio-8080-exec-8] com.daniel.shiro.MyAccessControlFilter   : /api/role/7e19ad66-5338-4f0f-b972-4bd9d318c8f5
+2021-02-22 16:48:46.352 DEBUG 8084 --- [http-nio-8080-exec-8] c.d.m.S.updateByPrimaryKeySelective      : ==>  Preparing: update sys_role SET update_time = ?, deleted = ? where id = ? 
+2021-02-22 16:48:46.353 DEBUG 8084 --- [http-nio-8080-exec-8] c.d.m.S.updateByPrimaryKeySelective      : ==> Parameters: 2021-02-22 16:48:46.351(Timestamp), 0(Integer), 7e19ad66-5338-4f0f-b972-4bd9d318c8f5(String)
+2021-02-22 16:48:46.360 DEBUG 8084 --- [http-nio-8080-exec-8] c.d.m.S.updateByPrimaryKeySelective      : <==    Updates: 1
+2021-02-22 16:48:46.361 DEBUG 8084 --- [http-nio-8080-exec-8] c.d.m.S.getUserIdsByRoleId               : ==>  Preparing: select user_id from sys_user_role where role_id=? 
+2021-02-22 16:48:46.361 DEBUG 8084 --- [http-nio-8080-exec-8] c.d.m.S.getUserIdsByRoleId               : ==> Parameters: 7e19ad66-5338-4f0f-b972-4bd9d318c8f5(String)
+2021-02-22 16:48:46.362 DEBUG 8084 --- [http-nio-8080-exec-8] c.d.m.S.getUserIdsByRoleId               : <==      Total: 0
+2021-02-22 16:48:46.362 DEBUG 8084 --- [http-nio-8080-exec-8] c.d.m.SysUserRoleMapper.removeByUserId   : ==>  Preparing: delete from sys_user_role where user_id = ? 
+2021-02-22 16:48:46.362 DEBUG 8084 --- [http-nio-8080-exec-8] c.d.m.SysUserRoleMapper.removeByUserId   : ==> Parameters: 7e19ad66-5338-4f0f-b972-4bd9d318c8f5(String)
+2021-02-22 16:48:46.363 DEBUG 8084 --- [http-nio-8080-exec-8] c.d.m.SysUserRoleMapper.removeByUserId   : <==    Updates: 0
+2021-02-22 16:48:46.363 DEBUG 8084 --- [http-nio-8080-exec-8] c.d.m.S.removeRoleByID                   : ==>  Preparing: delete from sys_role where role_id = ? 
+2021-02-22 16:48:46.364 DEBUG 8084 --- [http-nio-8080-exec-8] c.d.m.S.removeRoleByID                   : ==> Parameters: 7e19ad66-5338-4f0f-b972-4bd9d318c8f5(String)
+2021-02-22 16:48:46.410 ERROR 8084 --- [http-nio-8080-exec-8] c.d.e.handler.RestExceptionHandler       : handlerException...{}
+
+org.springframework.jdbc.BadSqlGrammarException: 
+### Error updating database.  Cause: java.sql.SQLSyntaxErrorException: Unknown column 'role_id' in 'where clause'
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: delete from sys_role     where role_id = ?
+### Cause: java.sql.SQLSyntaxErrorException: Unknown column 'role_id' in 'where clause'
+; bad SQL grammar []; nested exception is java.sql.SQLSyntaxErrorException: Unknown column 'role_id' in 'where clause'
+	at org.springframework.jdbc.support.SQLErrorCodeSQLExceptionTranslator.doTranslate(SQLErrorCodeSQLExceptionTranslator.java:234) ~[spring-jdbc-5.1.8.RELEASE.jar:5.1.8.RELEASE]
+	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:72) ~[spring-jdbc-5.1.8.RELEASE.jar:5.1.8.RELEASE]
+	at org.mybatis.spring.MyBatisExceptionTranslator.translateExceptionIfPossible(MyBatisExceptionTranslator.java:73) ~[mybatis-spring-1.3.2.jar:1.3.2]
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:446) ~[mybatis-spring-1.3.2.jar:1.3.2]
+	at com.sun.proxy.$Proxy83.delete(Unknown Source) ~[na:na]
+	at org.mybatis.spring.SqlSessionTemplate.delete(SqlSessionTemplate.java:310) ~[mybatis-spring-1.3.2.jar:1.3.2]
+	at org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:68) ~[mybatis-3.4.6.jar:3.4.6]
+	at org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:59) ~[mybatis-3.4.6.jar:3.4.6]
+	at com.sun.proxy.$Proxy89.removeRoleByID(Unknown Source) ~[na:na]
+	at com.daniel.service.impl.RolePermissionServiceImpl.removeRoleByID(RolePermissionServiceImpl.java:77) ~[classes/:na]
+	at com.daniel.service.impl.RoleServiceImpl.deleteRole(RoleServiceImpl.java:180) ~[classes/:na]
+	at com.daniel.service.impl.RoleServiceImpl$$FastClassBySpringCGLIB$$cc1dbdcc.invoke(<generated>) ~[classes/:na]
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218) ~[spring-core-5.1.8.RELEASE.jar:5.1.8.RELEASE]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:684) ~[spring-aop-5.1.8.RELEASE.jar:5.1.8.RELEASE]
+	at com.daniel.service.impl.RoleServiceImpl$$EnhancerBySpringCGLIB$$7d261a2f.deleteRole(<generated>) ~[classes/:na]
+	at com.daniel.controller.RoleController.deleteRole(RoleController.java:69) ~[classes/:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_281]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_281]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_281]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_281]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:190) ~[spring-web-5.1.8.RELEASE.jar:5.1.8.RELEASE]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138) ~[spring-web-5.1.8.RELEASE.jar:5.1.8.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:104) ~[spring-webmvc-5.1.8.RELEASE.jar:5.1.8.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:892) ~[spring-webmvc-5.1.8.RELEASE.jar:5.1.8.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:797) ~[spring-webmvc-5.1.8.RELEASE.jar:5.1.8.RELEASE]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-5.1.8.RELEASE.jar:5.1.8.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1039) ~[spring-webmvc-5.1.8.RELEASE.jar:5.1.8.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:942) ~[spring-webmvc-5.1.8.RELEASE.jar:5.1.8.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1005) [spring-webmvc-5.1.8.RELEASE.jar:5.1.8.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.doDelete(FrameworkServlet.java:930) [spring-webmvc-5.1.8.RELEASE.jar:5.1.8.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:666) [tomcat-embed-core-9.0.21.jar:9.0.21]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:882) [spring-webmvc-5.1.8.RELEASE.jar:5.1.8.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:741) [tomcat-embed-core-9.0.21.jar:9.0.21]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231) [tomcat-embed-core-9.0.21.jar:9.0.21]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.21.jar:9.0.21]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) [tomcat-embed-websocket-9.0.21.jar:9.0.21]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-9.0.21.jar:9.0.21]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.21.jar:9.0.21]
+	at org.apache.shiro.web.servlet.ProxiedFilterChain.doFilter(ProxiedFilterChain.java:61) [shiro-web-1.4.1.jar:1.4.1]
+	at org.apache.shiro.web.servlet.AdviceFilter.executeChain(AdviceFilter.java:108) [shiro-web-1.4.1.jar:1.4.1]
+	at org.apache.shiro.web.servlet.AdviceFilter.doFilterInternal(AdviceFilter.java:137) [shiro-web-1.4.1.jar:1.4.1]
+	at org.apache.shiro.web.servlet.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:125) [shiro-web-1.4.1.jar:1.4.1]
+	at org.apache.shiro.web.servlet.ProxiedFilterChain.doFilter(ProxiedFilterChain.java:66) [shiro-web-1.4.1.jar:1.4.1]
+	at org.apache.shiro.web.servlet.AdviceFilter.executeChain(AdviceFilter.java:108) [shiro-web-1.4.1.jar:1.4.1]
+	at org.apache.shiro.web.servlet.AdviceFilter.doFilterInternal(AdviceFilter.java:137) [shiro-web-1.4.1.jar:1.4.1]
+	at org.apache.shiro.web.servlet.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:125) [shiro-web-1.4.1.jar:1.4.1]
+	at org.apache.shiro.web.servlet.ProxiedFilterChain.doFilter(ProxiedFilterChain.java:66) [shiro-web-1.4.1.jar:1.4.1]
+	at org.apache.shiro.web.servlet.AbstractShiroFilter.executeChain(AbstractShiroFilter.java:449) [shiro-web-1.4.1.jar:1.4.1]
+	at org.apache.shiro.web.servlet.AbstractShiroFilter$1.call(AbstractShiroFilter.java:365) [shiro-web-1.4.1.jar:1.4.1]
+	at org.apache.shiro.subject.support.SubjectCallable.doCall(SubjectCallable.java:90) [shiro-core-1.4.1.jar:1.4.1]
+	at org.apache.shiro.subject.support.SubjectCallable.call(SubjectCallable.java:83) [shiro-core-1.4.1.jar:1.4.1]
+	at org.apache.shiro.subject.support.DelegatingSubject.execute(DelegatingSubject.java:387) [shiro-core-1.4.1.jar:1.4.1]
+	at org.apache.shiro.web.servlet.AbstractShiroFilter.doFilterInternal(AbstractShiroFilter.java:362) [shiro-web-1.4.1.jar:1.4.1]
+	at org.apache.shiro.web.servlet.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:125) [shiro-web-1.4.1.jar:1.4.1]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-9.0.21.jar:9.0.21]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.21.jar:9.0.21]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:99) [spring-web-5.1.8.RELEASE.jar:5.1.8.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:109) [spring-web-5.1.8.RELEASE.jar:5.1.8.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-9.0.21.jar:9.0.21]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.21.jar:9.0.21]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:92) [spring-web-5.1.8.RELEASE.jar:5.1.8.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:109) [spring-web-5.1.8.RELEASE.jar:5.1.8.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-9.0.21.jar:9.0.21]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.21.jar:9.0.21]
+	at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:93) [spring-web-5.1.8.RELEASE.jar:5.1.8.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:109) [spring-web-5.1.8.RELEASE.jar:5.1.8.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-9.0.21.jar:9.0.21]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.21.jar:9.0.21]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:200) [spring-web-5.1.8.RELEASE.jar:5.1.8.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:109) [spring-web-5.1.8.RELEASE.jar:5.1.8.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) [tomcat-embed-core-9.0.21.jar:9.0.21]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) [tomcat-embed-core-9.0.21.jar:9.0.21]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202) [tomcat-embed-core-9.0.21.jar:9.0.21]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96) [tomcat-embed-core-9.0.21.jar:9.0.21]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:490) [tomcat-embed-core-9.0.21.jar:9.0.21]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139) [tomcat-embed-core-9.0.21.jar:9.0.21]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) [tomcat-embed-core-9.0.21.jar:9.0.21]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) [tomcat-embed-core-9.0.21.jar:9.0.21]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343) [tomcat-embed-core-9.0.21.jar:9.0.21]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:408) [tomcat-embed-core-9.0.21.jar:9.0.21]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66) [tomcat-embed-core-9.0.21.jar:9.0.21]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:853) [tomcat-embed-core-9.0.21.jar:9.0.21]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1587) [tomcat-embed-core-9.0.21.jar:9.0.21]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) [tomcat-embed-core-9.0.21.jar:9.0.21]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [na:1.8.0_281]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [na:1.8.0_281]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-9.0.21.jar:9.0.21]
+	at java.lang.Thread.run(Thread.java:748) [na:1.8.0_281]
+Caused by: java.sql.SQLSyntaxErrorException: Unknown column 'role_id' in 'where clause'
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120) ~[mysql-connector-java-8.0.22.jar:8.0.22]
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97) ~[mysql-connector-java-8.0.22.jar:8.0.22]
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[mysql-connector-java-8.0.22.jar:8.0.22]
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:953) ~[mysql-connector-java-8.0.22.jar:8.0.22]
+	at com.mysql.cj.jdbc.ClientPreparedStatement.execute(ClientPreparedStatement.java:370) ~[mysql-connector-java-8.0.22.jar:8.0.22]
+	at com.alibaba.druid.pool.DruidPooledPreparedStatement.execute(DruidPooledPreparedStatement.java:497) ~[druid-1.2.4.jar:1.2.4]
+	at sun.reflect.GeneratedMethodAccessor105.invoke(Unknown Source) ~[na:na]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_281]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_281]
+	at org.apache.ibatis.logging.jdbc.PreparedStatementLogger.invoke(PreparedStatementLogger.java:59) ~[mybatis-3.4.6.jar:3.4.6]
+	at com.sun.proxy.$Proxy127.execute(Unknown Source) ~[na:na]
+	at org.apache.ibatis.executor.statement.PreparedStatementHandler.update(PreparedStatementHandler.java:46) ~[mybatis-3.4.6.jar:3.4.6]
+	at org.apache.ibatis.executor.statement.RoutingStatementHandler.update(RoutingStatementHandler.java:74) ~[mybatis-3.4.6.jar:3.4.6]
+	at org.apache.ibatis.executor.SimpleExecutor.doUpdate(SimpleExecutor.java:50) ~[mybatis-3.4.6.jar:3.4.6]
+	at org.apache.ibatis.executor.BaseExecutor.update(BaseExecutor.java:117) ~[mybatis-3.4.6.jar:3.4.6]
+	at org.apache.ibatis.executor.CachingExecutor.update(CachingExecutor.java:76) ~[mybatis-3.4.6.jar:3.4.6]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_281]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_281]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_281]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_281]
+	at org.apache.ibatis.plugin.Plugin.invoke(Plugin.java:63) ~[mybatis-3.4.6.jar:3.4.6]
+	at com.sun.proxy.$Proxy125.update(Unknown Source) ~[na:na]
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.update(DefaultSqlSession.java:198) ~[mybatis-3.4.6.jar:3.4.6]
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.delete(DefaultSqlSession.java:213) ~[mybatis-3.4.6.jar:3.4.6]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_281]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_281]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_281]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_281]
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:433) ~[mybatis-spring-1.3.2.jar:1.3.2]
+	... 84 common frames omitted
+
+2021-02-22 16:50:08.189  INFO 9212 --- [main] com.daniel.AmowApplication               : Starting AmowApplication on 习武之人专用Dell with PID 9212 (E:\JavaProject\AMOW\target\classes started by daniel in E:\JavaProject\AMOW)
+2021-02-22 16:50:08.190 DEBUG 9212 --- [main] com.daniel.AmowApplication               : Running with Spring Boot v2.1.6.RELEASE, Spring v5.1.8.RELEASE
+2021-02-22 16:50:08.191  INFO 9212 --- [main] com.daniel.AmowApplication               : No active profile set, falling back to default profiles: default
+2021-02-22 16:50:08.973  INFO 9212 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-02-22 16:50:08.976  INFO 9212 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2021-02-22 16:50:09.004  INFO 9212 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 18ms. Found 0 repository interfaces.
+2021-02-22 16:50:09.287  INFO 9212 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$c78ed4b6] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-02-22 16:50:09.301  INFO 9212 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'shiroConfig' of type [com.daniel.config.ShiroConfig$$EnhancerBySpringCGLIB$$9b673684] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-02-22 16:50:09.705  INFO 9212 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'redisConfig' of type [com.daniel.config.RedisConfig$$EnhancerBySpringCGLIB$$e635bdce] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-02-22 16:50:09.722  INFO 9212 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'spring.redis-org.springframework.boot.autoconfigure.data.redis.RedisProperties' of type [org.springframework.boot.autoconfigure.data.redis.RedisProperties] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-02-22 16:50:09.725  INFO 9212 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.boot.autoconfigure.data.redis.LettuceConnectionConfiguration' of type [org.springframework.boot.autoconfigure.data.redis.LettuceConnectionConfiguration$$EnhancerBySpringCGLIB$$dca89300] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-02-22 16:50:09.776  INFO 9212 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'lettuceClientResources' of type [io.lettuce.core.resource.DefaultClientResources] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-02-22 16:50:09.824  INFO 9212 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'redisConnectionFactory' of type [org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-02-22 16:50:09.833  INFO 9212 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'redisTemplate' of type [org.springframework.data.redis.core.RedisTemplate] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-02-22 16:50:09.835  INFO 9212 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'redisService' of type [com.daniel.service.RedisService] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-02-22 16:50:09.836  INFO 9212 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'myHashedCredentialsMatcher' of type [com.daniel.shiro.MyHashedCredentialsMatcher] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-02-22 16:50:09.838  INFO 9212 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'cacheManager' of type [com.daniel.shiro.RedisCacheManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-02-22 16:50:09.839  INFO 9212 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'myRealm' of type [com.daniel.shiro.MyRealm] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-02-22 16:50:09.842  INFO 9212 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'securityManager' of type [org.apache.shiro.web.mgt.DefaultWebSecurityManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-02-22 16:50:09.848  INFO 9212 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'authorizationAttributeSourceAdvisor' of type [org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-02-22 16:50:10.090  INFO 9212 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2021-02-22 16:50:10.106  INFO 9212 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-02-22 16:50:10.106  INFO 9212 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.21]
+2021-02-22 16:50:10.110  INFO 9212 --- [main] o.a.catalina.core.AprLifecycleListener   : Loaded APR based Apache Tomcat Native library [1.2.25] using APR version [1.7.0].
+2021-02-22 16:50:10.111  INFO 9212 --- [main] o.a.catalina.core.AprLifecycleListener   : APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+2021-02-22 16:50:10.111  INFO 9212 --- [main] o.a.catalina.core.AprLifecycleListener   : APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+2021-02-22 16:50:10.114  INFO 9212 --- [main] o.a.catalina.core.AprLifecycleListener   : OpenSSL successfully initialized [OpenSSL 1.1.1g  21 Apr 2020]
+2021-02-22 16:50:10.187  INFO 9212 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-02-22 16:50:10.187  INFO 9212 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1969 ms
+2021-02-22 16:50:10.277  INFO 9212 --- [main] c.a.d.s.b.a.DruidDataSourceAutoConfigure : Init DruidDataSource
+2021-02-22 16:50:10.568  INFO 9212 --- [main] com.alibaba.druid.pool.DruidDataSource   : {dataSource-1} inited
+2021-02-22 16:50:11.127  INFO 9212 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+2021-02-22 16:50:11.285  INFO 9212 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-02-22 16:50:11.576  INFO 9212 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2021-02-22 16:50:11.588  INFO 9212 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2021-02-22 16:50:11.616  INFO 9212 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2021-02-22 16:50:11.788  INFO 9212 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: pageInfoUsingPOST_1
+2021-02-22 16:50:11.819  INFO 9212 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2021-02-22 16:50:11.821  INFO 9212 --- [main] com.daniel.AmowApplication               : Started AmowApplication in 3.903 seconds (JVM running for 4.76)
+2021-02-22 16:50:19.225  INFO 9212 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-02-22 16:50:19.225  INFO 9212 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-02-22 16:50:19.232  INFO 9212 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 7 ms
+2021-02-22 16:50:19.330 DEBUG 9212 --- [http-nio-8080-exec-1] c.d.m.SysUserMapper.selectByUsername     : ==>  Preparing: select id, username, salt, `password`, phone, dept_id, real_name, nick_name, email, `status`, sex, deleted, create_id, update_id, create_where, create_time, update_time from sys_user where username=? and deleted = 1 
+2021-02-22 16:50:19.345 DEBUG 9212 --- [http-nio-8080-exec-1] c.d.m.SysUserMapper.selectByUsername     : ==> Parameters: admin(String)
+2021-02-22 16:50:19.360 DEBUG 9212 --- [http-nio-8080-exec-1] c.d.m.SysUserMapper.selectByUsername     : <==      Total: 1
+2021-02-22 16:50:19.390  INFO 9212 --- [http-nio-8080-exec-1] com.daniel.service.impl.UserServiceImpl  : accessToken=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI5YTI2ZjVmMS1jYmQyLTQ3M2QtODJkYi0xZDZkY2Y0NTk4ZjgiLCJyb2xlcy1pbmZvcy1rZXkiOlsiYWRtaW4iXSwicGVybWlzc2lvbnMtaW5mb3Mta2V5IjpbInN5czp1c2VyOmFkZCIsInN5czp1c2VyOnVwZGF0ZSIsInN5czp1c2VyOmRlbGV0ZSIsInN5czp1c2VyOmxpc3QiXSwiaXNzIjoiZGFuaWVsIiwiand0LXVzZXItbmFtZS1rZXkiOiJhZG1pbiIsImV4cCI6MTYxMzk5MTAxOSwiaWF0IjoxNjEzOTgzODE5fQ.c4Cp1h1wKbe9riclEaphvztAi4k0Kn8ez-ECwLvBfNQ
+2021-02-22 16:50:19.390  INFO 9212 --- [http-nio-8080-exec-1] com.daniel.service.impl.UserServiceImpl  : refreshToken=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI5YTI2ZjVmMS1jYmQyLTQ3M2QtODJkYi0xZDZkY2Y0NTk4ZjgiLCJpc3MiOiJkYW5pZWwiLCJqd3QtdXNlci1uYW1lLWtleSI6ImFkbWluIiwiZXhwIjoxNjE0MDEyNjE5LCJpYXQiOjE2MTM5ODM4MTl9.TDyIiBAVgYAn6jWLSz2dtI8wUPkF_Yw-xJWR0bXU5Ik
+2021-02-22 16:50:19.806  INFO 9212 --- [http-nio-8080-exec-7] com.daniel.shiro.MyAccessControlFilter   : GET
+2021-02-22 16:50:19.807  INFO 9212 --- [http-nio-8080-exec-7] com.daniel.shiro.MyAccessControlFilter   : /api/home
+2021-02-22 16:50:19.901  INFO 9212 --- [http-nio-8080-exec-7] io.lettuce.core.EpollProvider            : Starting without optional epoll library
+2021-02-22 16:50:19.902  INFO 9212 --- [http-nio-8080-exec-7] io.lettuce.core.KqueueProvider           : Starting without optional kqueue library
+2021-02-22 16:50:20.632 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.SysPermissionMapper.selectAll      : ==>  Preparing: select id, code, `name`, perms, url, `method`, pid, order_num, `type`, `status`, create_time, update_time, deleted from sys_permission where deleted = 1 order by order_num desc 
+2021-02-22 16:50:20.632 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.SysPermissionMapper.selectAll      : ==> Parameters: 
+2021-02-22 16:50:20.643 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.SysPermissionMapper.selectAll      : <==      Total: 38
+2021-02-22 16:50:20.643 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.S.selectByPrimaryKey               : ==>  Preparing: select id, code, `name`, perms, url, `method`, pid, order_num, `type`, `status`, create_time, update_time, deleted from sys_permission where id = ? 
+2021-02-22 16:50:20.643 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.S.selectByPrimaryKey               : ==> Parameters: 8f393e44-b585-4875-866d-71f88fea9659(String)
+2021-02-22 16:50:20.645 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.S.selectByPrimaryKey               : <==      Total: 1
+2021-02-22 16:50:20.645 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.S.selectByPrimaryKey               : ==>  Preparing: select id, code, `name`, perms, url, `method`, pid, order_num, `type`, `status`, create_time, update_time, deleted from sys_permission where id = ? 
+2021-02-22 16:50:20.645 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.S.selectByPrimaryKey               : ==> Parameters: 0545d9d1-c82c-44c2-85e5-0b6ac4042515(String)
+2021-02-22 16:50:20.646 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.S.selectByPrimaryKey               : <==      Total: 1
+2021-02-22 16:50:20.647 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.S.selectByPrimaryKey               : ==>  Preparing: select id, code, `name`, perms, url, `method`, pid, order_num, `type`, `status`, create_time, update_time, deleted from sys_permission where id = ? 
+2021-02-22 16:50:20.647 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.S.selectByPrimaryKey               : ==> Parameters: 4caeb861-354c-45f6-98b4-59f486beb511(String)
+2021-02-22 16:50:20.648 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.S.selectByPrimaryKey               : <==      Total: 1
+2021-02-22 16:50:20.649 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.S.selectByPrimaryKey               : ==>  Preparing: select id, code, `name`, perms, url, `method`, pid, order_num, `type`, `status`, create_time, update_time, deleted from sys_permission where id = ? 
+2021-02-22 16:50:20.649 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.S.selectByPrimaryKey               : ==> Parameters: c095273c-7917-4503-8569-6a67a9979d56(String)
+2021-02-22 16:50:20.651 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.S.selectByPrimaryKey               : <==      Total: 1
+2021-02-22 16:50:20.651 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.S.selectByPrimaryKey               : ==>  Preparing: select id, code, `name`, perms, url, `method`, pid, order_num, `type`, `status`, create_time, update_time, deleted from sys_permission where id = ? 
+2021-02-22 16:50:20.651 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.S.selectByPrimaryKey               : ==> Parameters: 9ce621a0-ee2c-4cf6-b7bd-012a1a01ba63(String)
+2021-02-22 16:50:20.653 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.S.selectByPrimaryKey               : <==      Total: 1
+2021-02-22 16:50:20.654 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.S.selectByPrimaryKey               : ==>  Preparing: select id, code, `name`, perms, url, `method`, pid, order_num, `type`, `status`, create_time, update_time, deleted from sys_permission where id = ? 
+2021-02-22 16:50:20.654 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.S.selectByPrimaryKey               : ==> Parameters: 0545d9d1-c82c-44c2-85e5-0b6ac4042515(String)
+2021-02-22 16:50:20.655 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.S.selectByPrimaryKey               : <==      Total: 1
+2021-02-22 16:50:20.656 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.S.selectByPrimaryKey               : ==>  Preparing: select id, code, `name`, perms, url, `method`, pid, order_num, `type`, `status`, create_time, update_time, deleted from sys_permission where id = ? 
+2021-02-22 16:50:20.656 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.S.selectByPrimaryKey               : ==> Parameters: ccef525e-3392-45f8-969f-d552b142dc0f(String)
+2021-02-22 16:50:20.657 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.S.selectByPrimaryKey               : <==      Total: 1
+2021-02-22 16:50:20.658 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.S.selectByPrimaryKey               : ==>  Preparing: select id, code, `name`, perms, url, `method`, pid, order_num, `type`, `status`, create_time, update_time, deleted from sys_permission where id = ? 
+2021-02-22 16:50:20.658 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.S.selectByPrimaryKey               : ==> Parameters: 9ce621a0-ee2c-4cf6-b7bd-012a1a01ba63(String)
+2021-02-22 16:50:20.660 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.S.selectByPrimaryKey               : <==      Total: 1
+2021-02-22 16:50:20.660 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.S.selectByPrimaryKey               : ==>  Preparing: select id, code, `name`, perms, url, `method`, pid, order_num, `type`, `status`, create_time, update_time, deleted from sys_permission where id = ? 
+2021-02-22 16:50:20.660 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.S.selectByPrimaryKey               : ==> Parameters: c095273c-7917-4503-8569-6a67a9979d56(String)
+2021-02-22 16:50:20.661 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.S.selectByPrimaryKey               : <==      Total: 1
+2021-02-22 16:50:20.662 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.S.selectByPrimaryKey               : ==>  Preparing: select id, code, `name`, perms, url, `method`, pid, order_num, `type`, `status`, create_time, update_time, deleted from sys_permission where id = ? 
+2021-02-22 16:50:20.662 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.S.selectByPrimaryKey               : ==> Parameters: 8f393e44-b585-4875-866d-71f88fea9659(String)
+2021-02-22 16:50:20.663 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.S.selectByPrimaryKey               : <==      Total: 1
+2021-02-22 16:50:20.663 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.S.selectByPrimaryKey               : ==>  Preparing: select id, code, `name`, perms, url, `method`, pid, order_num, `type`, `status`, create_time, update_time, deleted from sys_permission where id = ? 
+2021-02-22 16:50:20.663 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.S.selectByPrimaryKey               : ==> Parameters: 290c0240-0914-487c-b4e9-6635bf5ebfec(String)
+2021-02-22 16:50:20.664 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.S.selectByPrimaryKey               : <==      Total: 1
+2021-02-22 16:50:20.664 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.S.selectByPrimaryKey               : ==>  Preparing: select id, code, `name`, perms, url, `method`, pid, order_num, `type`, `status`, create_time, update_time, deleted from sys_permission where id = ? 
+2021-02-22 16:50:20.665 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.S.selectByPrimaryKey               : ==> Parameters: 9ce621a0-ee2c-4cf6-b7bd-012a1a01ba63(String)
+2021-02-22 16:50:20.665 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.S.selectByPrimaryKey               : <==      Total: 1
+2021-02-22 16:50:20.666 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.S.selectByPrimaryKey               : ==>  Preparing: select id, code, `name`, perms, url, `method`, pid, order_num, `type`, `status`, create_time, update_time, deleted from sys_permission where id = ? 
+2021-02-22 16:50:20.666 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.S.selectByPrimaryKey               : ==> Parameters: c198d1cb-ad4d-4001-9375-9ec8ee04053d(String)
+2021-02-22 16:50:20.667 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.S.selectByPrimaryKey               : <==      Total: 1
+2021-02-22 16:50:20.668 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.S.selectByPrimaryKey               : ==>  Preparing: select id, code, `name`, perms, url, `method`, pid, order_num, `type`, `status`, create_time, update_time, deleted from sys_permission where id = ? 
+2021-02-22 16:50:20.668 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.S.selectByPrimaryKey               : ==> Parameters: 290c0240-0914-487c-b4e9-6635bf5ebfec(String)
+2021-02-22 16:50:20.669 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.S.selectByPrimaryKey               : <==      Total: 1
+2021-02-22 16:50:20.671 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.S.selectByPrimaryKey               : ==>  Preparing: select id, code, `name`, perms, url, `method`, pid, order_num, `type`, `status`, create_time, update_time, deleted from sys_permission where id = ? 
+2021-02-22 16:50:20.671 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.S.selectByPrimaryKey               : ==> Parameters: 0(String)
+2021-02-22 16:50:20.672 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.S.selectByPrimaryKey               : <==      Total: 0
+2021-02-22 16:50:20.672 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.S.selectByPrimaryKey               : ==>  Preparing: select id, code, `name`, perms, url, `method`, pid, order_num, `type`, `status`, create_time, update_time, deleted from sys_permission where id = ? 
+2021-02-22 16:50:20.673 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.S.selectByPrimaryKey               : ==> Parameters: 290c0240-0914-487c-b4e9-6635bf5ebfec(String)
+2021-02-22 16:50:20.674 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.S.selectByPrimaryKey               : <==      Total: 1
+2021-02-22 16:50:20.674 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.S.selectByPrimaryKey               : ==>  Preparing: select id, code, `name`, perms, url, `method`, pid, order_num, `type`, `status`, create_time, update_time, deleted from sys_permission where id = ? 
+2021-02-22 16:50:20.674 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.S.selectByPrimaryKey               : ==> Parameters: 8f393e44-b585-4875-866d-71f88fea9659(String)
+2021-02-22 16:50:20.675 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.S.selectByPrimaryKey               : <==      Total: 1
+2021-02-22 16:50:20.676 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.S.selectByPrimaryKey               : ==>  Preparing: select id, code, `name`, perms, url, `method`, pid, order_num, `type`, `status`, create_time, update_time, deleted from sys_permission where id = ? 
+2021-02-22 16:50:20.676 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.S.selectByPrimaryKey               : ==> Parameters: 9ce621a0-ee2c-4cf6-b7bd-012a1a01ba63(String)
+2021-02-22 16:50:20.678 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.S.selectByPrimaryKey               : <==      Total: 1
+2021-02-22 16:50:20.678 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.S.selectByPrimaryKey               : ==>  Preparing: select id, code, `name`, perms, url, `method`, pid, order_num, `type`, `status`, create_time, update_time, deleted from sys_permission where id = ? 
+2021-02-22 16:50:20.678 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.S.selectByPrimaryKey               : ==> Parameters: c198d1cb-ad4d-4001-9375-9ec8ee04053d(String)
+2021-02-22 16:50:20.679 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.S.selectByPrimaryKey               : <==      Total: 1
+2021-02-22 16:50:20.680 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.S.selectByPrimaryKey               : ==>  Preparing: select id, code, `name`, perms, url, `method`, pid, order_num, `type`, `status`, create_time, update_time, deleted from sys_permission where id = ? 
+2021-02-22 16:50:20.680 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.S.selectByPrimaryKey               : ==> Parameters: c095273c-7917-4503-8569-6a67a9979d56(String)
+2021-02-22 16:50:20.681 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.S.selectByPrimaryKey               : <==      Total: 1
+2021-02-22 16:50:20.682 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.S.selectByPrimaryKey               : ==>  Preparing: select id, code, `name`, perms, url, `method`, pid, order_num, `type`, `status`, create_time, update_time, deleted from sys_permission where id = ? 
+2021-02-22 16:50:20.682 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.S.selectByPrimaryKey               : ==> Parameters: c198d1cb-ad4d-4001-9375-9ec8ee04053d(String)
+2021-02-22 16:50:20.683 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.S.selectByPrimaryKey               : <==      Total: 1
+2021-02-22 16:50:20.684 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.S.selectByPrimaryKey               : ==>  Preparing: select id, code, `name`, perms, url, `method`, pid, order_num, `type`, `status`, create_time, update_time, deleted from sys_permission where id = ? 
+2021-02-22 16:50:20.684 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.S.selectByPrimaryKey               : ==> Parameters: f1ea1abb-3dde-4196-b054-2ae2fcfe7c23(String)
+2021-02-22 16:50:20.684 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.S.selectByPrimaryKey               : <==      Total: 1
+2021-02-22 16:50:20.685 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.S.selectByPrimaryKey               : ==>  Preparing: select id, code, `name`, perms, url, `method`, pid, order_num, `type`, `status`, create_time, update_time, deleted from sys_permission where id = ? 
+2021-02-22 16:50:20.685 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.S.selectByPrimaryKey               : ==> Parameters: c198d1cb-ad4d-4001-9375-9ec8ee04053d(String)
+2021-02-22 16:50:20.686 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.S.selectByPrimaryKey               : <==      Total: 1
+2021-02-22 16:50:20.686 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.S.selectByPrimaryKey               : ==>  Preparing: select id, code, `name`, perms, url, `method`, pid, order_num, `type`, `status`, create_time, update_time, deleted from sys_permission where id = ? 
+2021-02-22 16:50:20.686 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.S.selectByPrimaryKey               : ==> Parameters: c198d1cb-ad4d-4001-9375-9ec8ee04053d(String)
+2021-02-22 16:50:20.688 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.S.selectByPrimaryKey               : <==      Total: 1
+2021-02-22 16:50:20.688 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.S.selectByPrimaryKey               : ==>  Preparing: select id, code, `name`, perms, url, `method`, pid, order_num, `type`, `status`, create_time, update_time, deleted from sys_permission where id = ? 
+2021-02-22 16:50:20.688 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.S.selectByPrimaryKey               : ==> Parameters: 8f393e44-b585-4875-866d-71f88fea9659(String)
+2021-02-22 16:50:20.689 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.S.selectByPrimaryKey               : <==      Total: 1
+2021-02-22 16:50:20.690 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.S.selectByPrimaryKey               : ==>  Preparing: select id, code, `name`, perms, url, `method`, pid, order_num, `type`, `status`, create_time, update_time, deleted from sys_permission where id = ? 
+2021-02-22 16:50:20.690 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.S.selectByPrimaryKey               : ==> Parameters: 290c0240-0914-487c-b4e9-6635bf5ebfec(String)
+2021-02-22 16:50:20.691 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.S.selectByPrimaryKey               : <==      Total: 1
+2021-02-22 16:50:20.691 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.S.selectByPrimaryKey               : ==>  Preparing: select id, code, `name`, perms, url, `method`, pid, order_num, `type`, `status`, create_time, update_time, deleted from sys_permission where id = ? 
+2021-02-22 16:50:20.692 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.S.selectByPrimaryKey               : ==> Parameters: f1ea1abb-3dde-4196-b054-2ae2fcfe7c23(String)
+2021-02-22 16:50:20.693 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.S.selectByPrimaryKey               : <==      Total: 1
+2021-02-22 16:50:20.693 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.S.selectByPrimaryKey               : ==>  Preparing: select id, code, `name`, perms, url, `method`, pid, order_num, `type`, `status`, create_time, update_time, deleted from sys_permission where id = ? 
+2021-02-22 16:50:20.693 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.S.selectByPrimaryKey               : ==> Parameters: 346df872-8964-4455-8afd-ffa6308fb18a(String)
+2021-02-22 16:50:20.694 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.S.selectByPrimaryKey               : <==      Total: 1
+2021-02-22 16:50:20.694 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.S.selectByPrimaryKey               : ==>  Preparing: select id, code, `name`, perms, url, `method`, pid, order_num, `type`, `status`, create_time, update_time, deleted from sys_permission where id = ? 
+2021-02-22 16:50:20.694 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.S.selectByPrimaryKey               : ==> Parameters: 0(String)
+2021-02-22 16:50:20.695 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.S.selectByPrimaryKey               : <==      Total: 0
+2021-02-22 16:50:20.696 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.S.selectByPrimaryKey               : ==>  Preparing: select id, code, `name`, perms, url, `method`, pid, order_num, `type`, `status`, create_time, update_time, deleted from sys_permission where id = ? 
+2021-02-22 16:50:20.696 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.S.selectByPrimaryKey               : ==> Parameters: 9ce621a0-ee2c-4cf6-b7bd-012a1a01ba63(String)
+2021-02-22 16:50:20.697 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.S.selectByPrimaryKey               : <==      Total: 1
+2021-02-22 16:50:20.697 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.S.selectByPrimaryKey               : ==>  Preparing: select id, code, `name`, perms, url, `method`, pid, order_num, `type`, `status`, create_time, update_time, deleted from sys_permission where id = ? 
+2021-02-22 16:50:20.697 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.S.selectByPrimaryKey               : ==> Parameters: 346df872-8964-4455-8afd-ffa6308fb18a(String)
+2021-02-22 16:50:20.698 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.S.selectByPrimaryKey               : <==      Total: 1
+2021-02-22 16:50:20.698 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.S.selectByPrimaryKey               : ==>  Preparing: select id, code, `name`, perms, url, `method`, pid, order_num, `type`, `status`, create_time, update_time, deleted from sys_permission where id = ? 
+2021-02-22 16:50:20.699 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.S.selectByPrimaryKey               : ==> Parameters: 0(String)
+2021-02-22 16:50:20.699 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.S.selectByPrimaryKey               : <==      Total: 0
+2021-02-22 16:50:20.699 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.S.selectByPrimaryKey               : ==>  Preparing: select id, code, `name`, perms, url, `method`, pid, order_num, `type`, `status`, create_time, update_time, deleted from sys_permission where id = ? 
+2021-02-22 16:50:20.699 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.S.selectByPrimaryKey               : ==> Parameters: 346df872-8964-4455-8afd-ffa6308fb18a(String)
+2021-02-22 16:50:20.700 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.S.selectByPrimaryKey               : <==      Total: 1
+2021-02-22 16:50:20.700 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.S.selectByPrimaryKey               : ==>  Preparing: select id, code, `name`, perms, url, `method`, pid, order_num, `type`, `status`, create_time, update_time, deleted from sys_permission where id = ? 
+2021-02-22 16:50:20.701 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.S.selectByPrimaryKey               : ==> Parameters: 4caeb861-354c-45f6-98b4-59f486beb511(String)
+2021-02-22 16:50:20.701 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.S.selectByPrimaryKey               : <==      Total: 1
+2021-02-22 16:50:20.701 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.S.selectByPrimaryKey               : ==>  Preparing: select id, code, `name`, perms, url, `method`, pid, order_num, `type`, `status`, create_time, update_time, deleted from sys_permission where id = ? 
+2021-02-22 16:50:20.701 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.S.selectByPrimaryKey               : ==> Parameters: 346df872-8964-4455-8afd-ffa6308fb18a(String)
+2021-02-22 16:50:20.702 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.S.selectByPrimaryKey               : <==      Total: 1
+2021-02-22 16:50:20.702 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.S.selectByPrimaryKey               : ==>  Preparing: select id, code, `name`, perms, url, `method`, pid, order_num, `type`, `status`, create_time, update_time, deleted from sys_permission where id = ? 
+2021-02-22 16:50:20.702 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.S.selectByPrimaryKey               : ==> Parameters: 4caeb861-354c-45f6-98b4-59f486beb511(String)
+2021-02-22 16:50:20.703 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.S.selectByPrimaryKey               : <==      Total: 1
+2021-02-22 16:50:20.703 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.S.selectByPrimaryKey               : ==>  Preparing: select id, code, `name`, perms, url, `method`, pid, order_num, `type`, `status`, create_time, update_time, deleted from sys_permission where id = ? 
+2021-02-22 16:50:20.703 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.S.selectByPrimaryKey               : ==> Parameters: 0(String)
+2021-02-22 16:50:20.704 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.S.selectByPrimaryKey               : <==      Total: 0
+2021-02-22 16:50:20.704 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.S.selectByPrimaryKey               : ==>  Preparing: select id, code, `name`, perms, url, `method`, pid, order_num, `type`, `status`, create_time, update_time, deleted from sys_permission where id = ? 
+2021-02-22 16:50:20.704 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.S.selectByPrimaryKey               : ==> Parameters: c095273c-7917-4503-8569-6a67a9979d56(String)
+2021-02-22 16:50:20.705 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.S.selectByPrimaryKey               : <==      Total: 1
+2021-02-22 16:50:20.710 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.SysUserMapper.selectByPrimaryKey   : ==>  Preparing: select id, username, salt, `password`, phone, dept_id, real_name, nick_name, email, `status`, sex, deleted, create_id, update_id, create_where, create_time, update_time from sys_user where id = ? 
+2021-02-22 16:50:20.710 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.SysUserMapper.selectByPrimaryKey   : ==> Parameters: 9a26f5f1-cbd2-473d-82db-1d6dcf4598f8(String)
+2021-02-22 16:50:20.711 DEBUG 9212 --- [http-nio-8080-exec-7] c.d.m.SysUserMapper.selectByPrimaryKey   : <==      Total: 1
+2021-02-22 16:50:21.810  INFO 9212 --- [http-nio-8080-exec-6] com.daniel.shiro.MyAccessControlFilter   : POST
+2021-02-22 16:50:21.810  INFO 9212 --- [http-nio-8080-exec-6] com.daniel.shiro.MyAccessControlFilter   : /api/roles
+2021-02-22 16:50:21.910 DEBUG 9212 --- [http-nio-8080-exec-6] c.d.m.SysRoleMapper.selectAll_COUNT      : ==>  Preparing: SELECT count(0) FROM sys_role WHERE deleted = 1 
+2021-02-22 16:50:21.911 DEBUG 9212 --- [http-nio-8080-exec-6] c.d.m.SysRoleMapper.selectAll_COUNT      : ==> Parameters: 
+2021-02-22 16:50:21.914 DEBUG 9212 --- [http-nio-8080-exec-6] c.d.m.SysRoleMapper.selectAll_COUNT      : <==      Total: 1
+2021-02-22 16:50:21.917 DEBUG 9212 --- [http-nio-8080-exec-6] c.daniel.mapper.SysRoleMapper.selectAll  : ==>  Preparing: select id, `name`, description, `status`, create_time, update_time, deleted from sys_role WHERE deleted = 1 LIMIT ? 
+2021-02-22 16:50:21.918 DEBUG 9212 --- [http-nio-8080-exec-6] c.daniel.mapper.SysRoleMapper.selectAll  : ==> Parameters: 10(Integer)
+2021-02-22 16:50:21.919 DEBUG 9212 --- [http-nio-8080-exec-6] c.daniel.mapper.SysRoleMapper.selectAll  : <==      Total: 5
+2021-02-22 16:50:27.985  INFO 9212 --- [http-nio-8080-exec-5] com.daniel.shiro.MyAccessControlFilter   : DELETE
+2021-02-22 16:50:27.986  INFO 9212 --- [http-nio-8080-exec-5] com.daniel.shiro.MyAccessControlFilter   : /api/role/9f09fc31-dcec-4687-aed9-7be34f40fd66
+2021-02-22 16:50:28.014 DEBUG 9212 --- [http-nio-8080-exec-5] c.d.m.S.updateByPrimaryKeySelective      : ==>  Preparing: update sys_role SET update_time = ?, deleted = ? where id = ? 
+2021-02-22 16:50:28.015 DEBUG 9212 --- [http-nio-8080-exec-5] c.d.m.S.updateByPrimaryKeySelective      : ==> Parameters: 2021-02-22 16:50:28.013(Timestamp), 0(Integer), 9f09fc31-dcec-4687-aed9-7be34f40fd66(String)
+2021-02-22 16:50:28.022 DEBUG 9212 --- [http-nio-8080-exec-5] c.d.m.S.updateByPrimaryKeySelective      : <==    Updates: 1
+2021-02-22 16:50:28.023 DEBUG 9212 --- [http-nio-8080-exec-5] c.d.m.S.getUserIdsByRoleId               : ==>  Preparing: select user_id from sys_user_role where role_id=? 
+2021-02-22 16:50:28.023 DEBUG 9212 --- [http-nio-8080-exec-5] c.d.m.S.getUserIdsByRoleId               : ==> Parameters: 9f09fc31-dcec-4687-aed9-7be34f40fd66(String)
+2021-02-22 16:50:28.024 DEBUG 9212 --- [http-nio-8080-exec-5] c.d.m.S.getUserIdsByRoleId               : <==      Total: 0
+2021-02-22 16:50:28.025 DEBUG 9212 --- [http-nio-8080-exec-5] c.d.m.SysUserRoleMapper.removeByUserId   : ==>  Preparing: delete from sys_user_role where user_id = ? 
+2021-02-22 16:50:28.025 DEBUG 9212 --- [http-nio-8080-exec-5] c.d.m.SysUserRoleMapper.removeByUserId   : ==> Parameters: 9f09fc31-dcec-4687-aed9-7be34f40fd66(String)
+2021-02-22 16:50:28.026 DEBUG 9212 --- [http-nio-8080-exec-5] c.d.m.SysUserRoleMapper.removeByUserId   : <==    Updates: 0
+2021-02-22 16:50:28.026 DEBUG 9212 --- [http-nio-8080-exec-5] c.d.m.S.removeRoleByID                   : ==>  Preparing: delete from sys_user_role where role_id = ? 
+2021-02-22 16:50:28.026 DEBUG 9212 --- [http-nio-8080-exec-5] c.d.m.S.removeRoleByID                   : ==> Parameters: 9f09fc31-dcec-4687-aed9-7be34f40fd66(String)
+2021-02-22 16:50:28.027 DEBUG 9212 --- [http-nio-8080-exec-5] c.d.m.S.removeRoleByID                   : <==    Updates: 0
+2021-02-22 16:50:28.040  INFO 9212 --- [http-nio-8080-exec-8] com.daniel.shiro.MyAccessControlFilter   : POST
+2021-02-22 16:50:28.041  INFO 9212 --- [http-nio-8080-exec-8] com.daniel.shiro.MyAccessControlFilter   : /api/roles
+2021-02-22 16:50:28.065 DEBUG 9212 --- [http-nio-8080-exec-8] c.d.m.SysRoleMapper.selectAll_COUNT      : ==>  Preparing: SELECT count(0) FROM sys_role WHERE deleted = 1 
+2021-02-22 16:50:28.065 DEBUG 9212 --- [http-nio-8080-exec-8] c.d.m.SysRoleMapper.selectAll_COUNT      : ==> Parameters: 
+2021-02-22 16:50:28.066 DEBUG 9212 --- [http-nio-8080-exec-8] c.d.m.SysRoleMapper.selectAll_COUNT      : <==      Total: 1
+2021-02-22 16:50:28.067 DEBUG 9212 --- [http-nio-8080-exec-8] c.daniel.mapper.SysRoleMapper.selectAll  : ==>  Preparing: select id, `name`, description, `status`, create_time, update_time, deleted from sys_role WHERE deleted = 1 LIMIT ? 
+2021-02-22 16:50:28.067 DEBUG 9212 --- [http-nio-8080-exec-8] c.daniel.mapper.SysRoleMapper.selectAll  : ==> Parameters: 10(Integer)
+2021-02-22 16:50:28.068 DEBUG 9212 --- [http-nio-8080-exec-8] c.daniel.mapper.SysRoleMapper.selectAll  : <==      Total: 4

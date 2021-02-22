@@ -161,6 +161,39 @@ public class RoleServiceImpl implements RoleService {
         }
     }
 
+    @Override
+    public void deleteRole(String roleID) {
+        SysRole targetRole = new SysRole();
+        targetRole.setId(roleID);//获取需要删除的ID
+        targetRole.setUpdateTime(new Date());
+        targetRole.setDeleted(0);
+
+        //更新数据的检验
+        if ( sysRoleMapper.updateByPrimaryKeySelective(targetRole) != 1 ) {
+            log.error("传入的角色ID {} 不合法",roleID);
+            throw new BusinessException(BaseResponseCode.DATA_ERROR);
+        }
+
+        List<String> userIDList = sysUserRoleMapper.getUserIdsByRoleId(roleID);//获取拥有该角色的用户ID列表
+        //删除掉含有角色权限 对应的用户和菜单权限
+        sysUserRoleMapper.removeByUserId(roleID);
+        rolePermissionService.removeRoleByID(roleID);
+
+        //刷新token
+        if ( !userIDList.isEmpty() ) {
+            for (String userID : userIDList ) {
+                /**
+                 * 标记用户 在用户认证的时候判断这个是否主动刷过
+                 */
+                redisService.set(Constant.JWT_REFRESH_KEY+userID,userID,tokenSettings.getAccessTokenExpireTime().toMillis(), TimeUnit.MILLISECONDS);
+                /**
+                 * 清楚用户授权数据缓存
+                 */
+                redisService.delete(Constant.IDENTIFY_CACHE_KEY+userID);
+            }
+        }
+    }
+
     private void setChecked(List<PermissionRespNodeVO> list, Set<String> checkList){
 
         for(PermissionRespNodeVO node:list){

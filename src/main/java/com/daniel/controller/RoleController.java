@@ -62,4 +62,11 @@ public class RoleController {
         roleService.updateRole(roleUpdateReqVO);
         return DataResult.success();
     }
+
+    @DeleteMapping("/role/{id}")
+    @ApiOperation(value = "删除角色的接口")
+    public DataResult deleteRole(@PathVariable("id") String roleID) {
+        roleService.deleteRole(roleID);
+        return DataResult.success();
+    }
 }

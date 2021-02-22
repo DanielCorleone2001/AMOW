@@ -23,4 +23,7 @@ public interface RolePermissionService {
 
     //通过角色ID来获取到相应的权限ID集合
     List<String> getPermissionListByRoleId(String roleId);
+
+    //通过角色ID删除角色
+    int removeRoleByID(String roleID);
 }
