@@ -1,6 +1,9 @@
 package com.daniel.mapper;
 
 import com.daniel.entity.SysLog;
+import com.daniel.vo.response.log.SysLogReqVO;
+
+import java.util.List;
 
 public interface SysLogMapper {
     int deleteByPrimaryKey(String id);
@@ -14,4 +17,7 @@ public interface SysLogMapper {
     int updateByPrimaryKeySelective(SysLog record);
 
     int updateByPrimaryKey(SysLog record);
+
+    //获取所有的日志
+    List<SysLog> selectAllLog(SysLogReqVO sysLogReqVO);
 }

@@ -78,4 +78,11 @@ public class IndexController {
         return "/users/user";
     }
 
+
+    @GetMapping("/logs")
+    @ApiOperation(value = "跳转到日志管理界面")
+    @MyLog(title = "日志管理", action = "跳转到日志管理界面")
+    public String logs() {
+        return "/logs/log";
+    }
 }
