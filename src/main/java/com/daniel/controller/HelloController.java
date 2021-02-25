@@ -1,5 +1,6 @@
 package com.daniel.controller;
 
+import com.daniel.aop.annotation.MyLog;
 import com.daniel.utils.DataResult;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -26,12 +27,14 @@ public class HelloController {
 
     @GetMapping("/test")
     @ApiOperation(value = "测试接口")
+    @MyLog(title = "测试接口模块" , action = "测试接口")
     public String testSwagger() {
        return "test success";
     }
 
     @GetMapping("/test/data")
     @ApiOperation(value = "统一格式格式的测试接口")
+    @MyLog(title = "测试接口模块" , action = "统一格式格式的测试接口")
     public DataResult<String> dataResultTest() {
         DataResult dataResult = DataResult.success("统一格式格式的测试接口");
         return dataResult;

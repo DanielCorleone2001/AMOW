@@ -1,5 +1,6 @@
 package com.daniel.controller;
 
+import com.daniel.aop.annotation.MyLog;
 import com.daniel.entity.SysPermission;
 import com.daniel.service.PermissionService;
 import com.daniel.utils.DataResult;
@@ -31,6 +32,7 @@ public class PermissionController {
 
     @GetMapping("/permissions")
     @ApiOperation(value = "获取所有菜单权限接口")
+    @MyLog(title = "菜单权限管理", action = "获取所有菜单权限接口")
     public DataResult<List<SysPermission>> getAllMenusPermission() {
         DataResult<List<SysPermission>> result = DataResult.success();
         result.setData(permissionService.selectAll());
@@ -39,6 +41,7 @@ public class PermissionController {
 
     @PostMapping("/permission")
     @ApiOperation(value = "添加菜单权限的接口")
+    @MyLog(title = "菜单权限管理", action = "添加菜单权限的接口")
     public DataResult<SysPermission> addPermission(@RequestBody @Valid PermissionAddReqVO vo){
         DataResult<SysPermission> result = DataResult.success();
         result.setData(permissionService.addPermission(vo));
@@ -47,6 +50,7 @@ public class PermissionController {
 
     @GetMapping("/permission/tree")
     @ApiOperation( value = "菜单权限树")
+    @MyLog(title = "菜单权限管理", action = "菜单权限树")
     public DataResult<List<PermissionRespNodeVO>> getAllPermissionTreeEXBtn() {
         DataResult result = DataResult.success();
         result.setData(permissionService.selectAllMenuByTree());
@@ -55,6 +59,7 @@ public class PermissionController {
 
     @GetMapping("/permission/tree/all")
     @ApiOperation(value = "获取所有目录菜单树接口-查询到按钮")
+    @MyLog(title = "菜单权限管理", action = "获取所有目录菜单树接口-查询到按钮")
     public DataResult<List<PermissionRespNodeVO>> getAllPermissionTree(){
         DataResult<List<PermissionRespNodeVO>> result=DataResult.success();
         result.setData(permissionService.selectAllByTree());
@@ -63,6 +68,7 @@ public class PermissionController {
 
     @PutMapping("/permission")
     @ApiOperation(value = "更新菜单权限的接口")
+    @MyLog(title = "菜单权限管理", action = "更新菜单权限的接口")
     public DataResult updatePermission (@RequestBody @Valid PermissionUpdateReqVO vo) {
         DataResult result = DataResult.success();
         permissionService.updatePermission(vo);
@@ -71,6 +77,7 @@ public class PermissionController {
 
     @DeleteMapping("/permission/{id}")
     @ApiOperation(value = "删除菜单权限的接口")
+    @MyLog(title = "菜单权限管理", action = "删除菜单权限的接口")
     public DataResult deletePermission(@PathVariable("id") String permissionId) {
         DataResult dataResult = DataResult.success();
         permissionService.deletePermission(permissionId);

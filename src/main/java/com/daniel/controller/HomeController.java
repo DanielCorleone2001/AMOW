@@ -1,5 +1,6 @@
 package com.daniel.controller;
 
+import com.daniel.aop.annotation.MyLog;
 import com.daniel.contains.Constant;
 import com.daniel.service.HomeService;
 import com.daniel.utils.DataResult;
@@ -31,6 +32,7 @@ public class HomeController {
 
     @GetMapping("/home")
     @ApiOperation(value = "获取首页数据接口")
+    @MyLog(title = "首页数据", action = "获取首页数据接口")
     public DataResult<HomeRespVO> getHomeInfo (HttpServletRequest request) {
         String accessToken= request.getHeader(Constant.ACCESS_TOKEN);
 

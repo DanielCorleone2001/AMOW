@@ -1,5 +1,6 @@
 package com.daniel.controller;
 
+import com.daniel.aop.annotation.MyLog;
 import com.daniel.contains.Constant;
 import com.daniel.entity.SysUser;
 import com.daniel.service.UserService;
@@ -40,6 +41,7 @@ public class UserController {
 
     @ApiOperation(value = "用户登录接口")
     @PostMapping("/user/login")
+    @MyLog(title = "用户模块接口", action = "用户登录接口")
     public DataResult<LoginRespVO> login(@RequestBody @Valid LoginReqVO loginReqVO){
         DataResult dataResult = DataResult.success();
         dataResult.setData(userService.login(loginReqVO));
@@ -48,6 +50,7 @@ public class UserController {
 
     @PostMapping("/users")
     @ApiOperation(value = "分页查询用户接口")
+    @MyLog(title = "用户模块接口", action = "分页查询用户接口")
     //@RequiresPermissions("sys:user:list")
     public DataResult<PageVO<SysUser>> pageInfo(@RequestBody UserPageReqVO userPageReqVO) {
         DataResult dataResult = DataResult.success();
@@ -57,6 +60,7 @@ public class UserController {
 
     @PostMapping("/user")
     @ApiOperation(value = "新增用户接口")
+    @MyLog(title = "用户模块接口", action = "新增用户接口")
     public DataResult addUser(@RequestBody @Valid UserAddReqVO userAddReqVO) {
         userService.addUser(userAddReqVO);
         return DataResult.success();
@@ -64,6 +68,7 @@ public class UserController {
 
     @GetMapping("/user/roles/{userId}")
     @ApiOperation(value = "赋予角色-获取用户拥有角色的接口")
+    @MyLog(title = "用户模块接口", action = "赋予角色-获取用户拥有角色的接口")
     public DataResult<UserOwnRoleRespVO> getUserOwnRole(@PathVariable("userId") String userId) {
         DataResult<UserOwnRoleRespVO> result = DataResult.success();
         result.setData(userService.getUserOwnRole(userId));
@@ -72,6 +77,7 @@ public class UserController {
 
     @PutMapping("/user/roles")
     @ApiOperation(value = "保持用户拥有的角色信息接口")
+    @MyLog(title = "用户模块接口", action = "保持用户拥有的角色信息接口")
     public DataResult saveUserOwnRole(@RequestBody @Valid UserOwnRoleReqVO userOwnRoleReqVO) {
         DataResult result = DataResult.success();
         userService.setUserOwnRole(userOwnRoleReqVO);
@@ -80,6 +86,7 @@ public class UserController {
 
     @GetMapping("/user/token")
     @ApiOperation(value = "用户刷新token的接口")
+    @MyLog(title = "用户模块接口", action = "用户刷新token的接口")
     public DataResult<String> refreshToken(HttpServletRequest request) {
         String refreshToken = request.getHeader(Constant.REFRESH_TOKEN);
         DataResult<String> result = DataResult.success();
@@ -89,6 +96,7 @@ public class UserController {
 
     @PutMapping("/user")
     @ApiOperation(value = "用户更新信息的接口")
+    @MyLog(title = "用户模块接口", action = "用户更新信息的接口")
     public DataResult updateUserInfo(@RequestBody @Valid UserUpdateReqVO vo, HttpServletRequest request ) {
         String accessToken = request.getHeader(Constant.ACCESS_TOKEN);
         String userId= JWToken.getUserId(accessToken);
@@ -99,6 +107,7 @@ public class UserController {
 
     @DeleteMapping("/user")
     @ApiOperation(value = "删除用户的接口")
+    @MyLog(title = "用户模块接口", action = "删除用户的接口")
     public DataResult deleteUser (@RequestBody @ApiParam(value = "用户ID的集合") List<String> userIdList, HttpServletRequest request) {
         String operationId = JWToken.getUserId(request.getHeader(Constant.ACCESS_TOKEN));
         userService.deleteUsers(userIdList,operationId);

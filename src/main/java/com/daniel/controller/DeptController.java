@@ -1,5 +1,6 @@
 package com.daniel.controller;
 
+import com.daniel.aop.annotation.MyLog;
 import com.daniel.entity.SysDept;
 import com.daniel.service.DeptService;
 import com.daniel.utils.DataResult;
@@ -23,7 +24,7 @@ import java.util.List;
  */
 
 @RestController
-@Api(tags = "组织模块-部门管理")
+@Api(tags = "组织模块-部门管理",description = "部门管理相关接口")
 @RequestMapping("/api")
 public class DeptController {
 
@@ -32,6 +33,7 @@ public class DeptController {
 
     @GetMapping("/depts")
     @ApiOperation(value = "获取机构列表接口")
+    @MyLog(title = "组织模块-部门管理", action = "获取机构列表接口")
     public DataResult<List<SysDept>> getAllDept() {
         DataResult<List<SysDept>> dataResult = DataResult.success();
         dataResult.setData(deptService.selectAll());
@@ -41,6 +43,7 @@ public class DeptController {
 
     @GetMapping("/dept/tree")
     @ApiOperation(value = "获取部门树")
+    @MyLog(title = "组织模块-部门管理", action = "获取部门树")
     public DataResult<List<DeptRespVO>> getDeptTreeList(@RequestParam(required = false) String deptID) {
         DataResult<List<DeptRespVO>> result = DataResult.success();
         result.setData(deptService.deptTreeList(deptID));
@@ -49,6 +52,7 @@ public class DeptController {
 
     @PostMapping("/dept")
     @ApiOperation(value = "新增部门接口")
+    @MyLog(title = "组织模块-部门管理", action = "新增部门接口")
     public DataResult<SysDept> addDept(@RequestBody @Valid DeptAddReqVO deptAddVO) {
         DataResult<SysDept> result = DataResult.success();
         result.setData(deptService.addDept(deptAddVO));
@@ -57,6 +61,7 @@ public class DeptController {
 
     @PutMapping("/dept")
     @ApiOperation(value = "编辑部门接口")
+    @MyLog(title = "组织模块-部门管理", action = "编辑部门接口")
     public DataResult updateDept (@RequestBody @Valid DeptUpdateReqVO deptUpdateReqVO ) {
         deptService.updateDeptInfo(deptUpdateReqVO);
         return DataResult.success();
@@ -64,6 +69,7 @@ public class DeptController {
 
     @DeleteMapping("/dept/{id}")
     @ApiOperation(value = "删除部门的接口")
+    @MyLog(title = "组织模块-部门管理", action = "删除部门的接口")
     public DataResult deleteDept(@PathVariable("id") String deptId) {
         deptService.deleteDept(deptId);
         return DataResult.success();
