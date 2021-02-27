@@ -2,14 +2,13 @@ package com.daniel.shiro;
 
 import com.alibaba.fastjson.JSON;
 import com.daniel.contains.Constant;
-import com.daniel.service.RedisService;
-import com.daniel.utils.JWToken;
+import com.daniel.service.redis.RedisService;
+import com.daniel.utils.jwt.JWToken;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.cache.Cache;
 import org.apache.shiro.cache.CacheException;
 import org.apache.shiro.util.CollectionUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.*;
 import java.util.concurrent.TimeUnit;

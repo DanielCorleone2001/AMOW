@@ -4,7 +4,7 @@ import com.daniel.entity.SysUserRole;
 import com.daniel.exception.BusinessException;
 import com.daniel.exception.code.BaseResponseCode;
 import com.daniel.mapper.SysUserRoleMapper;
-import com.daniel.service.UserRoleService;
+import com.daniel.service.user.UserRoleService;
 import com.daniel.vo.request.related.UserOwnRoleReqVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -1,4 +1,4 @@
-package com.daniel.utils;
+package com.daniel.utils.token;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;

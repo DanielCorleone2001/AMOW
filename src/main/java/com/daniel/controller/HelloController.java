@@ -1,7 +1,7 @@
 package com.daniel.controller;
 
 import com.daniel.aop.annotation.MyLog;
-import com.daniel.utils.DataResult;
+import com.daniel.utils.dataresult.DataResult;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.GetMapping;

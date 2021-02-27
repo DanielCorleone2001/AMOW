@@ -1,4 +1,4 @@
-package com.daniel.service;
+package com.daniel.service.redis;
 
 import com.daniel.exception.BusinessException;
 import org.springframework.beans.factory.annotation.Autowired;

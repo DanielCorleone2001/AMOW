@@ -2,9 +2,9 @@ package com.daniel.controller;
 
 import com.daniel.aop.annotation.MyLog;
 import com.daniel.contains.Constant;
-import com.daniel.service.HomeService;
-import com.daniel.utils.DataResult;
-import com.daniel.utils.JWToken;
+import com.daniel.service.home.HomeService;
+import com.daniel.utils.dataresult.DataResult;
+import com.daniel.utils.jwt.JWToken;
 import com.daniel.vo.response.home.HomeRespVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

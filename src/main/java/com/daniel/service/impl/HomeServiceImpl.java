@@ -2,8 +2,8 @@ package com.daniel.service.impl;
 
 import com.daniel.entity.SysUser;
 import com.daniel.mapper.SysUserMapper;
-import com.daniel.service.HomeService;
-import com.daniel.service.PermissionService;
+import com.daniel.service.home.HomeService;
+import com.daniel.service.permission.PermissionService;
 import com.daniel.vo.response.home.HomeRespVO;
 import com.daniel.vo.response.permission.PermissionRespNodeVO;
 import com.daniel.vo.response.user.UserInfoRespVO;

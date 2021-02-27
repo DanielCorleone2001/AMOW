@@ -1,4 +1,4 @@
-package com.daniel.service;
+package com.daniel.service.home;
 
 import com.daniel.vo.response.home.HomeRespVO;
 

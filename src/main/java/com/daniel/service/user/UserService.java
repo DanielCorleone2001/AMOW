@@ -1,4 +1,4 @@
-package com.daniel.service;
+package com.daniel.service.user;
 
 import com.daniel.entity.SysUser;
 import com.daniel.vo.request.login.LoginReqVO;
@@ -40,5 +40,9 @@ public interface UserService {
    //更新用户信息，operationId是操作人
    void updateUserInfo(UserUpdateReqVO userUpdateReqVO, String operationId);
 
+   //删除用户
    void deleteUsers(List<String> userIds,String operationId);
+
+   //退出登录
+    void logout(String accessToken, String refreshToken);
 }

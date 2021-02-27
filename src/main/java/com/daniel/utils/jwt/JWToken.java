@@ -1,6 +1,7 @@
-package com.daniel.utils;
+package com.daniel.utils.jwt;
 
 import com.daniel.contains.Constant;
+import com.daniel.utils.token.TokenConfig;
 import io.jsonwebtoken.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.util.StringUtils;

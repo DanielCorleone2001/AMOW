@@ -1,4 +1,4 @@
-package com.daniel.utils;
+package com.daniel.utils.ip;
 
 import com.alibaba.druid.util.StringUtils;
 import org.slf4j.Logger;

@@ -3,14 +3,13 @@ package com.daniel.shiro;
 import com.daniel.contains.Constant;
 import com.daniel.exception.BusinessException;
 import com.daniel.exception.code.BaseResponseCode;
-import com.daniel.service.RedisService;
-import com.daniel.utils.JWToken;
+import com.daniel.service.redis.RedisService;
+import com.daniel.utils.jwt.JWToken;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.cache.CacheProperties;
 
 import java.util.concurrent.TimeUnit;
 
@@ -63,6 +62,16 @@ public class MyHashedCredentialsMatcher extends HashedCredentialsMatcher {
             }
         }
 
+        /**
+         * 判断token是否主动退出登录
+         */
+        if ( redisService.hasKey(Constant.JWT_ACCESS_TOKEN_BLACKLIST+accessToken) ) {
+            throw new BusinessException(BaseResponseCode.TOKEN_ERROR);
+        }
+
+        /**
+         * 判断token是否过期，是否被加入黑名单
+         */
         return true;
     }
 }

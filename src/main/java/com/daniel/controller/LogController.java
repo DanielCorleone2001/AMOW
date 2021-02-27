@@ -2,17 +2,15 @@ package com.daniel.controller;
 
 import com.daniel.aop.annotation.MyLog;
 import com.daniel.entity.SysLog;
-import com.daniel.service.LogService;
-import com.daniel.utils.DataResult;
+import com.daniel.service.log.LogService;
+import com.daniel.utils.dataresult.DataResult;
 import com.daniel.vo.response.log.SysLogReqVO;
 import com.daniel.vo.response.page.PageVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import sun.rmi.runtime.Log;
 
-import javax.xml.crypto.Data;
 import java.util.List;
 
 /**

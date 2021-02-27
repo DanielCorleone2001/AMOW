@@ -1,4 +1,4 @@
-package com.daniel.service;
+package com.daniel.service.permission;
 
 import com.daniel.entity.SysPermission;
 import com.daniel.vo.request.permission.PermissionAddReqVO;

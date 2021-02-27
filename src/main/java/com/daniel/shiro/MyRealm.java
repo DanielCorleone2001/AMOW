@@ -1,7 +1,7 @@
 package com.daniel.shiro;
 
 import com.daniel.contains.Constant;
-import com.daniel.utils.JWToken;
+import com.daniel.utils.jwt.JWToken;
 import io.jsonwebtoken.Claims;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;

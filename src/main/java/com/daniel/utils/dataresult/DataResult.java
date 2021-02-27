@@ -1,4 +1,4 @@
-package com.daniel.utils;
+package com.daniel.utils.dataresult;
 
 import com.daniel.exception.code.BaseResponseCode;
 import com.daniel.exception.code.ResponseCodeInterface;

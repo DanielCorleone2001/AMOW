@@ -2,8 +2,8 @@ package com.daniel.controller;
 
 import com.daniel.aop.annotation.MyLog;
 import com.daniel.entity.SysDept;
-import com.daniel.service.DeptService;
-import com.daniel.utils.DataResult;
+import com.daniel.service.dept.DeptService;
+import com.daniel.utils.dataresult.DataResult;
 import com.daniel.vo.request.dept.DeptAddReqVO;
 import com.daniel.vo.request.dept.DeptUpdateReqVO;
 import com.daniel.vo.response.dept.DeptRespVO;

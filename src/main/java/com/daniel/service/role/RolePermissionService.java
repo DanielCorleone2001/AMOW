@@ -1,4 +1,4 @@
-package com.daniel.service;
+package com.daniel.service.role;
 
 import com.daniel.vo.request.related.RolePermissionOperationReqVO;
 

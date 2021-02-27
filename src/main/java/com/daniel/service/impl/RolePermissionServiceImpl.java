@@ -4,7 +4,7 @@ import com.daniel.entity.SysRolePermission;
 import com.daniel.exception.BusinessException;
 import com.daniel.exception.code.BaseResponseCode;
 import com.daniel.mapper.SysRolePermissionMapper;
-import com.daniel.service.RolePermissionService;
+import com.daniel.service.role.RolePermissionService;
 import com.daniel.vo.request.related.RolePermissionOperationReqVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

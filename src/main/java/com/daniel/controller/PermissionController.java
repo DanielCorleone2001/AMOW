@@ -2,8 +2,8 @@ package com.daniel.controller;
 
 import com.daniel.aop.annotation.MyLog;
 import com.daniel.entity.SysPermission;
-import com.daniel.service.PermissionService;
-import com.daniel.utils.DataResult;
+import com.daniel.service.permission.PermissionService;
+import com.daniel.utils.dataresult.DataResult;
 import com.daniel.vo.request.permission.PermissionAddReqVO;
 import com.daniel.vo.request.permission.PermissionUpdateReqVO;
 import com.daniel.vo.response.permission.PermissionRespNodeVO;

@@ -3,9 +3,9 @@ package com.daniel.controller;
 import com.daniel.aop.annotation.MyLog;
 import com.daniel.contains.Constant;
 import com.daniel.entity.SysUser;
-import com.daniel.service.UserService;
-import com.daniel.utils.DataResult;
-import com.daniel.utils.JWToken;
+import com.daniel.service.user.UserService;
+import com.daniel.utils.dataresult.DataResult;
+import com.daniel.utils.jwt.JWToken;
 import com.daniel.vo.request.login.LoginReqVO;
 import com.daniel.vo.request.related.UserOwnRoleReqVO;
 import com.daniel.vo.request.user.UserAddReqVO;
@@ -17,6 +17,7 @@ import com.daniel.vo.response.related.UserOwnRoleRespVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -34,6 +35,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api")
 @Api(tags = "用户模块接口")
+@Slf4j
 public class UserController {
 
     @Autowired
@@ -111,6 +113,20 @@ public class UserController {
     public DataResult deleteUser (@RequestBody @ApiParam(value = "用户ID的集合") List<String> userIdList, HttpServletRequest request) {
         String operationId = JWToken.getUserId(request.getHeader(Constant.ACCESS_TOKEN));
         userService.deleteUsers(userIdList,operationId);
+        return DataResult.success();
+    }
+
+    @GetMapping("/user/logout")
+    @ApiOperation(value = "用户退出登录的接口")
+    @MyLog(title = "用户模块接口", action = "用户退出登录的接口")
+    public DataResult logout(HttpServletRequest request ) {
+        try{
+            String accessToken = request.getHeader(Constant.ACCESS_TOKEN);
+            String refreshToken = request.getHeader(Constant.REFRESH_TOKEN);
+            userService.logout(accessToken,refreshToken);
+        }catch (Exception e ) {
+            log.error("logout error {}", e);
+        }
         return DataResult.success();
     }
 }

@@ -1,4 +1,4 @@
-package com.daniel.utils;
+package com.daniel.utils.pwd;
 
 import java.security.MessageDigest;
 

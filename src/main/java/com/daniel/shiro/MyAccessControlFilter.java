@@ -4,7 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.daniel.contains.Constant;
 import com.daniel.exception.BusinessException;
 import com.daniel.exception.code.BaseResponseCode;
-import com.daniel.utils.DataResult;
+import com.daniel.utils.dataresult.DataResult;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.web.filter.AccessControlFilter;
@@ -13,10 +13,8 @@ import org.springframework.util.StringUtils;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.nio.charset.StandardCharsets;
 
 /**
  * @Package: com.daniel.shiro

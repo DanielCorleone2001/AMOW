@@ -8,14 +8,14 @@ import com.daniel.exception.BusinessException;
 import com.daniel.exception.code.BaseResponseCode;
 import com.daniel.mapper.SysDeptMapper;
 import com.daniel.mapper.SysUserMapper;
-import com.daniel.service.RedisService;
-import com.daniel.service.RoleService;
-import com.daniel.service.UserRoleService;
-import com.daniel.service.UserService;
-import com.daniel.utils.JWToken;
-import com.daniel.utils.PageUtil;
-import com.daniel.utils.PasswordUtils;
-import com.daniel.utils.TokenSettings;
+import com.daniel.service.redis.RedisService;
+import com.daniel.service.role.RoleService;
+import com.daniel.service.user.UserRoleService;
+import com.daniel.service.user.UserService;
+import com.daniel.utils.jwt.JWToken;
+import com.daniel.utils.page.PageUtil;
+import com.daniel.utils.pwd.PasswordUtils;
+import com.daniel.utils.token.TokenSettings;
 import com.daniel.vo.request.login.LoginReqVO;
 import com.daniel.vo.request.related.UserOwnRoleReqVO;
 import com.daniel.vo.request.user.UserAddReqVO;
@@ -26,6 +26,8 @@ import com.daniel.vo.response.page.PageVO;
 import com.daniel.vo.response.related.UserOwnRoleRespVO;
 import com.github.pagehelper.PageHelper;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.subject.Subject;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -160,8 +162,10 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public String refreshToken(String refreshToken) {
-        //判断是否已经过期
-        if ( !JWToken.validateToken(refreshToken) ) {
+        /**
+         * 判断token是否过期，是否被加入黑名单
+         */
+        if ( !JWToken.validateToken(refreshToken) || redisService.hasKey(Constant.JWT_REFRESH_TOKEN_BLACKLIST+refreshToken)) {
             throw new BusinessException(BaseResponseCode.TOKEN_ERROR);
         }
 
@@ -235,6 +239,30 @@ public class UserServiceImpl implements UserService {
             redisService.set(Constant.DELETED_USER_KEY+userId,userId,
                     tokenSettings.getRefreshTokenExpireAppTime().toMillis(),TimeUnit.MILLISECONDS);
         }
+    }
+
+    @Override
+    public void logout(String accessToken, String refreshToken) {
+        //token非空判断
+        if ( StringUtils.isEmpty(accessToken) || StringUtils.isEmpty(refreshToken) ) {
+            throw new BusinessException(BaseResponseCode.DATA_ERROR);
+        }
+
+        Subject subject = SecurityUtils.getSubject();
+        log.info("subject.getPrincipals() = {}",subject.getPrincipals());
+
+        if ( subject.isAuthenticated() ) {
+            subject.logout();
+        }
+
+        String userId = JWToken.getUserId(accessToken);
+        //将token加入黑名单 禁止再登录
+        redisService.set(Constant.JWT_ACCESS_TOKEN_BLACKLIST+accessToken,
+                        userId,JWToken.getRemainingTime(accessToken),TimeUnit.MILLISECONDS);
+        //将refreshToken加入黑名单，防止重新拿来刷新
+        redisService.set(Constant.JWT_REFRESH_TOKEN_BLACKLIST+refreshToken,
+                        userId,JWToken.getRemainingTime(refreshToken),TimeUnit.MILLISECONDS);
+
     }
 
     /**

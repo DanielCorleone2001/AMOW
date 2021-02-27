@@ -1,4 +1,4 @@
-package com.daniel.service;
+package com.daniel.service.dept;
 
 import com.daniel.entity.SysDept;
 import com.daniel.vo.request.dept.DeptAddReqVO;

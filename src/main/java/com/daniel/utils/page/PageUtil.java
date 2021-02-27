@@ -1,4 +1,4 @@
-package com.daniel.utils;
+package com.daniel.utils.page;
 
 import com.daniel.vo.response.page.PageVO;
 import com.github.pagehelper.Page;

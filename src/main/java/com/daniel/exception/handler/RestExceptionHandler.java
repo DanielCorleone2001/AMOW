@@ -2,7 +2,7 @@ package com.daniel.exception.handler;
 
 import com.daniel.exception.BusinessException;
 import com.daniel.exception.code.BaseResponseCode;
-import com.daniel.utils.DataResult;
+import com.daniel.utils.dataresult.DataResult;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.authz.UnauthorizedException;
 import org.springframework.web.bind.annotation.ExceptionHandler;

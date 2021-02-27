@@ -1,4 +1,4 @@
-package com.daniel.utils;
+package com.daniel.utils.http;
 
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;

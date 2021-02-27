@@ -2,8 +2,8 @@ package com.daniel.service.impl;
 
 import com.daniel.entity.SysLog;
 import com.daniel.mapper.SysLogMapper;
-import com.daniel.service.LogService;
-import com.daniel.utils.PageUtil;
+import com.daniel.service.log.LogService;
+import com.daniel.utils.page.PageUtil;
 import com.daniel.vo.response.log.SysLogReqVO;
 import com.daniel.vo.response.page.PageVO;
 import com.github.pagehelper.PageHelper;

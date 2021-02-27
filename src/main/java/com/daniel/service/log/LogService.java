@@ -1,4 +1,4 @@
-package com.daniel.service;
+package com.daniel.service.log;
 
 import com.daniel.entity.SysLog;
 import com.daniel.vo.response.log.SysLogReqVO;

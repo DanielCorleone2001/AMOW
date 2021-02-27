@@ -1,9 +1,8 @@
 package com.daniel;
 
 
-import com.daniel.config.SwaggerConfig;
 import com.daniel.mapper.SysUserMapper;
-import com.daniel.service.RedisService;
+import com.daniel.service.redis.RedisService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

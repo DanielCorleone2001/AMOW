@@ -2,8 +2,8 @@ package com.daniel.controller;
 
 import com.daniel.aop.annotation.MyLog;
 import com.daniel.entity.SysRole;
-import com.daniel.service.RoleService;
-import com.daniel.utils.DataResult;
+import com.daniel.service.role.RoleService;
+import com.daniel.utils.dataresult.DataResult;
 import com.daniel.vo.request.role.RoleAddReqVO;
 import com.daniel.vo.request.role.RolePageReqVO;
 import com.daniel.vo.request.role.RoleUpdateReqVO;
