@@ -19,6 +19,7 @@ import com.daniel.utils.token.TokenSettings;
 import com.daniel.vo.request.login.LoginReqVO;
 import com.daniel.vo.request.related.UserOwnRoleReqVO;
 import com.daniel.vo.request.user.UserAddReqVO;
+import com.daniel.vo.request.user.UserDetailINfoReqVO;
 import com.daniel.vo.request.user.UserPageReqVO;
 import com.daniel.vo.request.user.UserUpdateReqVO;
 import com.daniel.vo.response.login.LoginRespVO;
@@ -263,6 +264,24 @@ public class UserServiceImpl implements UserService {
         redisService.set(Constant.JWT_REFRESH_TOKEN_BLACKLIST+refreshToken,
                         userId,JWToken.getRemainingTime(refreshToken),TimeUnit.MILLISECONDS);
 
+    }
+
+    @Override
+    public SysUser getUserDetailInfo(String userId) {
+        return sysUserMapper.selectByPrimaryKey(userId);
+    }
+
+    @Override
+    public void updateUserDetailInfo(String userId, UserDetailINfoReqVO userDetailINfoReqVO) {
+        SysUser user = new SysUser();
+        BeanUtils.copyProperties(userDetailINfoReqVO,user);
+        user.setId(userId);
+        user.setUpdateTime(new Date());
+        user.setUpdateId(userId);
+
+        if ( sysUserMapper.updateByPrimaryKeySelective(user) != 1 ) {
+            throw new BusinessException(BaseResponseCode.OPERATION_ERROR);
+        }
     }
 
     /**

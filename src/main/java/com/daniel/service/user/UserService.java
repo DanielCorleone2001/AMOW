@@ -4,6 +4,7 @@ import com.daniel.entity.SysUser;
 import com.daniel.vo.request.login.LoginReqVO;
 import com.daniel.vo.request.related.UserOwnRoleReqVO;
 import com.daniel.vo.request.user.UserAddReqVO;
+import com.daniel.vo.request.user.UserDetailINfoReqVO;
 import com.daniel.vo.request.user.UserPageReqVO;
 import com.daniel.vo.request.user.UserUpdateReqVO;
 import com.daniel.vo.response.login.LoginRespVO;
@@ -45,4 +46,10 @@ public interface UserService {
 
    //退出登录
     void logout(String accessToken, String refreshToken);
+
+    //获取用户信息
+    SysUser getUserDetailInfo(String userId);
+
+    //更新用户详细信息
+    void updateUserDetailInfo(String userId, UserDetailINfoReqVO userDetailINfoReqVO);
 }

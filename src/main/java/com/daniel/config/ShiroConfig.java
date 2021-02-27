@@ -73,6 +73,7 @@ public class ShiroConfig {
         filterChainDefinitionMap.put("/css/**", "anon");
         filterChainDefinitionMap.put("/treetable-lay/**", "anon");
         filterChainDefinitionMap.put("/api/user/token", "anon");
+        filterChainDefinitionMap.put("/api/user/**", "anon");
         //放开swagger-ui地址
         filterChainDefinitionMap.put("/swagger/**", "anon");
         filterChainDefinitionMap.put("/v2/api-docs", "anon");

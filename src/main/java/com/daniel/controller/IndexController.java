@@ -85,4 +85,11 @@ public class IndexController {
     public String logs() {
         return "/logs/log";
     }
+
+    @GetMapping("/users/info")
+    @ApiOperation(value = "跳转至个人用户信息的编辑页面")
+    @MyLog(title = "用户管理", action = "跳转至个人用户信息的编辑页面")
+    public String userDetail() {
+        return "/users/user_edit";
+    }
 }

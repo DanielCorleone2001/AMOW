@@ -9,6 +9,7 @@ import com.daniel.utils.jwt.JWToken;
 import com.daniel.vo.request.login.LoginReqVO;
 import com.daniel.vo.request.related.UserOwnRoleReqVO;
 import com.daniel.vo.request.user.UserAddReqVO;
+import com.daniel.vo.request.user.UserDetailINfoReqVO;
 import com.daniel.vo.request.user.UserPageReqVO;
 import com.daniel.vo.request.user.UserUpdateReqVO;
 import com.daniel.vo.response.login.LoginRespVO;
@@ -127,6 +128,25 @@ public class UserController {
         }catch (Exception e ) {
             log.error("logout error {}", e);
         }
+        return DataResult.success();
+    }
+
+    @GetMapping("/user/info")
+    @ApiOperation(value = "查询用户详情信息的接口")
+    @MyLog(title = "用户管理" , action = "查询用户详情信息的接口")
+    public DataResult<SysUser> getUserDetailInfo(HttpServletRequest request ) {
+        String id = JWToken.getUserId(request.getHeader(Constant.ACCESS_TOKEN));
+        DataResult<SysUser> result = DataResult.success();
+        result.setData(userService.getUserDetailInfo(id));
+        return result;
+    }
+
+    @PutMapping("/user/info")
+    @ApiOperation(value = "更新用户详细信息的接口")
+    @MyLog(title = "用户管理", action ="更新用户详细信息的接口" )
+    public DataResult updateUserDetailInfo (@RequestBody @Valid UserDetailINfoReqVO userDetailINfoReqVO,HttpServletRequest request) {
+        String userId = JWToken.getUserId(request.getHeader(Constant.ACCESS_TOKEN));
+        userService.updateUserDetailInfo(userId,userDetailINfoReqVO);
         return DataResult.success();
     }
 }
