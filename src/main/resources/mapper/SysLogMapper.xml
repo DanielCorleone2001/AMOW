@@ -143,5 +143,27 @@
   <select id="selectAllLog" resultMap="BaseResultMap">
     select <include refid="Base_Column_List"></include>
     from sys_log
+    <where>
+
+      <if test="username != null and username != ''">
+        and username like concat('%',#{username},'%')
+      </if>
+
+      <if test="operation != null and operation != ''">
+        and operation like concat('%',#{operation},'%')
+      </if>
+
+      <if test="startTime != null and startTime != ''">
+        and create_time &gt;= #{startTime}
+      </if>
+
+      <if test="endTime != null and endTime != ''">
+        and create_time &lt;= #{endTime}
+      </if>
+
+      <if test="userId != null and userId != ''">
+        and user_id = #{userId}
+      </if>
+    </where>
   </select>
 </mapper>
