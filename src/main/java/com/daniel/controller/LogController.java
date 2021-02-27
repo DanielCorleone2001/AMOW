@@ -1,5 +1,6 @@
 package com.daniel.controller;
 
+import com.daniel.aop.annotation.MyLog;
 import com.daniel.entity.SysLog;
 import com.daniel.service.LogService;
 import com.daniel.utils.DataResult;
@@ -8,11 +9,11 @@ import com.daniel.vo.response.page.PageVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import sun.rmi.runtime.Log;
+
+import javax.xml.crypto.Data;
+import java.util.List;
 
 /**
  * @Package: com.daniel.controller
@@ -37,5 +38,14 @@ public class LogController {
         DataResult<PageVO<SysLog>> result = DataResult.success();
         result.setData(sysLogPageVO);
         return result;
+    }
+
+    @DeleteMapping("/log")
+    @ApiOperation(value = "批量删除系统操作日志的接口")
+    @MyLog(title = "系统模块-系统操作日志管理", action = "批量删除系统操作日志的接口")
+    public DataResult batchDeleteLog(@RequestBody List<String> logIdList ) {
+       DataResult result = DataResult.success();
+       result.setData(logService.deleteLog(logIdList));
+       return result;
     }
 }

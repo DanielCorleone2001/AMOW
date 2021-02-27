@@ -20,4 +20,7 @@ public interface SysLogMapper {
 
     //获取所有的日志
     List<SysLog> selectAllLog(SysLogReqVO sysLogReqVO);
+
+    //批量删除日志
+    int batchDeleteLog(List<String> logIdList);
 }

@@ -4,6 +4,8 @@ import com.daniel.entity.SysLog;
 import com.daniel.vo.response.log.SysLogReqVO;
 import com.daniel.vo.response.page.PageVO;
 
+import java.util.List;
+
 /**
  * @Package: com.daniel.service
  * @ClassName: LogService
@@ -15,4 +17,7 @@ public interface LogService {
 
     //获取日志的页面信息
     PageVO<SysLog> pageInfo(SysLogReqVO sysLogReqVO);
+
+    //批量删除日志
+    int deleteLog(List<String> logIdList);
 }

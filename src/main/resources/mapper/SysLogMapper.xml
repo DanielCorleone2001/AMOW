@@ -166,4 +166,13 @@
       </if>
     </where>
   </select>
+
+  <!--批量删除日志-->
+  <delete id="batchDeleteLog">
+    delete from sys_log
+    where id in
+    <foreach collection="list" item="item" separator="," open="(" close=")">
+      #{item}
+    </foreach>
+  </delete>
 </mapper>

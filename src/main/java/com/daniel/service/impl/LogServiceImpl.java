@@ -36,4 +36,14 @@ public class LogServiceImpl implements LogService {
         List<SysLog> sysLogs = sysLogMapper.selectAllLog(sysLogReqVO);
         return PageUtil.getPageVO(sysLogs);
     }
+
+    /**
+     * 通过日志ID来批量删除日志
+     * @param logIdList
+     * @return
+     */
+    @Override
+    public int deleteLog(List<String> logIdList) {
+        return sysLogMapper.batchDeleteLog(logIdList);
+    }
 }
