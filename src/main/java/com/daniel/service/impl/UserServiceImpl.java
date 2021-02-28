@@ -18,10 +18,7 @@ import com.daniel.utils.pwd.PasswordUtils;
 import com.daniel.utils.token.TokenSettings;
 import com.daniel.vo.request.login.LoginReqVO;
 import com.daniel.vo.request.related.UserOwnRoleReqVO;
-import com.daniel.vo.request.user.UserAddReqVO;
-import com.daniel.vo.request.user.UserDetailINfoReqVO;
-import com.daniel.vo.request.user.UserPageReqVO;
-import com.daniel.vo.request.user.UserUpdateReqVO;
+import com.daniel.vo.request.user.*;
 import com.daniel.vo.response.login.LoginRespVO;
 import com.daniel.vo.response.page.PageVO;
 import com.daniel.vo.response.related.UserOwnRoleRespVO;
@@ -282,6 +279,48 @@ public class UserServiceImpl implements UserService {
         if ( sysUserMapper.updateByPrimaryKeySelective(user) != 1 ) {
             throw new BusinessException(BaseResponseCode.OPERATION_ERROR);
         }
+    }
+
+    /**
+     * 更新用户密码
+     * @param userId
+     * @param userEditPasswordReqVO
+     * @param refreshToken
+     * @param accessToken
+     */
+    @Override
+    public void updateUserPwd(String userId, UserEditPasswordReqVO userEditPasswordReqVO, String refreshToken, String accessToken) {
+        SysUser user = sysUserMapper.selectByPrimaryKey(userId);
+        if ( user == null ) {
+            log.error("传入的ID: {} 不合法",userId);
+            throw new BusinessException(BaseResponseCode.DATA_ERROR);
+        }
+
+        //检验输入的旧密码是否匹配
+        if ( !PasswordUtils.matches(user.getSalt(),userEditPasswordReqVO.getOldPwd(),user.getPassword()) ) {
+            throw new BusinessException(BaseResponseCode.OLD_PASSWORD_ERROR);
+        }
+
+        //更新密码与操作时间
+        user.setUpdateTime(new Date());
+        user.setPassword(PasswordUtils.encode(userEditPasswordReqVO.getNewPwd(),user.getSalt()));
+
+        //更新操作检验
+        if ( sysUserMapper.updateByPrimaryKeySelective(user) != 1) {
+            throw new BusinessException(BaseResponseCode.OPERATION_ERROR);
+        }
+
+        /**
+         * 将token加入黑名单，禁止再用此token进行登录
+         */
+        redisService.set(Constant.JWT_REFRESH_TOKEN_BLACKLIST+accessToken,userId,
+                        JWToken.getRemainingTime(accessToken),TimeUnit.MILLISECONDS);
+
+        /**
+         * 将refreshToken加入黑名单
+         */
+        redisService.set(Constant.JWT_REFRESH_TOKEN_BLACKLIST+refreshToken,userId,
+                        JWToken.getRemainingTime(refreshToken),TimeUnit.MILLISECONDS);
     }
 
     /**

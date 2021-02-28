@@ -8,10 +8,7 @@ import com.daniel.utils.dataresult.DataResult;
 import com.daniel.utils.jwt.JWToken;
 import com.daniel.vo.request.login.LoginReqVO;
 import com.daniel.vo.request.related.UserOwnRoleReqVO;
-import com.daniel.vo.request.user.UserAddReqVO;
-import com.daniel.vo.request.user.UserDetailINfoReqVO;
-import com.daniel.vo.request.user.UserPageReqVO;
-import com.daniel.vo.request.user.UserUpdateReqVO;
+import com.daniel.vo.request.user.*;
 import com.daniel.vo.response.login.LoginRespVO;
 import com.daniel.vo.response.page.PageVO;
 import com.daniel.vo.response.related.UserOwnRoleRespVO;
@@ -147,6 +144,17 @@ public class UserController {
     public DataResult updateUserDetailInfo (@RequestBody @Valid UserDetailINfoReqVO userDetailINfoReqVO,HttpServletRequest request) {
         String userId = JWToken.getUserId(request.getHeader(Constant.ACCESS_TOKEN));
         userService.updateUserDetailInfo(userId,userDetailINfoReqVO);
+        return DataResult.success();
+    }
+
+    @PutMapping("/user/pwd")
+    @ApiOperation(value = "更新用户密码的接口")
+    @MyLog(title = "用户管理", action = "更新用户密码的接口")
+    public DataResult updateUserPwd(@RequestBody UserEditPasswordReqVO userEditPasswordReqVO, HttpServletRequest request ) {
+        String accessToken = request.getHeader(Constant.ACCESS_TOKEN);
+        String refreshToken = request.getHeader(Constant.REFRESH_TOKEN);
+        String userId = JWToken.getUserId(accessToken);
+        userService.updateUserPwd(userId,userEditPasswordReqVO,refreshToken,accessToken);
         return DataResult.success();
     }
 }

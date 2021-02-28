@@ -3,10 +3,7 @@ package com.daniel.service.user;
 import com.daniel.entity.SysUser;
 import com.daniel.vo.request.login.LoginReqVO;
 import com.daniel.vo.request.related.UserOwnRoleReqVO;
-import com.daniel.vo.request.user.UserAddReqVO;
-import com.daniel.vo.request.user.UserDetailINfoReqVO;
-import com.daniel.vo.request.user.UserPageReqVO;
-import com.daniel.vo.request.user.UserUpdateReqVO;
+import com.daniel.vo.request.user.*;
 import com.daniel.vo.response.login.LoginRespVO;
 import com.daniel.vo.response.page.PageVO;
 import com.daniel.vo.response.related.UserOwnRoleRespVO;
@@ -52,4 +49,7 @@ public interface UserService {
 
     //更新用户详细信息
     void updateUserDetailInfo(String userId, UserDetailINfoReqVO userDetailINfoReqVO);
+
+    //更新用户密码
+    void updateUserPwd(String userId, UserEditPasswordReqVO userEditPasswordReqVO, String refreshToken,String accessToken);
 }

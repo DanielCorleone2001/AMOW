@@ -92,4 +92,9 @@ public class IndexController {
     public String userDetail() {
         return "/users/user_edit";
     }
+
+    @GetMapping("/users/pwd")
+    @ApiOperation(value = "跳转至修改密码的页面")
+    @MyLog(title = "用户管理", action = "跳转至修改密码的页面")
+    public String editUserPassword() {return "/users/user_pwd";}
 }
