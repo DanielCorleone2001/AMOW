@@ -44,13 +44,13 @@ public class UserRoleServiceImpl implements UserRoleService {
     public void addUserRoleInfo(UserOwnRoleReqVO vo) {
         sysUserRoleMapper.removeByUserId(vo.getUserId());//删除掉原来的数据
 
-        if ( vo.getRoleId() == null || vo.getRoleId().isEmpty() ) return;//非空检验
+        if ( vo.getRoleIds() == null || vo.getRoleIds().isEmpty() ) return;//非空检验
 
         Date createTime = new Date();
 
         List<SysUserRole> list = new ArrayList<>();
         //遍历 新建角色来注入vo中的值 从而达到新用户角色信息的功能
-        for (String roleId : vo.getRoleId() ) {
+        for (String roleId : vo.getRoleIds() ) {
             SysUserRole sysUserRole = new SysUserRole();
             sysUserRole.setId(UUID.randomUUID().toString());
             sysUserRole.setCreateTime(createTime);

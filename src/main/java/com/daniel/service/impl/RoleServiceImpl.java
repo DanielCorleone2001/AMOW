@@ -84,7 +84,7 @@ public class RoleServiceImpl implements RoleService {
         if ( vo.getPermissions() != null && !vo.getPermissions().isEmpty()) {
             RolePermissionOperationReqVO reqVO =new RolePermissionOperationReqVO();
             reqVO.setRoleId(sysRole.getId());
-            reqVO.setPermissionId(vo.getPermissions());
+            reqVO.setPermissionIds(vo.getPermissions());
             rolePermissionService.addRolePermission(reqVO);
         }
 
@@ -150,7 +150,7 @@ public class RoleServiceImpl implements RoleService {
         //配置角色的菜单权限集合
         RolePermissionOperationReqVO reqVO = new RolePermissionOperationReqVO();
         reqVO.setRoleId(updatedRole.getId());
-        reqVO.setPermissionId(roleUpdateReqVO.getPermissionList());
+        reqVO.setPermissionIds(roleUpdateReqVO.getPermissions());
         rolePermissionService.addRolePermission(reqVO);
 
         List<String> userIDList = userRoleService.getUserIdsByRoleId(roleUpdateReqVO.getId());
@@ -196,6 +196,16 @@ public class RoleServiceImpl implements RoleService {
                 redisService.delete(Constant.IDENTIFY_CACHE_KEY+userID);
             }
         }
+    }
+
+    @Override
+    public List<String> getRoleNameListByUserId(String userID) {
+        List<String> roleIds = userRoleService.getRoleIdsByUserId(userID);
+
+        if ( roleIds == null ) {
+            return null;
+        }
+        return sysRoleMapper.selectRoleNameByRoleIdList(roleIds);
     }
 
     private void setChecked(List<PermissionRespNodeVO> list, Set<String> checkList){

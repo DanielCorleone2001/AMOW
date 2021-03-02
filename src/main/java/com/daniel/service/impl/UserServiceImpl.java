@@ -8,6 +8,7 @@ import com.daniel.exception.BusinessException;
 import com.daniel.exception.code.BaseResponseCode;
 import com.daniel.mapper.SysDeptMapper;
 import com.daniel.mapper.SysUserMapper;
+import com.daniel.service.permission.PermissionService;
 import com.daniel.service.redis.RedisService;
 import com.daniel.service.role.RoleService;
 import com.daniel.service.user.UserRoleService;
@@ -63,6 +64,9 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private TokenSettings tokenSettings;
+
+    @Autowired
+    private PermissionService permissionService;
 
     @Override
     public LoginRespVO login(LoginReqVO loginReqVO) {
@@ -329,25 +333,10 @@ public class UserServiceImpl implements UserService {
      * @return
      */
     private List<String> getRoleByUserId(String userId) {
-        List<String> list = new ArrayList<>();
-        if ( userId.equals("9a26f5f1-cbd2-473d-82db-1d6dcf4598f8")) {
-            list.add("admin");
-        } else {
-            list.add("dev");
-        }
-        return list;
+        return roleService.getRoleNameListByUserId(userId);
     }
 
     private List<String> getPermissionByUserId( String userID) {
-        List<String> list = new ArrayList<>();
-         if ( userID.equals("9a26f5f1-cbd2-473d-82db-1d6dcf4598f8")) {
-             list.add("sys:user:add");
-             list.add("sys:user:update");
-             list.add("sys:user:delete");
-             list.add("sys:user:list");
-         } else {
-             list.add("sys:user:list");
-         }
-         return list;
+         return permissionService.getPermissionListByUserId(userID);
     }
 }

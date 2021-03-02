@@ -32,5 +32,5 @@ public class RoleUpdateReqVO {
     private Integer status;
 
     @ApiModelProperty(value = "角色拥有的菜单权限")
-    private List<String> permissionList;
+    private List<String> permissions;
 }

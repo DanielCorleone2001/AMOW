@@ -14,6 +14,7 @@ import com.daniel.vo.request.permission.PermissionAddReqVO;
 import com.daniel.vo.request.permission.PermissionUpdateReqVO;
 import com.daniel.vo.response.permission.PermissionRespNodeVO;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.collections.list.AbstractLinkedList;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -276,6 +277,35 @@ public class PermissionServiceImpl implements PermissionService {
                 }
             }
         }
+    }
+
+    @Override
+    public List<String> getPermissionListByUserId(String userId) {
+        List<SysPermission> permissionList = getPermissionList(userId);
+        if ( permissionList == null || permissionList.isEmpty() ) {
+            return null;
+        }
+
+        List<String> result = new ArrayList<>();
+        for ( SysPermission permission : permissionList ) {
+            if ( !StringUtils.isEmpty(permission.getPerms()) ) {
+                result.add(permission.getPerms());
+            }
+        }
+        return result;
+    }
+
+    @Override
+    public List<SysPermission> getPermissionList(String userId) {
+        List<String> roleIdList = userRoleService.getRoleIdsByUserId(userId);
+        if ( roleIdList.isEmpty() ) {
+            return null;
+        }
+        List<String> permissionIdList = rolePermissionService.getPermissionIdListByRoleIdList(roleIdList);
+        if ( permissionIdList.isEmpty() ) {
+            return null;
+        }
+        return sysPermissionMapper.getPermissionInfoByPermissionIdList(permissionIdList);
     }
 
 

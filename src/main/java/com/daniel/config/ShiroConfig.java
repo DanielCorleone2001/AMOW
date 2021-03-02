@@ -1,5 +1,6 @@
 package com.daniel.config;
 
+import at.pollux.thymeleaf.shiro.dialect.ShiroDialect;
 import com.daniel.shiro.MyAccessControlFilter;
 import com.daniel.shiro.MyHashedCredentialsMatcher;
 import com.daniel.shiro.MyRealm;
@@ -100,6 +101,11 @@ public class ShiroConfig {
     @Bean
     public RedisCacheManager redisCacheManager() {
         return new RedisCacheManager();
+    }
+
+    @Bean
+    public ShiroDialect shiroDialect() {
+        return new ShiroDialect();
     }
 
 }

@@ -23,5 +23,5 @@ public class RolePermissionOperationReqVO {
 
     @ApiModelProperty(value = "菜单权限集合")
     @NotBlank(message = "菜单权限集合不能为空")
-    private List<String> permissionId;
+    private List<String> permissionIds;
 }

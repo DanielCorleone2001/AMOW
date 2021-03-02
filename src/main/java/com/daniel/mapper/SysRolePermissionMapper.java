@@ -28,4 +28,6 @@ public interface SysRolePermissionMapper {
 
     //删除角色
     int removeRoleByID(String roleID);
+
+    List<String> getPermissionIdListByRoleIdList(List<String> roleIdList);
 }

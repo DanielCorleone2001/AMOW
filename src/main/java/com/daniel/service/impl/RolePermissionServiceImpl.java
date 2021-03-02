@@ -32,13 +32,13 @@ public class RolePermissionServiceImpl implements RolePermissionService {
 
         sysRolePermissionMapper.removeByRoleId(vo.getRoleId());
 
-        if ( vo.getPermissionId() == null || vo.getPermissionId().isEmpty()) return;
+        if ( vo.getPermissionIds() == null || vo.getPermissionIds().isEmpty()) return;
 
         Date createTime = new Date();
 
         List<SysRolePermission> list = new ArrayList<>();
 
-        for ( String permissionId: vo.getPermissionId()) {
+        for ( String permissionId: vo.getPermissionIds()) {
             SysRolePermission sysRolePermission = new SysRolePermission();
             sysRolePermission.setId(UUID.randomUUID().toString());
             sysRolePermission.setCreateTime(createTime);
@@ -75,6 +75,11 @@ public class RolePermissionServiceImpl implements RolePermissionService {
     @Override
     public int removeRoleByID(String roleID) {
         return sysRolePermissionMapper.removeRoleByID(roleID);
+    }
+
+    @Override
+    public List<String> getPermissionIdListByRoleIdList(List<String> roleIdList) {
+        return sysRolePermissionMapper.getPermissionIdListByRoleIdList(roleIdList);
     }
 
 }

@@ -28,7 +28,7 @@ public class UserAddReqVO {
     private String phoneNum;
 
     @ApiModelProperty(value = "创建来源 1:web; 2:android 3:iOS")
-    private Integer createForm;
+    private Integer createWhere;
 
     @ApiModelProperty(value = "所属部门")
     @NotBlank(message = "所属部门不能为空")

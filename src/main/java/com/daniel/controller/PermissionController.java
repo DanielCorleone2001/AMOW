@@ -9,6 +9,8 @@ import com.daniel.vo.request.permission.PermissionUpdateReqVO;
 import com.daniel.vo.response.permission.PermissionRespNodeVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.apache.shiro.authz.annotation.Logical;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -33,6 +35,7 @@ public class PermissionController {
     @GetMapping("/permissions")
     @ApiOperation(value = "获取所有菜单权限接口")
     @MyLog(title = "菜单权限管理", action = "获取所有菜单权限接口")
+    @RequiresPermissions("sys:permission:list")
     public DataResult<List<SysPermission>> getAllMenusPermission() {
         DataResult<List<SysPermission>> result = DataResult.success();
         result.setData(permissionService.selectAll());
@@ -42,6 +45,7 @@ public class PermissionController {
     @PostMapping("/permission")
     @ApiOperation(value = "添加菜单权限的接口")
     @MyLog(title = "菜单权限管理", action = "添加菜单权限的接口")
+    @RequiresPermissions("sys:permission:add")
     public DataResult<SysPermission> addPermission(@RequestBody @Valid PermissionAddReqVO vo){
         DataResult<SysPermission> result = DataResult.success();
         result.setData(permissionService.addPermission(vo));
@@ -51,6 +55,7 @@ public class PermissionController {
     @GetMapping("/permission/tree")
     @ApiOperation( value = "菜单权限树")
     @MyLog(title = "菜单权限管理", action = "菜单权限树")
+    @RequiresPermissions(value = {"sys:permission:update","sys:permission:add"},logical = Logical.OR)
     public DataResult<List<PermissionRespNodeVO>> getAllPermissionTreeEXBtn() {
         DataResult result = DataResult.success();
         result.setData(permissionService.selectAllMenuByTree());
@@ -60,6 +65,7 @@ public class PermissionController {
     @GetMapping("/permission/tree/all")
     @ApiOperation(value = "获取所有目录菜单树接口-查询到按钮")
     @MyLog(title = "菜单权限管理", action = "获取所有目录菜单树接口-查询到按钮")
+    @RequiresPermissions(value = {"sys:role:update","sys:role:add"},logical = Logical.OR)
     public DataResult<List<PermissionRespNodeVO>> getAllPermissionTree(){
         DataResult<List<PermissionRespNodeVO>> result=DataResult.success();
         result.setData(permissionService.selectAllByTree());
@@ -69,6 +75,7 @@ public class PermissionController {
     @PutMapping("/permission")
     @ApiOperation(value = "更新菜单权限的接口")
     @MyLog(title = "菜单权限管理", action = "更新菜单权限的接口")
+    @RequiresPermissions("sys:permission:update")
     public DataResult updatePermission (@RequestBody @Valid PermissionUpdateReqVO vo) {
         DataResult result = DataResult.success();
         permissionService.updatePermission(vo);
@@ -78,6 +85,7 @@ public class PermissionController {
     @DeleteMapping("/permission/{id}")
     @ApiOperation(value = "删除菜单权限的接口")
     @MyLog(title = "菜单权限管理", action = "删除菜单权限的接口")
+    @RequiresPermissions("sys:permission:delete")
     public DataResult deletePermission(@PathVariable("id") String permissionId) {
         DataResult dataResult = DataResult.success();
         permissionService.deletePermission(permissionId);

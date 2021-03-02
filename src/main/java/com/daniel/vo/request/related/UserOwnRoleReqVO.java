@@ -4,6 +4,7 @@ import com.daniel.entity.SysRole;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
+import javax.validation.constraints.NotBlank;
 import java.util.List;
 
 /**
@@ -18,9 +19,10 @@ import java.util.List;
 public class UserOwnRoleReqVO {
 
     @ApiModelProperty(value = "用户ID")
+    @NotBlank(message = "用户id不能为空")
     private String userId;
 
     @ApiModelProperty(value = "用户所拥有的角色集合")
-    private List<String> roleId;
+    private List<String> roleIds;
 
 }

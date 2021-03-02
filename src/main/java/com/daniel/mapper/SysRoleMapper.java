@@ -21,4 +21,6 @@ public interface SysRoleMapper {
     //获取所有角色的权限
     List<SysRole> selectAll(RolePageReqVO vo);
 
+    //通过角色ID集合来获取角色姓名
+    List<String> selectRoleNameByRoleIdList(List<String> roleId);
 }

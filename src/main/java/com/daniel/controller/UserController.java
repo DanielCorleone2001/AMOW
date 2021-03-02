@@ -16,6 +16,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -51,7 +52,7 @@ public class UserController {
     @PostMapping("/users")
     @ApiOperation(value = "分页查询用户接口")
     @MyLog(title = "用户模块接口", action = "分页查询用户接口")
-    //@RequiresPermissions("sys:user:list")
+    @RequiresPermissions("sys:user:list")
     public DataResult<PageVO<SysUser>> pageInfo(@RequestBody UserPageReqVO userPageReqVO) {
         DataResult dataResult = DataResult.success();
         dataResult.setData(userService.pageInfo(userPageReqVO));
@@ -61,6 +62,7 @@ public class UserController {
     @PostMapping("/user")
     @ApiOperation(value = "新增用户接口")
     @MyLog(title = "用户模块接口", action = "新增用户接口")
+    @RequiresPermissions("sys:user:add")
     public DataResult addUser(@RequestBody @Valid UserAddReqVO userAddReqVO) {
         userService.addUser(userAddReqVO);
         return DataResult.success();
@@ -69,6 +71,7 @@ public class UserController {
     @GetMapping("/user/roles/{userId}")
     @ApiOperation(value = "赋予角色-获取用户拥有角色的接口")
     @MyLog(title = "用户模块接口", action = "赋予角色-获取用户拥有角色的接口")
+    @RequiresPermissions("sys:user:role:update")
     public DataResult<UserOwnRoleRespVO> getUserOwnRole(@PathVariable("userId") String userId) {
         DataResult<UserOwnRoleRespVO> result = DataResult.success();
         result.setData(userService.getUserOwnRole(userId));
@@ -78,6 +81,7 @@ public class UserController {
     @PutMapping("/user/roles")
     @ApiOperation(value = "保持用户拥有的角色信息接口")
     @MyLog(title = "用户模块接口", action = "保持用户拥有的角色信息接口")
+    @RequiresPermissions("sys:user:role:update")
     public DataResult saveUserOwnRole(@RequestBody @Valid UserOwnRoleReqVO userOwnRoleReqVO) {
         DataResult result = DataResult.success();
         userService.setUserOwnRole(userOwnRoleReqVO);
@@ -97,6 +101,7 @@ public class UserController {
     @PutMapping("/user")
     @ApiOperation(value = "用户更新信息的接口")
     @MyLog(title = "用户模块接口", action = "用户更新信息的接口")
+    @RequiresPermissions("sys:user:update")
     public DataResult updateUserInfo(@RequestBody @Valid UserUpdateReqVO vo, HttpServletRequest request ) {
         String accessToken = request.getHeader(Constant.ACCESS_TOKEN);
         String userId= JWToken.getUserId(accessToken);
@@ -108,6 +113,7 @@ public class UserController {
     @DeleteMapping("/user")
     @ApiOperation(value = "删除用户的接口")
     @MyLog(title = "用户模块接口", action = "删除用户的接口")
+    @RequiresPermissions("sys:user:delete")
     public DataResult deleteUser (@RequestBody @ApiParam(value = "用户ID的集合") List<String> userIdList, HttpServletRequest request) {
         String operationId = JWToken.getUserId(request.getHeader(Constant.ACCESS_TOKEN));
         userService.deleteUsers(userIdList,operationId);

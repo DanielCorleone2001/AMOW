@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html lang="en" xml:th="http://www.thymeleaf.org">
+<html lang="en" xml:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="/layui/css/layui.css">
 </head>
 <body>
-<!--shiro:hasPermission="sys:log:list"-->
-<div id="searchParam">
+<div id="searchParam" shiro:hasPermission="sys:log:list">
     <div class="layui-form-item">
         <div class="layui-input-inline">
             <input type="text" id="userId" class="layui-input"  autocomplete="off" placeholder="用户ID">
@@ -32,15 +31,13 @@
 </body>
 <script type="text/html" id="toolbar">
     <div class="layui-btn-group">
-        <!--shiro:hasPermission="sys:log:delete"-->
-        <button type="button" class="layui-btn" lay-event="batchDelLog">
+        <button type="button" class="layui-btn" lay-event="batchDelLog" shiro:hasPermission="sys:log:delete">
             <i class="layui-icon">&#xe608;</i> 批量删除
         </button>
     </div>
 </script>
 <script type="text/html" id="tool">
-    <!--shiro:hasPermission="sys:log:delete"-->
-    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="delLog">删除</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="delLog" shiro:hasPermission="sys:log:delete">删除</a>
 </script>
 <script src="/layui/layui.js"></script>
 <script src="/js/core.util.js"></script>

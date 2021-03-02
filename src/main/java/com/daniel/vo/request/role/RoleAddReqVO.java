@@ -25,4 +25,7 @@ public class RoleAddReqVO {
 
     @ApiModelProperty(value = "拥有的权限")
     private List<String> permissions;
+
+    @ApiModelProperty(value = "状态(1:正常0:弃用)")
+    private Integer status;
 }

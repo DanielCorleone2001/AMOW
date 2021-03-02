@@ -23,12 +23,14 @@ public interface SysUserRoleMapper {
     //根据用户ID删除和该用户关联的角色关联表数据
     int removeByUserId(String userId);
 
-    //批量插入用户和角色关联的数据
+    //批量插入用户和角色关联的数据+
     int batchInsertUserRole(List<SysUserRole> list);
 
     //根据角色ID来获取对应的用户Id
     List<String> getUserIdsByRoleIdList(List<String> roleIds);
 
     List<String> getUserIdsByRoleId(String roleId);
+
+    List<String> getUserInfoByRoleId(String roleId);
 
 }

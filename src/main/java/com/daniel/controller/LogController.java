@@ -8,6 +8,7 @@ import com.daniel.vo.response.log.SysLogReqVO;
 import com.daniel.vo.response.page.PageVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,6 +32,7 @@ public class LogController {
 
     @PostMapping("/logs")
     @ApiOperation(value = "分页查询系统操作日志的接口")
+    @RequiresPermissions("sys:log:list")
     public DataResult<PageVO<SysLog>> pageInfo(@RequestBody SysLogReqVO sysLogReqVO ) {
         PageVO<SysLog> sysLogPageVO = logService.pageInfo(sysLogReqVO);
         DataResult<PageVO<SysLog>> result = DataResult.success();
@@ -41,6 +43,7 @@ public class LogController {
     @DeleteMapping("/log")
     @ApiOperation(value = "批量删除系统操作日志的接口")
     @MyLog(title = "系统模块-系统操作日志管理", action = "批量删除系统操作日志的接口")
+    @RequiresPermissions("sys:log:delete")
     public DataResult batchDeleteLog(@RequestBody List<String> logIdList ) {
        DataResult result = DataResult.success();
        result.setData(logService.deleteLog(logIdList));

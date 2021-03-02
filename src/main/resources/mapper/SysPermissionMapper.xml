@@ -200,4 +200,17 @@
     and pid = #{pid}
   </select>
 
+  <!--通过权限Id集合来获取信息-->
+  <select id="getPermissionInfoByPermissionIdList" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List"></include>
+    from sys_permission
+    where id in
+    <foreach collection="list" item="item" open="(" separator="," close=")">
+      #{item}
+    </foreach>
+    and deleted = 1
+    and `status` = 1
+    order by order_num desc
+  </select>
+
 </mapper>

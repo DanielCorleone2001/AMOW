@@ -33,4 +33,9 @@ public interface PermissionService {
 
     //删除菜单
     void deletePermission(String permissionId);
+
+    //通过用户ID来获取所拥有的权限集合
+    List<String> getPermissionListByUserId(String userId);
+
+    List<SysPermission> getPermissionList(String userId);
 }

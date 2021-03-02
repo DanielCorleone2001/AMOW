@@ -29,7 +29,9 @@ public interface RoleService {
     //更新角色信息(编辑角色功能)
     void updateRole(RoleUpdateReqVO roleUpdateReqVO);
 
-
     //删除角色
     void deleteRole(String roleID);
+
+    //通过用户ID去查找拥有的角色
+    List<String> getRoleNameListByUserId(String userID);
 }
