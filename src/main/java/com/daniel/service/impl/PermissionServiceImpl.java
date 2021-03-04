@@ -187,7 +187,7 @@ public class PermissionServiceImpl implements PermissionService {
 
     @Override
     public List<PermissionRespNodeVO> permissionTreeList(String userId) {
-        return getTree(selectAll());
+        return getTree(getPermissionList(userId),true);
     }
 
     @Override
@@ -274,6 +274,10 @@ public class PermissionServiceImpl implements PermissionService {
                 for ( String userID : userIDs ) {
                     redisService.set(Constant.JWT_REFRESH_KEY+userID,userID,
                                     tokenSettings.getAccessTokenExpireTime().toMillis(),TimeUnit.MILLISECONDS);
+                    /**
+                     * 清除用户授权数据缓存
+                     */
+                    redisService.delete(Constant.IDENTIFY_CACHE_KEY+userID);
                 }
             }
         }

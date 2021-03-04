@@ -22,7 +22,7 @@ import java.util.Map;
  * @ClassName: ShiroConfig
  * @Author: daniel
  * @CreateTime: 2021/1/31 22:54
- * @Description:
+ * @Description: Shiro配置类
  */
 @Configuration
 public class ShiroConfig {
@@ -86,6 +86,7 @@ public class ShiroConfig {
         //druid sql监控配置
         filterChainDefinitionMap.put("/druid/**", "anon");
         filterChainDefinitionMap.put("/**","token,authc");
+
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
         return shiroFilterFactoryBean;
     }

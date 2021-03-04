@@ -15,10 +15,10 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * @Package: com.daniel.shiro
- * @ClassName: My
+ * @ClassName:
  * @Author: daniel
  * @CreateTime: 2021/1/31 22:32
- * @Description:
+ * @Description: 密码匹配器
  */
 @Slf4j
 public class MyHashedCredentialsMatcher extends HashedCredentialsMatcher {

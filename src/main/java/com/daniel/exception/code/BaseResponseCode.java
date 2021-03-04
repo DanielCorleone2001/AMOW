@@ -9,7 +9,6 @@ package com.daniel.exception.code;
  */
 public enum BaseResponseCode implements ResponseCodeInterface{
     /**
-     * 这里要和前端约定好
      *code=0：服务器已成功处理了请求。 通常，这表示服务器提供了请求的网页。
      *code=4010001：（授权异常） 请求要求身份验证。 客户端需要跳转到登录页面重新登录
      *code=4010002：(凭证过期) 客户端请求刷新凭证接口

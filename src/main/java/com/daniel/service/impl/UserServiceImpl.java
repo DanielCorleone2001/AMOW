@@ -160,6 +160,11 @@ public class UserServiceImpl implements UserService {
         userRoleService.addUserRoleInfo(vo);
         redisService.set(Constant.JWT_REFRESH_KEY+vo.getUserId(),vo.getUserId(),
                 tokenSettings.getAccessTokenExpireTime().toMillis(), TimeUnit.MILLISECONDS);
+
+        /**
+         * 清除用户授权数据缓存
+         */
+        redisService.delete(Constant.IDENTIFY_CACHE_KEY+vo.getUserId());
     }
 
     @Override
@@ -240,6 +245,10 @@ public class UserServiceImpl implements UserService {
         for ( String userId : userIds ) {
             redisService.set(Constant.DELETED_USER_KEY+userId,userId,
                     tokenSettings.getRefreshTokenExpireAppTime().toMillis(),TimeUnit.MILLISECONDS);
+            /**
+             * 清除用户授权数据缓存
+             */
+            redisService.delete(Constant.IDENTIFY_CACHE_KEY+userId);
         }
     }
 
@@ -325,6 +334,10 @@ public class UserServiceImpl implements UserService {
          */
         redisService.set(Constant.JWT_REFRESH_TOKEN_BLACKLIST+refreshToken,userId,
                         JWToken.getRemainingTime(refreshToken),TimeUnit.MILLISECONDS);
+        /**
+         * 清除用户授权数据缓存
+         */
+        redisService.delete(Constant.IDENTIFY_CACHE_KEY+userId);
     }
 
     /**

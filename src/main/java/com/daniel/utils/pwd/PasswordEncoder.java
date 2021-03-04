@@ -7,7 +7,7 @@ import java.security.MessageDigest;
  * @ClassName: PasswordEncoder
  * @Author: daniel
  * @CreateTime: 2021/1/30 23:53
- * @Description:
+ * @Description: 密码加密方式
  */
 public class PasswordEncoder {
     private final static String[] hexDigits = { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d",

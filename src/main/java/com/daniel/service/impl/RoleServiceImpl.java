@@ -191,7 +191,7 @@ public class RoleServiceImpl implements RoleService {
                  */
                 redisService.set(Constant.JWT_REFRESH_KEY+userID,userID,tokenSettings.getAccessTokenExpireTime().toMillis(), TimeUnit.MILLISECONDS);
                 /**
-                 * 清楚用户授权数据缓存
+                 * 清除用户授权数据缓存
                  */
                 redisService.delete(Constant.IDENTIFY_CACHE_KEY+userID);
             }

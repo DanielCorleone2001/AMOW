@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
  * @ClassName: ShiroCacheManager
  * @Author: daniel
  * @CreateTime: 2021/2/1 12:42
- * @Description:
+ * @Description: 获取redis缓存
  */
 public class RedisCacheManager implements CacheManager {
 

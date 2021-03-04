@@ -33,7 +33,7 @@ public class MyAccessControlFilter extends AccessControlFilter {
      * @param servletRequest
      * @param servletResponse
      * @param o
-     * @return  true：允许，交下一个Filter处理     false：回往下执行onAccessDenied
+     * @return  true：允许，交下一个Filter处理     false：往下执行onAccessDenied
      * @throws Exception
      */
     @Override
@@ -54,15 +54,20 @@ public class MyAccessControlFilter extends AccessControlFilter {
         HttpServletRequest request = (HttpServletRequest) servletRequest;//强转成Http请求，方便调用其封装起来的函数
         log.info(request.getMethod());//查看请求的方法
         log.info(request.getRequestURI().toString());//查看请求的url
-        //判断客户端头部是否携带accessToken
 
+        //判断客户端头部是否携带accessToken
         try {
             String accessToken = request.getHeader(Constant.ACCESS_TOKEN);
             if ( StringUtils.isEmpty(accessToken)) {//token为空，返回token不能为空的错误码
                 throw new BusinessException(BaseResponseCode.TOKEN_NOT_NULL);
             }
             MyPasswordToken passwordToken = new MyPasswordToken(accessToken);
+
+            //调用org.apache.shiro.realm.AuthorizingRealm的doGetAuthenticationInfo方法进行登录认证
+            //getSubject()方法会获取当前用户
+            //login方法，shiro已经帮我们进行认证了
             getSubject(servletRequest,servletResponse).login(passwordToken);
+
         } catch (BusinessException e) {
             MyResponse(servletResponse,e.getCode(),e.getMsg());
             return false;

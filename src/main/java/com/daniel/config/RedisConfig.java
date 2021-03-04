@@ -26,6 +26,7 @@ public class RedisConfig {
         //引入我们自定义序列化的类
         MyStringRedisSerializer myStringRedisSerializer = new MyStringRedisSerializer();
 
+        //配置序列化的方法
         template.setKeySerializer(stringRedisSerializer);
         template.setValueSerializer(myStringRedisSerializer);
         template.setHashKeySerializer(stringRedisSerializer);
