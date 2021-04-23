@@ -795,15 +795,6 @@ set(JWT_REFRESH_TOKEN_BLACKLIST_refreshToken,userID,......)
 
 3.生成新的密文密码，调用mapper更新用户的密码
 
-## 部门模块
-
-### 获取部门
-
-### 新增部门
-
-### 更新部门信息
-
-### 删除部门
 
 ## 日志模块
 
